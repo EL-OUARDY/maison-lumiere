@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Maison Lumière Paris — Artisanal Fragrance House",
   description:
     "Maison Lumière — Artisanal luxury fragrances inspired by Parisian elegance. Each scent tells a story of refinement, passion, and timeless French savoir-faire",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
