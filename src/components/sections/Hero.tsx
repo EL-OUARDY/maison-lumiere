@@ -2,17 +2,24 @@ import React from 'react';
 import { Bounded } from '@/components/shared/Bounded';
 import Image from 'next/image';
 import Button from '@/components/ui/button';
+import FadeIn from '@/components/animations/FadeIn';
 
 function Hero() {
   return (
     <Bounded className="relative min-h-screen bg-neutral-950">
-      <Image
-        className="absolute inset-0 scale-125 object-cover opacity-50"
-        src="/img/hero-bg.jpg"
-        alt=""
-        fill
-        priority
-      />
+      <FadeIn
+        vars={{ scale: 1, opacity: 0.5 }}
+        className="absolute inset-0 scale-125"
+      >
+        <Image
+          className="object-cover"
+          src="/img/hero-bg.jpg"
+          alt=""
+          fill
+          priority
+        />
+      </FadeIn>
+
       <div className="relative flex h-screen flex-col justify-center text-white">
         <h1 className="font-title max-w-xl text-6xl leading-none text-neutral-50 md:text-7xl lg:text-8xl">
           Effortless Elegance
