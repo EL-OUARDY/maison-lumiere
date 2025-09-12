@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bounded } from '@/components/shared/Bounded';
 import Image from 'next/image';
+import Button from '@/components/ui/button';
 
 function Hero() {
   return (
@@ -13,7 +14,7 @@ function Hero() {
         priority
       />
       <div className="relative flex h-screen flex-col justify-center text-white">
-        <h1 className="max-w-xl text-6xl leading-none text-neutral-50 md:text-7xl lg:text-8xl">
+        <h1 className="font-title max-w-xl text-6xl leading-none text-neutral-50 md:text-7xl lg:text-8xl">
           Effortless Elegance
         </h1>
 
@@ -24,7 +25,7 @@ function Hero() {
         </p>
 
         <div className="mt-8">
-          <button>shop now</button>
+          <Button variant="outline">Shop Now</Button>
         </div>
       </div>
     </Bounded>
