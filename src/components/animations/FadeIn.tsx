@@ -22,6 +22,7 @@ function FadeIn({ children, vars = {}, className = '' }: Props) {
         opacity: 1,
         duration: 5,
         ease: 'power3.out',
+        y: 0,
         ...vars,
       });
     },

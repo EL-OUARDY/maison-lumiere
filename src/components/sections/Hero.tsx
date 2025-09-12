@@ -3,6 +3,7 @@ import { Bounded } from '@/components/shared/Bounded';
 import Image from 'next/image';
 import Button from '@/components/ui/button';
 import FadeIn from '@/components/animations/FadeIn';
+import RevealText from '@/components/animations/RevealText';
 
 function Hero() {
   return (
@@ -21,19 +22,31 @@ function Hero() {
       </FadeIn>
 
       <div className="relative flex h-screen flex-col justify-center text-white">
-        <h1 className="font-title max-w-xl text-6xl leading-none text-neutral-50 md:text-7xl lg:text-8xl">
-          Effortless Elegance
-        </h1>
+        <RevealText
+          text="Effortless Elegance"
+          as="h1"
+          staggerAmount={0.2}
+          duration={1.7}
+          className="font-title max-w-xl text-6xl leading-none text-neutral-50 md:text-7xl lg:text-8xl"
+        />
 
-        <p className="mt-6 max-w-md text-lg text-neutral-100">
-          Maison Lumière embodies the art of fragrance — crafted for those who
-          illuminate every room with their presence. A symphony of elegance,
-          light, and allure.
-        </p>
+        <FadeIn
+          vars={{ delay: 1, duration: 1.3 }}
+          className="mt-4 max-w-md translate-y-8 text-lg text-neutral-100"
+        >
+          <p>
+            Maison Lumière embodies the art of fragrance — crafted for those who
+            illuminate every room with their presence. A symphony of elegance,
+            light, and allure.
+          </p>
+        </FadeIn>
 
-        <div className="mt-8">
+        <FadeIn
+          vars={{ delay: 1.7, duration: 1.1 }}
+          className="mt-8 translate-y-5"
+        >
           <Button variant="outline">Shop Now</Button>
-        </div>
+        </FadeIn>
       </div>
     </Bounded>
   );
