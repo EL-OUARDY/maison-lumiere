@@ -11,3 +11,11 @@
   --font-title: var(--font-gambarino);
   --font-sans: var(--font-raleway);
 }
+
+
+.blured-bg {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: linear-gradient(#0006, #0000004d);
+  box-shadow: 0 4px 30px #0000001a;
+}

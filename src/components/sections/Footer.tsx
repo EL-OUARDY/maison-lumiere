@@ -37,7 +37,7 @@ function Footer() {
           <Link
             href="/"
             aria-label="Maison Lumière Home"
-            className="order-first w-48 text-white md:order-none"
+            className="order-first text-white md:order-none"
           >
             <Logo />
           </Link>
@@ -64,10 +64,10 @@ function Footer() {
 
 export default Footer;
 
-type NavGroupProps = {
+interface NavGroupProps {
   title: string;
   children?: ReactNode;
-};
+}
 
 const NavGroup = ({ title, children }: NavGroupProps) => (
   <nav aria-labelledby={`${title.toLowerCase()}-heading`}>
@@ -83,10 +83,10 @@ const NavGroup = ({ title, children }: NavGroupProps) => (
   </nav>
 );
 
-type NavLinkProps = {
+interface NavLinkProps {
   href: string;
   children: ReactNode;
-};
+}
 
 const NavLink = ({ href, children }: NavLinkProps) => {
   return (

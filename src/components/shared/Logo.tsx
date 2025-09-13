@@ -1,7 +1,12 @@
-function Logo() {
+import { cn } from '@/lib/utils';
+
+interface Props {
+  className?: string;
+}
+function Logo({ className }: Props) {
   return (
     <svg
-      id="logo"
+      className={cn('logo w-48', className)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 368.83 144.67"
       fill="currentColor"

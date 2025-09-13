@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Footer from '@/components/sections/Footer';
 import { gambarino, raleway } from '@/lib/fonts';
+import Header from '@/components/sections/Header';
 
 export const metadata: Metadata = {
   title: 'Maison Lumière Paris :: Artisanal Fragrance House',
@@ -20,8 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${raleway.variable} ${gambarino.variable} bg-neutural-900 font-sans text-white antialiased selection:bg-neutral-800/50`}
+        className={`${raleway.variable} ${gambarino.variable} bg-neutral-950 font-sans text-white antialiased selection:bg-neutral-800/50`}
       >
+        <Header />
         <main>{children}</main>
         <Footer />
       </body>
