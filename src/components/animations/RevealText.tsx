@@ -42,7 +42,7 @@ function RevealText({
       className={cn('reveal-text text-balance', className)}
     >
       {text.split(' ').map((word, index) => (
-        <span key={index} className="inline-block overflow-hidden pb-2">
+        <span key={index} className="-mt-2 inline-block overflow-hidden pb-2">
           <span className="word inline-block translate-y-[120%] will-change-transform">
             {word}
             {index < text.split(' ').length - 1 ? <>&nbsp;</> : null}

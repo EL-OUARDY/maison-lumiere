@@ -42,7 +42,7 @@ function Hero() {
         </FadeIn>
 
         <FadeIn
-          vars={{ delay: 1.7, duration: 1.1 }}
+          vars={{ delay: 1.5, duration: 1.1 }}
           className="mt-8 translate-y-5"
         >
           <Button variant="outline">Shop Now</Button>
