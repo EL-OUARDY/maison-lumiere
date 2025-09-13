@@ -1,20 +1,7 @@
 import type { Metadata } from 'next';
-import { Raleway } from 'next/font/google';
-import localFont from 'next/font/local';
 import './globals.css';
 import Footer from '@/components/sections/Footer';
-
-const raleway = Raleway({
-  variable: '--font-raleway',
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const gambarino = localFont({
-  variable: '--font-gambarino',
-  src: '../../public/fonts/gambarino.woff2',
-  display: 'swap',
-});
+import { gambarino, raleway } from '@/lib/fonts';
 
 export const metadata: Metadata = {
   title: 'Maison Lumière Paris :: Artisanal Fragrance House',
