@@ -24,7 +24,7 @@ export default function RootLayout({
         className={`${raleway.variable} ${gambarino.variable} bg-neutral-950 font-sans text-white antialiased selection:bg-neutral-800/50`}
       >
         <Header />
-        <main>{children}</main>
+        <main className="page origin-top-left">{children}</main>
         <Footer />
       </body>
     </html>

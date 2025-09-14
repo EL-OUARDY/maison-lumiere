@@ -12,7 +12,6 @@
   --font-sans: var(--font-raleway);
 }
 
-
 .blured-bg {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
@@ -34,4 +33,11 @@
 
 .noise-texture {
   background-image: url(/img/noise-texture.jpg);
+}
+
+
+
+/* Hide scrollbar  */
+::-webkit-scrollbar {
+  display: none;
 }
