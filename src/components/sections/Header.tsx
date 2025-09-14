@@ -1,5 +1,10 @@
 'use client';
-import React, { ReactNode, useRef, ButtonHTMLAttributes } from 'react';
+import React, {
+  ReactNode,
+  useRef,
+  ButtonHTMLAttributes,
+  useState,
+} from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,6 +12,7 @@ import { CustomEase } from 'gsap/CustomEase';
 import FadeIn from '@/components/animations/FadeIn';
 import Image from 'next/image';
 import Link from 'next/link';
+import RevealText from '@/components/animations/RevealText';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, CustomEase);
 
@@ -16,7 +22,11 @@ CustomEase.create('CustomEaseOut', 'M0,0 C0,0.202 0.204,1 1,1');
 CustomEase.create('CustomEaseInOut', 'M0,0 C0.496,0.004 0,1 1,1');
 
 function Header() {
+  const [showLinks, setShowLinks] = useState<boolean>(false);
   const menuContainerRef = useRef<HTMLDivElement>(null);
+  const menuContentRef = useRef<HTMLDivElement>(null);
+
+  const isAnimatingRef = useRef(false);
 
   // Blue header controls background when user scrolls down
   useGSAP(() => {
@@ -31,10 +41,24 @@ function Header() {
   });
 
   function openMenu() {
+    if (isAnimatingRef.current) return;
     if (typeof window === 'undefined') return;
+
+    setShowLinks(true);
+
+    const tl = gsap.timeline({
+      id: 'open-menu',
+      onStart: () => {
+        isAnimatingRef.current = true;
+      },
+      onComplete: () => {
+        isAnimatingRef.current = false;
+      },
+    });
     const clipPath = `polygon(0 0, 100% 0, 100% ${1.1 * window.innerHeight}px, 0 ${window.innerHeight}px`;
-    gsap.fromTo(
-      '.menu',
+
+    tl.fromTo(
+      menuContainerRef.current,
       {
         clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
       },
@@ -43,32 +67,58 @@ function Header() {
         duration: 1,
         ease: 'CustomEaseInOut',
       },
-    );
+    )
 
-    gsap.fromTo(
-      '.menu-content',
-      {
-        scale: 1.3,
-        rotate: -7,
-        y: -window.innerHeight / 2,
-        opacity: 0.3,
-      },
-      {
-        scale: 1,
-        rotate: 0,
-        y: 0,
-        duration: 1,
-        opacity: 1,
-        ease: 'CustomEaseInOut',
-      },
-    );
+      .fromTo(
+        menuContentRef.current,
+        {
+          scale: 1.3,
+          rotate: -7,
+          y: -window.innerHeight / 2,
+          opacity: 0.3,
+        },
+        {
+          scale: 1,
+          rotate: 0,
+          y: 0,
+          duration: 1,
+          opacity: 1,
+          ease: 'CustomEaseInOut',
+        },
+        0,
+      );
+    const closeBtn = menuContainerRef.current?.querySelector('.close');
+    if (closeBtn)
+      tl.fromTo(
+        closeBtn,
+        { y: 20 },
+        {
+          autoAlpha: 1,
+          duration: 1.6,
+          y: 0,
+          ease: 'power3.out',
+        },
+        '-=1',
+      );
   }
 
   function closeMenu() {
+    if (isAnimatingRef.current) return;
     if (typeof window === 'undefined') return;
+    const tl = gsap.timeline({
+      id: 'close-menu',
+      onStart: () => {
+        isAnimatingRef.current = true;
+      },
+      onComplete: () => {
+        isAnimatingRef.current = false;
+        setShowLinks(false);
+      },
+    });
     const clipPath = `polygon(0 0px, 100% 0px, 100% ${1.1 * window.innerHeight}px, 0 ${window.innerHeight}px`;
-    gsap.fromTo(
-      '.menu',
+
+    tl.fromTo(
+      menuContainerRef.current,
       {
         clipPath,
       },
@@ -77,25 +127,36 @@ function Header() {
         duration: 1,
         ease: 'CustomEaseInOut',
       },
-    );
+    )
 
-    gsap.fromTo(
-      '.menu-content',
-      {
-        scale: 1,
-        rotate: 0,
-        y: 0,
-        opacity: 1,
-      },
-      {
-        scale: 1.3,
-        rotate: 7,
-        y: -window.innerHeight / 2,
-        duration: 1,
-        opacity: 0.3,
-        ease: 'CustomEaseInOut',
-      },
-    );
+      .fromTo(
+        menuContentRef.current,
+        {
+          scale: 1,
+          rotate: 0,
+          y: 0,
+          opacity: 1,
+        },
+        {
+          scale: 1.3,
+          rotate: -7,
+          y: -window.innerHeight / 2,
+          duration: 1,
+          opacity: 0.3,
+          ease: 'CustomEaseInOut',
+        },
+        0,
+      );
+
+    const closeBtn = menuContainerRef.current?.querySelector('.close');
+    if (closeBtn)
+      tl.to(
+        closeBtn,
+        {
+          autoAlpha: 0,
+        },
+        0,
+      );
   }
 
   return (
@@ -189,7 +250,7 @@ function Header() {
           clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
         }}
       >
-        <div className="close absolute right-4 z-1 hover:bg-white/10">
+        <div className="close invisible absolute left-6 z-1 hover:bg-white/10">
           <HeaderIcon onClick={() => closeMenu()}>
             <svg
               className="size-6"
@@ -208,7 +269,10 @@ function Header() {
             </svg>
           </HeaderIcon>
         </div>
-        <div className="menu-content relative flex size-full origin-bottom-left translate-x-[-100px] translate-y-[100px] scale-150 -rotate-15 transform items-center justify-center opacity-25 [will-change:transform_opacity]">
+        <div
+          ref={menuContentRef}
+          className="menu-content relative flex size-full items-center justify-center [will-change:transform_opacity]"
+        >
           <div className="flex w-full">
             <div className="image-container relative flex-3">
               <Image
@@ -219,36 +283,38 @@ function Header() {
                 className="mx-auto block max-w-1/2 object-cover"
               />
             </div>
-            <div className="menu-links flex flex-2 flex-col gap-8">
-              <div className="main-links font-title flex flex-col gap-2 text-4xl">
-                <Link href="#" className="hover:text-white/85">
-                  Ignis
-                </Link>
-                <Link href="#" className="hover:text-white/85">
-                  Aqua
-                </Link>
-                <Link href="#" className="hover:text-white/85">
-                  Terra
-                </Link>
-                <Link href="#" className="hover:text-white/85">
-                  ... More
-                </Link>
+            {showLinks && (
+              <div className="menu-links flex flex-2 flex-col gap-6">
+                <div className="main-links font-title flex flex-col gap-1 text-4xl">
+                  <Link href="#" className="">
+                    <RevealText delay={0.5} text={'Ignis'}></RevealText>
+                  </Link>
+                  <Link href="#" className="">
+                    <RevealText delay={0.6} text={'Aqua'}></RevealText>
+                  </Link>
+                  <Link href="#" className="">
+                    <RevealText delay={0.7} text={'Terra'}></RevealText>
+                  </Link>
+                  <Link href="#" className="">
+                    <RevealText delay={0.8} text={'...More'}></RevealText>
+                  </Link>
+                </div>
+                <div className="social-media flex flex-col">
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <RevealText delay={0.9} text={'Instagram'}></RevealText>
+                  </Link>
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <RevealText delay={1} text={'Pinterest'}></RevealText>
+                  </Link>
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <RevealText delay={1.1} text={'Twitter'}></RevealText>
+                  </Link>
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <RevealText delay={1.2} text={'LinkedIn'}></RevealText>
+                  </Link>
+                </div>
               </div>
-              <div className="social-media flex flex-col gap-1">
-                <Link href="#" className="text-gray-300 hover:text-white">
-                  Instagram
-                </Link>
-                <Link href="#" className="text-gray-300 hover:text-white">
-                  Pinterest
-                </Link>
-                <Link href="#" className="text-gray-300 hover:text-white">
-                  Twitter
-                </Link>
-                <Link href="#" className="text-gray-300 hover:text-white">
-                  LinkedIn
-                </Link>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

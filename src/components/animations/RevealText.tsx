@@ -11,6 +11,7 @@ interface Props {
   className?: string;
   staggerAmount?: number;
   duration?: number;
+  delay?: number;
 }
 
 gsap.registerPlugin(useGSAP, SplitText);
@@ -19,6 +20,7 @@ function RevealText({
   text,
   as: Component = 'div',
   duration = 0.8,
+  delay = 0.2,
   className,
   staggerAmount = 0.1,
 }: Props) {
@@ -50,7 +52,7 @@ function RevealText({
 
     gsap.to(containerRef.current, { autoAlpha: 1 });
     gsap.to(split.words, {
-      delay: 0.2,
+      delay,
       y: 0,
       stagger: staggerAmount,
       duration,
