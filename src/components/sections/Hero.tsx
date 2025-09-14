@@ -31,7 +31,7 @@ function Hero() {
 
       <div className="relative flex h-screen flex-col justify-center text-white">
         <RevealText
-          text="Effortless Elegance"
+          text="Refined Presence"
           as="h1"
           staggerAmount={0.2}
           duration={1.7}
@@ -43,9 +43,8 @@ function Hero() {
           className="mt-4 max-w-md translate-y-8 text-lg text-neutral-100"
         >
           <p>
-            Maison Lumière embodies the art of fragrance — crafted for those who
-            illuminate every room with their presence. A symphony of elegance,
-            light, and allure.
+            Maison Lumière embodies the art of fragrance — created for the
+            luminous spirit. A symphony of elegance, light, and allure.
           </p>
         </FadeIn>
 
