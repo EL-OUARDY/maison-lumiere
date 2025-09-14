@@ -8,10 +8,10 @@ import Logo from '@/components/shared/Logo';
 
 function Hero() {
   return (
-    <Bounded className="relative min-h-screen bg-neutral-950">
+    <Bounded className="hero relative min-h-screen bg-neutral-950">
       <FadeIn
         vars={{ delay: 0.4, duration: 3 }}
-        className="absolute left-1/2 z-100 -translate-x-1/2 translate-y-8 transform p-2 text-white md:p-4"
+        className="absolute left-1/2 z-1 -translate-x-1/2 translate-y-8 transform p-2 text-white md:p-4"
       >
         <Logo />
       </FadeIn>
@@ -25,6 +25,7 @@ function Hero() {
           src="/img/hero-bg.jpg"
           alt=""
           fill
+          sizes="100vw"
           priority
         />
       </FadeIn>
