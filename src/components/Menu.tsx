@@ -33,7 +33,6 @@ function Menu({ open, onClose }: Props) {
       id: 'open-menu',
       onStart: () => {
         isAnimatingRef.current = true;
-        document.documentElement.classList.add('no-scroll');
       },
       onComplete: () => {
         isAnimatingRef.current = false;
@@ -80,7 +79,6 @@ function Menu({ open, onClose }: Props) {
       id: 'close-menu',
       onStart: () => {
         isAnimatingRef.current = true;
-        document.documentElement.classList.remove('no-scroll');
       },
       onComplete: () => {
         isAnimatingRef.current = false;
