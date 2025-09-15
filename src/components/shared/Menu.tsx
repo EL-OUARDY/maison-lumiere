@@ -146,7 +146,7 @@ function Menu({ open, onClose, children }: Props) {
       }}
     >
       <FadeIn
-        vars={{ duration: 2, delay: 0.5 }}
+        vars={{ delay: 0.5 }}
         className="close-btn fixed top-4 right-4 z-200 text-neutral-400 hover:text-white"
       >
         <button className="cursor-pointer p-2" onClick={() => closeMenu()}>
