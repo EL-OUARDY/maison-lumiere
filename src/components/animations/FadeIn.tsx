@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '@/lib/utils';
+import { Eases } from '@/lib/customEases';
 
 interface Props {
   className?: string;
@@ -21,7 +22,7 @@ function FadeIn({ children, vars = {}, className = '' }: Props) {
       gsap.to(containerRef.current, {
         opacity: 1,
         duration: 5,
-        ease: 'power3.out',
+        ease: Eases.out,
         y: 0,
         ...vars,
       });
