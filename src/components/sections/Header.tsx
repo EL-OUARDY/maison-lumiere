@@ -4,7 +4,11 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import FadeIn from '@/components/animations/FadeIn';
-import Menu from '@/components/Menu';
+import Menu from '@/components/shared/Menu';
+import Link from 'next/link';
+import RevealText from '@/components/animations/RevealText';
+import Logo from '@/components/shared/Logo';
+import Image from 'next/image';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -108,7 +112,89 @@ function Header() {
         </button>
       </FadeIn>
 
-      <Menu open={showMenu} onClose={() => setShowMenu(false)} />
+      <Menu open={showMenu} onClose={() => setShowMenu(false)}>
+        <div className="flex size-full flex-col">
+          <div className="menu-header relative">
+            <FadeIn
+              vars={{ duration: 2, delay: 0.5 }}
+              className="absolute inset-4"
+            >
+              <Link href="#" className="block w-fit cursor-pointer">
+                <Logo className="w-32" />
+              </Link>
+            </FadeIn>
+          </div>
+          <div className="menu-body flex w-full flex-1 items-center justify-center">
+            <div className="grid w-full grid-cols-12 items-center">
+              <div className="image-container relative col-start-4 h-[30vw] w-[20vw]">
+                <Image
+                  src="/img/ignis.png"
+                  alt=""
+                  fill
+                  sizes="90vw"
+                  className="mx-auto block object-cover"
+                  style={{ objectPosition: '85% center' }}
+                />
+              </div>
+              <div className="menu-links col-start-8 col-end-11 flex flex-2 flex-col justify-center gap-6 py-8">
+                <div className="main-links font-title flex w-fit flex-col gap-1 text-4xl">
+                  <Link href="#" className="w-fit">
+                    <RevealText delay={0.4} text={'Ignis'}></RevealText>
+                  </Link>
+                  <Link href="#" className="w-fit">
+                    <RevealText delay={0.5} text={'Aqua'}></RevealText>
+                  </Link>
+                  <Link href="#" className="w-fit">
+                    <RevealText delay={0.6} text={'Terra'}></RevealText>
+                  </Link>
+                  <Link href="#" className="w-fit">
+                    <RevealText delay={0.7} text={'...More'}></RevealText>
+                  </Link>
+                </div>
+                <div className="social-media flex w-fit flex-col">
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <RevealText delay={0.8} text={'Instagram'}></RevealText>
+                  </Link>
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <RevealText delay={0.9} text={'Pinterest'}></RevealText>
+                  </Link>
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <RevealText delay={1} text={'Twitter'}></RevealText>
+                  </Link>
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <RevealText delay={1.1} text={'LinkedIn'}></RevealText>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="menu-footer flex w-full items-center justify-between px-4 text-sm">
+            <div className="flex gap-4">
+              <Link href="#" className="text-gray-300 hover:text-white">
+                <FadeIn
+                  className="hover-line"
+                  vars={{ duration: 2, delay: 0.8 }}
+                >
+                  Our Story
+                </FadeIn>
+              </Link>
+              <Link href="#" className="text-gray-300 hover:text-white">
+                <FadeIn
+                  className="hover-line"
+                  vars={{ duration: 2, delay: 0.8 }}
+                >
+                  Heritage
+                </FadeIn>
+              </Link>
+            </div>
+            <Link href="#" className="text-gray-300 hover:text-white">
+              <FadeIn className="hover-line" vars={{ duration: 2, delay: 0.8 }}>
+                Contact Us
+              </FadeIn>
+            </Link>
+          </div>
+        </div>
+      </Menu>
     </header>
   );
 }
