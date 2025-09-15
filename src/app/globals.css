@@ -31,11 +31,6 @@
   transform-origin: left center;
 }
 
-.no-scroll {
-  inline-size: 100%;
-  position: fixed;
-}
-
 .blured-bg {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
