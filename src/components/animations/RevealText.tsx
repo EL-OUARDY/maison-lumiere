@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/SplitText';
 import { cn } from '@/lib/utils';
+import { Eases } from '@/lib/customEases';
 
 interface Props {
   text: string;
@@ -56,7 +57,7 @@ function RevealText({
       y: 0,
       stagger: staggerAmount,
       duration,
-      ease: 'power3.out',
+      ease: Eases.out,
     });
   });
 

@@ -1,27 +1,16 @@
 'use client';
-import React, {
-  ReactNode,
-  useRef,
-  ButtonHTMLAttributes,
-  useState,
-  useEffect,
-} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CustomEase } from 'gsap/CustomEase';
 import FadeIn from '@/components/animations/FadeIn';
 import Image from 'next/image';
 import Link from 'next/link';
 import RevealText from '@/components/animations/RevealText';
 import Logo from '@/components/shared/Logo';
+import { Eases } from '@/lib/customEases';
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, CustomEase);
-
-// Define a custom ease using a cubic-bezier
-CustomEase.create('CustomEaseIn', 'M0,0 C0.198,0 1,0.1 1,1');
-CustomEase.create('CustomEaseOut', 'M0,0 C0,0.202 0.204,1 1,1');
-CustomEase.create('CustomEaseInOut', 'M0,0 C0.496,0.004 0,1 1,1');
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
   const [showMenuItems, setShowMenuItems] = useState<boolean>(false);
@@ -81,7 +70,7 @@ function Header() {
       {
         clipPath,
         duration: 1,
-        ease: 'CustomEaseInOut',
+        ease: Eases.inOut,
       },
     )
 
@@ -99,7 +88,7 @@ function Header() {
           y: 0,
           duration: 1,
           opacity: 1,
-          ease: 'CustomEaseInOut',
+          ease: Eases.inOut,
         },
         0,
       );
@@ -128,7 +117,7 @@ function Header() {
       {
         clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
         duration: 1,
-        ease: 'CustomEaseInOut',
+        ease: Eases.inOut,
       },
     )
 
@@ -146,7 +135,7 @@ function Header() {
           y: -window.innerHeight / 2,
           duration: 1,
           opacity: 0.3,
-          ease: 'CustomEaseInOut',
+          ease: Eases.inOut,
         },
         0,
       );
@@ -335,14 +324,14 @@ function Header() {
             <div className="menu-footer flex w-full items-center justify-between px-4">
               <div className="flex gap-4">
                 <Link href="#" className="text-gray-300 hover:text-white">
-                  <FadeIn vars={{ delay: 0.5 }}>Our Story</FadeIn>
+                  <FadeIn vars={{ delay: 0.8 }}>Our Story</FadeIn>
                 </Link>
                 <Link href="#" className="text-gray-300 hover:text-white">
-                  <FadeIn vars={{ delay: 0.5 }}>Heritage</FadeIn>
+                  <FadeIn vars={{ delay: 0.8 }}>Heritage</FadeIn>
                 </Link>
               </div>
               <Link href="#" className="text-gray-300 hover:text-white">
-                <FadeIn vars={{ delay: 0.5 }}>Contact Us</FadeIn>
+                <FadeIn vars={{ delay: 0.8 }}>Contact Us</FadeIn>
               </Link>
             </div>
           )}
