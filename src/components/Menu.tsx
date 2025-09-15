@@ -17,7 +17,7 @@ interface Props {
 gsap.registerPlugin(useGSAP);
 
 function Menu({ open, onClose }: Props) {
-  const [showMenuItems, setShowMenuItems] = useState<boolean>(false);
+  const [showMenuContent, setShowMenuContent] = useState<boolean>(false);
   const menuContainerRef = useRef<HTMLDivElement>(null);
   const menuContentRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +27,7 @@ function Menu({ open, onClose }: Props) {
     if (isAnimatingRef.current) return;
     if (typeof window === 'undefined') return;
 
-    setShowMenuItems(true);
+    setShowMenuContent(true);
 
     const tl = gsap.timeline({
       id: 'open-menu',
@@ -82,7 +82,7 @@ function Menu({ open, onClose }: Props) {
       },
       onComplete: () => {
         isAnimatingRef.current = false;
-        setShowMenuItems(false);
+        setShowMenuContent(false);
         onClose();
       },
     });
@@ -146,127 +146,126 @@ function Menu({ open, onClose }: Props) {
         clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
       }}
     >
-      <div
-        ref={menuContentRef}
-        className="menu-content relative flex size-full flex-col items-center justify-center [will-change:transform_opacity]"
-      >
-        <div className="menu-header relative w-full">
-          {showMenuItems && (
+      {
+        <div
+          ref={menuContentRef}
+          className="menu-content relative flex size-full flex-col items-center justify-center [will-change:transform_opacity]"
+        >
+          {showMenuContent && (
             <>
-              <FadeIn
-                vars={{ duration: 2, delay: 0.5 }}
-                className="absolute inset-4"
-              >
-                <div onClick={() => closeMenu()} className="cursor-pointer">
-                  <Logo className="w-32" />
-                </div>
-              </FadeIn>
-              <FadeIn
-                vars={{ duration: 2, delay: 0.5 }}
-                className="close-btn flex items-center justify-between"
-              >
-                <div className="ml-auto text-neutral-400 hover:text-white">
-                  <button
-                    className="cursor-pointer p-2"
-                    onClick={() => closeMenu()}
-                  >
-                    <svg
-                      className="size-6"
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth="0"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
+              <div className="menu-header relative w-full">
+                <FadeIn
+                  vars={{ duration: 2, delay: 0.5 }}
+                  className="absolute inset-4"
+                >
+                  <div onClick={() => closeMenu()} className="cursor-pointer">
+                    <Logo className="w-32" />
+                  </div>
+                </FadeIn>
+                <FadeIn
+                  vars={{ duration: 2, delay: 0.5 }}
+                  className="close-btn flex items-center justify-between"
+                >
+                  <div className="ml-auto text-neutral-400 hover:text-white">
+                    <button
+                      className="cursor-pointer p-2"
+                      onClick={() => closeMenu()}
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </button>
+                      <svg
+                        className="size-6"
+                        stroke="currentColor"
+                        fill="currentColor"
+                        strokeWidth="0"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                </FadeIn>
+              </div>
+              <div className="menu-body flex w-full flex-1 items-center justify-center">
+                <div className="grid w-full grid-cols-12 items-center">
+                  <div className="image-container relative col-start-4 h-[30vw] w-[20vw]">
+                    <Image
+                      src="/img/ignis.png"
+                      alt=""
+                      fill
+                      sizes="90vw"
+                      className="mx-auto block object-cover"
+                      style={{ objectPosition: '85% center' }}
+                    />
+                  </div>
+                  <div className="menu-links col-start-8 col-end-11 flex flex-2 flex-col justify-center gap-6 py-8">
+                    <div className="main-links font-title flex flex-col gap-1 text-4xl">
+                      <Link href="#">
+                        <RevealText delay={0.4} text={'Ignis'}></RevealText>
+                      </Link>
+                      <Link href="#">
+                        <RevealText delay={0.5} text={'Aqua'}></RevealText>
+                      </Link>
+                      <Link href="#">
+                        <RevealText delay={0.6} text={'Terra'}></RevealText>
+                      </Link>
+                      <Link href="#">
+                        <RevealText delay={0.7} text={'...More'}></RevealText>
+                      </Link>
+                    </div>
+                    <div className="social-media flex flex-col">
+                      <Link href="#" className="text-gray-300 hover:text-white">
+                        <RevealText delay={0.8} text={'Instagram'}></RevealText>
+                      </Link>
+                      <Link href="#" className="text-gray-300 hover:text-white">
+                        <RevealText delay={0.9} text={'Pinterest'}></RevealText>
+                      </Link>
+                      <Link href="#" className="text-gray-300 hover:text-white">
+                        <RevealText delay={1} text={'Twitter'}></RevealText>
+                      </Link>
+                      <Link href="#" className="text-gray-300 hover:text-white">
+                        <RevealText delay={1.1} text={'LinkedIn'}></RevealText>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </FadeIn>
+              </div>
+              <div className="menu-footer flex w-full items-center justify-between px-4">
+                <div className="flex gap-4">
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <FadeIn
+                      className="hover-line"
+                      vars={{ duration: 2, delay: 0.8 }}
+                    >
+                      Our Story
+                    </FadeIn>
+                  </Link>
+                  <Link href="#" className="text-gray-300 hover:text-white">
+                    <FadeIn
+                      className="hover-line"
+                      vars={{ duration: 2, delay: 0.8 }}
+                    >
+                      Heritage
+                    </FadeIn>
+                  </Link>
+                </div>
+                <Link href="#" className="text-gray-300 hover:text-white">
+                  <FadeIn
+                    className="hover-line"
+                    vars={{ duration: 2, delay: 0.8 }}
+                  >
+                    Contact Us
+                  </FadeIn>
+                </Link>
+              </div>
             </>
           )}
         </div>
-
-        <div className="menu-body flex w-full flex-1 items-center justify-center">
-          <div className="grid w-full grid-cols-12 items-center">
-            <div className="image-container relative col-start-4 h-[30vw] w-[20vw]">
-              <Image
-                src="/img/ignis.png"
-                alt=""
-                fill
-                sizes="90vw"
-                className="mx-auto block object-cover"
-                style={{ objectPosition: '85% center' }}
-              />
-            </div>
-            {showMenuItems && (
-              <div className="menu-links col-start-8 col-end-11 flex flex-2 flex-col justify-center gap-6 py-8">
-                <div className="main-links font-title flex flex-col gap-1 text-4xl">
-                  <Link href="#">
-                    <RevealText delay={0.4} text={'Ignis'}></RevealText>
-                  </Link>
-                  <Link href="#">
-                    <RevealText delay={0.5} text={'Aqua'}></RevealText>
-                  </Link>
-                  <Link href="#">
-                    <RevealText delay={0.6} text={'Terra'}></RevealText>
-                  </Link>
-                  <Link href="#">
-                    <RevealText delay={0.7} text={'...More'}></RevealText>
-                  </Link>
-                </div>
-                <div className="social-media flex flex-col">
-                  <Link href="#" className="text-gray-300 hover:text-white">
-                    <RevealText delay={0.8} text={'Instagram'}></RevealText>
-                  </Link>
-                  <Link href="#" className="text-gray-300 hover:text-white">
-                    <RevealText delay={0.9} text={'Pinterest'}></RevealText>
-                  </Link>
-                  <Link href="#" className="text-gray-300 hover:text-white">
-                    <RevealText delay={1} text={'Twitter'}></RevealText>
-                  </Link>
-                  <Link href="#" className="text-gray-300 hover:text-white">
-                    <RevealText delay={1.1} text={'LinkedIn'}></RevealText>
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {showMenuItems && (
-          <div className="menu-footer flex w-full items-center justify-between px-4">
-            <div className="flex gap-4">
-              <Link href="#" className="text-gray-300 hover:text-white">
-                <FadeIn
-                  className="hover-line"
-                  vars={{ duration: 2, delay: 0.8 }}
-                >
-                  Our Story
-                </FadeIn>
-              </Link>
-              <Link href="#" className="text-gray-300 hover:text-white">
-                <FadeIn
-                  className="hover-line"
-                  vars={{ duration: 2, delay: 0.8 }}
-                >
-                  Heritage
-                </FadeIn>
-              </Link>
-            </div>
-            <Link href="#" className="text-gray-300 hover:text-white">
-              <FadeIn className="hover-line" vars={{ duration: 2, delay: 0.8 }}>
-                Contact Us
-              </FadeIn>
-            </Link>
-          </div>
-        )}
-      </div>
+      }
     </div>
   );
 }
