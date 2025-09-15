@@ -17,7 +17,7 @@ function Hero() {
       </FadeIn>
 
       <FadeIn
-        vars={{ scale: 1, opacity: 0.5 }}
+        vars={{ duration: 5, scale: 1, opacity: 0.5 }}
         className="absolute inset-0 scale-125"
       >
         <Image
@@ -32,7 +32,7 @@ function Hero() {
 
       <div className="relative flex h-screen flex-col justify-center text-white">
         <RevealText
-          text="Refined Presence"
+          text="Natural Presence"
           as="h1"
           staggerAmount={0.2}
           duration={1.7}

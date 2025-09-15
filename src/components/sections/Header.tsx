@@ -29,7 +29,10 @@ function Header() {
 
   return (
     <header className="header fixed top-0 left-0 z-50 flex w-full justify-between p-2 text-white md:p-4">
-      <FadeIn className="controls flex items-center gap-2 rounded-xl px-2 py-1 transition-all duration-50">
+      <FadeIn
+        vars={{ duration: 5 }}
+        className="controls flex items-center gap-2 rounded-xl px-2 py-1 transition-all duration-50"
+      >
         {/* Cart button */}
         <button className="cursor-pointer p-2">
           <svg
@@ -88,7 +91,10 @@ function Header() {
         </button>
       </FadeIn>
 
-      <FadeIn className="controls flex items-center rounded-full p-1 transition-all duration-50">
+      <FadeIn
+        vars={{ duration: 5 }}
+        className="controls flex items-center rounded-full p-1 transition-all duration-50"
+      >
         {/* Menu button */}
         <button
           className="cursor-pointer p-2"
@@ -115,10 +121,7 @@ function Header() {
       <Menu open={showMenu} onClose={() => setShowMenu(false)}>
         <div className="flex size-full flex-col">
           <div className="menu-header relative">
-            <FadeIn
-              vars={{ duration: 2, delay: 0.5 }}
-              className="absolute inset-4"
-            >
+            <FadeIn vars={{ delay: 0.5 }} className="absolute inset-4">
               <Link href="#" className="block w-fit cursor-pointer">
                 <Logo className="w-32" />
               </Link>
@@ -171,24 +174,18 @@ function Header() {
           <div className="menu-footer flex w-full items-center justify-between px-4 text-sm">
             <div className="flex gap-4">
               <Link href="#" className="text-gray-300 hover:text-white">
-                <FadeIn
-                  className="hover-line"
-                  vars={{ duration: 2, delay: 0.8 }}
-                >
+                <FadeIn className="hover-line" vars={{ delay: 0.8 }}>
                   Our Story
                 </FadeIn>
               </Link>
               <Link href="#" className="text-gray-300 hover:text-white">
-                <FadeIn
-                  className="hover-line"
-                  vars={{ duration: 2, delay: 0.8 }}
-                >
+                <FadeIn className="hover-line" vars={{ delay: 0.8 }}>
                   Heritage
                 </FadeIn>
               </Link>
             </div>
             <Link href="#" className="text-gray-300 hover:text-white">
-              <FadeIn className="hover-line" vars={{ duration: 2, delay: 0.8 }}>
+              <FadeIn className="hover-line" vars={{ delay: 0.8 }}>
                 Contact Us
               </FadeIn>
             </Link>

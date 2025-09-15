@@ -21,7 +21,7 @@ function FadeIn({ children, vars = {}, className = '' }: Props) {
     () => {
       gsap.to(containerRef.current, {
         opacity: 1,
-        duration: 5,
+        duration: 2,
         ease: Eases.out,
         y: 0,
         ...vars,
