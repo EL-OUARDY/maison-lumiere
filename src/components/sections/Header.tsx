@@ -55,6 +55,7 @@ function Header() {
       id: 'open-menu',
       onStart: () => {
         isAnimatingRef.current = true;
+        document.documentElement.classList.add('no-scroll');
       },
       onComplete: () => {
         isAnimatingRef.current = false;
@@ -101,6 +102,7 @@ function Header() {
       id: 'close-menu',
       onStart: () => {
         isAnimatingRef.current = true;
+        document.documentElement.classList.remove('no-scroll');
       },
       onComplete: () => {
         isAnimatingRef.current = false;
@@ -238,13 +240,16 @@ function Header() {
           <div className="menu-header relative w-full">
             {showMenuItems && (
               <>
-                <FadeIn vars={{ delay: 0.5 }} className="absolute inset-4">
+                <FadeIn
+                  vars={{ duration: 2, delay: 0.5 }}
+                  className="absolute inset-4"
+                >
                   <div onClick={() => closeMenu()} className="cursor-pointer">
                     <Logo className="w-32" />
                   </div>
                 </FadeIn>
                 <FadeIn
-                  vars={{ delay: 0.5 }}
+                  vars={{ duration: 2, delay: 0.5 }}
                   className="close-btn flex items-center justify-between"
                 >
                   <div className="ml-auto text-neutral-400 hover:text-white">
@@ -288,16 +293,16 @@ function Header() {
               {showMenuItems && (
                 <div className="menu-links col-start-8 col-end-11 flex flex-2 flex-col justify-center gap-6 py-8">
                   <div className="main-links font-title flex flex-col gap-1 text-4xl">
-                    <Link href="#" className="">
+                    <Link href="#">
                       <RevealText delay={0.4} text={'Ignis'}></RevealText>
                     </Link>
-                    <Link href="#" className="">
+                    <Link href="#">
                       <RevealText delay={0.5} text={'Aqua'}></RevealText>
                     </Link>
-                    <Link href="#" className="">
+                    <Link href="#">
                       <RevealText delay={0.6} text={'Terra'}></RevealText>
                     </Link>
-                    <Link href="#" className="">
+                    <Link href="#">
                       <RevealText delay={0.7} text={'...More'}></RevealText>
                     </Link>
                   </div>
@@ -324,14 +329,29 @@ function Header() {
             <div className="menu-footer flex w-full items-center justify-between px-4">
               <div className="flex gap-4">
                 <Link href="#" className="text-gray-300 hover:text-white">
-                  <FadeIn vars={{ delay: 0.8 }}>Our Story</FadeIn>
+                  <FadeIn
+                    className="hover-line"
+                    vars={{ duration: 2, delay: 0.8 }}
+                  >
+                    Our Story
+                  </FadeIn>
                 </Link>
                 <Link href="#" className="text-gray-300 hover:text-white">
-                  <FadeIn vars={{ delay: 0.8 }}>Heritage</FadeIn>
+                  <FadeIn
+                    className="hover-line"
+                    vars={{ duration: 2, delay: 0.8 }}
+                  >
+                    Heritage
+                  </FadeIn>
                 </Link>
               </div>
               <Link href="#" className="text-gray-300 hover:text-white">
-                <FadeIn vars={{ delay: 0.8 }}>Contact Us</FadeIn>
+                <FadeIn
+                  className="hover-line"
+                  vars={{ duration: 2, delay: 0.8 }}
+                >
+                  Contact Us
+                </FadeIn>
               </Link>
             </div>
           )}
