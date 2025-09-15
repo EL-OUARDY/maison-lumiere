@@ -3,6 +3,7 @@ import './globals.css';
 import Footer from '@/components/sections/Footer';
 import { gambarino, raleway } from '@/lib/fonts';
 import Header from '@/components/sections/Header';
+import LenisScrollProvider from '@/components/shared/LenisScrollProvider';
 
 export const metadata: Metadata = {
   title: 'Maison Lumière Paris :: Artisanal Fragrance House',
@@ -23,9 +24,11 @@ export default function RootLayout({
       <body
         className={`${raleway.variable} ${gambarino.variable} bg-neutral-950 font-sans text-white antialiased selection:bg-neutral-800/50`}
       >
-        <Header />
-        <main className="page origin-top-left">{children}</main>
-        <Footer />
+        <LenisScrollProvider>
+          <Header />
+          <main className="page origin-top-left">{children}</main>
+          <Footer />
+        </LenisScrollProvider>
       </body>
     </html>
   );
