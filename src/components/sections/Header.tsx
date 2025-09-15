@@ -121,15 +121,15 @@ function Header() {
       <Menu open={showMenu} onClose={() => setShowMenu(false)}>
         <div className="flex size-full flex-col">
           <div className="menu-header relative">
-            <FadeIn vars={{ delay: 0.5 }} className="absolute inset-4">
+            <FadeIn vars={{ delay: 0.5 }}>
               <Link href="#" className="block w-fit cursor-pointer">
-                <Logo className="w-32" />
+                <Logo className="w-42" />
               </Link>
             </FadeIn>
           </div>
           <div className="menu-body flex w-full flex-1 items-center justify-center">
             <div className="grid w-full grid-cols-12 items-center">
-              <div className="image-container relative col-start-4 h-[30vw] w-[20vw]">
+              <div className="image-container relative col-start-3 h-[40vw] w-[30vw] md:col-start-4 md:h-[30vw] md:w-[20vw]">
                 <Image
                   src="/img/ignis.png"
                   alt=""
@@ -139,8 +139,8 @@ function Header() {
                   style={{ objectPosition: '85% center' }}
                 />
               </div>
-              <div className="menu-links col-start-8 col-end-11 flex flex-2 flex-col justify-center gap-6 py-8">
-                <div className="main-links font-title flex w-fit flex-col gap-1 text-4xl">
+              <div className="menu-links col-start-9 col-end-11 flex flex-2 flex-col justify-center gap-6 py-8 md:col-start-8 md:col-end-11">
+                <div className="main-links font-title flex w-fit flex-col gap-1 text-2xl md:text-4xl">
                   <Link href="#" className="w-fit">
                     <RevealText delay={0.4} text={'Ignis'}></RevealText>
                   </Link>

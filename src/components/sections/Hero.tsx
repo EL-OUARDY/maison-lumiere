@@ -13,7 +13,7 @@ function Hero() {
         vars={{ delay: 0.4, duration: 3 }}
         className="absolute left-1/2 z-1 -translate-x-1/2 translate-y-8 transform p-2 text-white md:p-4"
       >
-        <Logo />
+        <Logo className="hidden sm:block sm:w-52 md:w-64" />
       </FadeIn>
 
       <FadeIn
