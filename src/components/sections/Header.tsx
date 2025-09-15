@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,28 +9,58 @@ import Link from 'next/link';
 import RevealText from '@/components/animations/RevealText';
 import Logo from '@/components/shared/Logo';
 import Image from 'next/image';
+import { Eases } from '@/lib/customEases';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [image, setImage] = useState<string>('.image-ignis');
+  const imagesContainerRef = useRef<HTMLDivElement>(null);
 
   // Blur header controls background when user scrolls down
   useGSAP(() => {
     ScrollTrigger.create({
       trigger: 'body',
       start: 'top top-=1',
-      toggleClass: {
-        targets: '.header .controls',
-        className: 'blured-bg',
+      end: 'max',
+      onEnter: () => {
+        document
+          .querySelectorAll('.header .controls')
+          .forEach((el) => el.classList.add('blured-bg'));
+      },
+      onLeaveBack: () => {
+        document
+          .querySelectorAll('.header .controls')
+          .forEach((el) => el.classList.remove('blured-bg'));
       },
     });
   });
 
+  // Animate menu links
+  useGSAP(
+    () => {
+      if (!imagesContainerRef.current) return;
+
+      const imgs = imagesContainerRef.current.querySelectorAll('.image');
+      const tl = gsap.timeline({
+        id: 'image-animation',
+        defaults: { ease: Eases.out },
+      });
+      // prettier-ignore
+      tl.set(image, { zIndex: 3, }, 0)
+        .to(imgs, { autoAlpha: 0 }, 0)
+        .fromTo(image, 
+          { autoAlpha: 0, scale: 1.3, rotate: 7 }, 
+          { autoAlpha: 1, scale: 1, rotate: 0 }, 0);
+    },
+    { dependencies: [image] },
+  );
+
   return (
     <header className="header fixed top-0 left-0 z-50 flex w-full justify-between p-2 text-white md:p-4">
       <FadeIn
-        vars={{ duration: 5 }}
+        vars={{ duration: 5, delay: 0.3 }}
         className="controls flex items-center gap-2 rounded-xl px-2 py-1 transition-all duration-50"
       >
         {/* Cart button */}
@@ -92,7 +122,7 @@ function Header() {
       </FadeIn>
 
       <FadeIn
-        vars={{ duration: 5 }}
+        vars={{ duration: 5, delay: 0.3 }}
         className="controls flex items-center rounded-full p-1 transition-all duration-50"
       >
         {/* Menu button */}
@@ -129,25 +159,56 @@ function Header() {
           </div>
           <div className="menu-body flex w-full flex-1 items-center justify-center">
             <div className="grid w-full grid-cols-12 items-center">
-              <div className="image-container relative col-start-3 h-[40vw] w-[30vw] md:col-start-4 md:h-[30vw] md:w-[20vw]">
+              <div
+                ref={imagesContainerRef}
+                className="image-container relative col-start-3 h-[40vw] w-[30vw] overflow-hidden md:col-start-4 md:h-[30vw] md:w-[20vw]"
+              >
                 <Image
                   src="/img/ignis.png"
                   alt=""
                   fill
-                  sizes="90vw"
-                  className="mx-auto block object-cover"
+                  sizes="100vw"
+                  className="image image-ignis absolute inset-0 z-3 mx-auto block object-cover"
+                  style={{ objectPosition: '85% center' }}
+                />
+                <Image
+                  src="/img/aqua.png"
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  className="image image-aqua invisible absolute inset-0 z-1 mx-auto block object-cover opacity-0"
+                  style={{ objectPosition: '85% center' }}
+                />
+                <Image
+                  src="/img/terra.png"
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  className="image image-terra invisible absolute inset-0 z-1 mx-auto block object-cover opacity-0"
                   style={{ objectPosition: '85% center' }}
                 />
               </div>
               <div className="menu-links col-start-9 col-end-11 flex flex-2 flex-col justify-center gap-6 py-8 md:col-start-8 md:col-end-11">
                 <div className="main-links font-title flex w-fit flex-col gap-1 text-2xl md:text-4xl">
-                  <Link href="#" className="w-fit">
+                  <Link
+                    href="#"
+                    className="w-fit"
+                    onMouseOver={() => setImage('.image-ignis')}
+                  >
                     <RevealText delay={0.4} text={'Ignis'}></RevealText>
                   </Link>
-                  <Link href="#" className="w-fit">
+                  <Link
+                    href="#"
+                    className="w-fit"
+                    onMouseOver={() => setImage('.image-aqua')}
+                  >
                     <RevealText delay={0.5} text={'Aqua'}></RevealText>
                   </Link>
-                  <Link href="#" className="w-fit">
+                  <Link
+                    href="#"
+                    className="w-fit"
+                    onMouseOver={() => setImage('.image-terra')}
+                  >
                     <RevealText delay={0.6} text={'Terra'}></RevealText>
                   </Link>
                   <Link href="#" className="w-fit">
