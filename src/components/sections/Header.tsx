@@ -4,6 +4,7 @@ import React, {
   useRef,
   ButtonHTMLAttributes,
   useState,
+  useEffect,
 } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -40,6 +41,20 @@ function Header() {
       },
     });
   });
+
+  useEffect(() => {
+    function handleEscapeKey(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    }
+
+    document.addEventListener('keydown', handleEscapeKey);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, []);
 
   function openMenu() {
     if (isAnimatingRef.current) return;
@@ -235,7 +250,9 @@ function Header() {
             {showMenuItems && (
               <>
                 <FadeIn vars={{ delay: 0.5 }} className="absolute inset-4">
-                  <Logo className="w-32" />
+                  <div onClick={() => closeMenu()} className="cursor-pointer">
+                    <Logo className="w-32" />
+                  </div>
                 </FadeIn>
                 <FadeIn
                   vars={{ delay: 0.5 }}
