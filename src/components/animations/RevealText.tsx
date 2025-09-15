@@ -13,6 +13,7 @@ interface Props {
   staggerAmount?: number;
   duration?: number;
   delay?: number;
+  hoverLine?: boolean;
 }
 
 gsap.registerPlugin(useGSAP, SplitText);
@@ -24,6 +25,7 @@ function RevealText({
   delay = 0.2,
   className,
   staggerAmount = 0.1,
+  hoverLine = true,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +34,7 @@ function RevealText({
 
     const split = SplitText.create(containerRef.current, {
       type: 'words',
-      wordsClass: 'word',
+      wordsClass: `word ${hoverLine && 'hover-line'}`,
       tag: 'span',
     });
 
