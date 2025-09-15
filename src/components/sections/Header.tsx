@@ -123,7 +123,7 @@ function Header() {
           <div className="menu-header relative">
             <FadeIn vars={{ delay: 0.5 }}>
               <Link href="#" className="block w-fit cursor-pointer">
-                <Logo className="w-42" />
+                <Logo className="w-42 p-2" />
               </Link>
             </FadeIn>
           </div>
