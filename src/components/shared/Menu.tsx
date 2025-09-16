@@ -49,26 +49,24 @@ function Menu({ open, onClose, children }: Props) {
         duration: 1,
         ease: Eases.inOut,
       },
-    )
-
-      .fromTo(
-        menuContentRef.current,
-        {
-          scale: 1.3,
-          rotate: -7,
-          y: -window.innerHeight / 2,
-          opacity: 0.3,
-        },
-        {
-          scale: 1,
-          rotate: 0,
-          y: 0,
-          duration: 1,
-          opacity: 1,
-          ease: Eases.inOut,
-        },
-        0,
-      );
+    ).fromTo(
+      menuContentRef.current,
+      {
+        scale: 1.3,
+        rotate: -7,
+        y: -window.innerHeight / 2,
+        opacity: 0.3,
+      },
+      {
+        scale: 1,
+        rotate: 0,
+        y: 0,
+        duration: 1,
+        opacity: 1,
+        ease: Eases.inOut,
+      },
+      0,
+    );
   }, []);
 
   const closeMenu = useCallback(() => {
