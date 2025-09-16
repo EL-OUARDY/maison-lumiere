@@ -26,7 +26,7 @@ export default function RootLayout({
       >
         <LenisScrollProvider>
           <Header />
-          <main className="page origin-top-left">{children}</main>
+          <main>{children}</main>
           <Footer />
         </LenisScrollProvider>
       </body>
