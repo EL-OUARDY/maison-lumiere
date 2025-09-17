@@ -9,6 +9,7 @@ import React, {
 import { Eases } from '@/lib/customEases';
 import gsap from 'gsap';
 import FadeIn from '@/components/animations/FadeIn';
+import { useLenis } from 'lenis/react';
 
 interface Props {
   open: boolean;
@@ -22,6 +23,7 @@ function Menu({ open, onClose, children }: Props) {
   const menuContentRef = useRef<HTMLDivElement>(null);
   const pageCloneRef = useRef<HTMLDivElement>(null);
   const isAnimatingRef = useRef(false);
+  const lenis = useLenis();
 
   function captureViewport() {
     // Get the viewport size
@@ -166,8 +168,17 @@ function Menu({ open, onClose, children }: Props) {
   }, [onClose]);
 
   useEffect(() => {
-    if (open) openMenu();
-  }, [open, openMenu]);
+    if (open) {
+      openMenu();
+      lenis?.stop();
+    } else {
+      lenis?.start();
+    }
+    // cleanup when unmount
+    return () => {
+      lenis?.start();
+    };
+  }, [open, openMenu, lenis]);
 
   useEffect(() => {
     function handleEscapeKey(event: KeyboardEvent) {

@@ -57,10 +57,21 @@ function Header() {
     { dependencies: [image] },
   );
 
+  function openMenu() {
+    setShowMenu(true);
+    gsap.set('.header .controls', {
+      autoAlpha: 0,
+    });
+  }
+  function closeMenu() {
+    setShowMenu(false);
+    gsap.to('header .controls', { autoAlpha: 1 });
+  }
+
   return (
     <header className="header fixed top-0 left-0 z-50 flex w-full justify-between p-2 text-white md:p-4">
       <FadeIn
-        vars={{ duration: 5, delay: 0.3 }}
+        vars={{ duration: 2, delay: 2 }}
         className="controls flex items-center gap-2 rounded-xl px-2 py-1 transition-all duration-50"
       >
         {/* Cart button */}
@@ -122,14 +133,11 @@ function Header() {
       </FadeIn>
 
       <FadeIn
-        vars={{ duration: 5, delay: 0.3 }}
+        vars={{ duration: 2, delay: 2 }}
         className="controls flex items-center rounded-full p-1 transition-all duration-50"
       >
         {/* Menu button */}
-        <button
-          className="cursor-pointer p-2"
-          onClick={() => setShowMenu(true)}
-        >
+        <button className="cursor-pointer p-2" onClick={openMenu}>
           <svg
             className="size-6"
             stroke="currentColor"
@@ -148,7 +156,7 @@ function Header() {
         </button>
       </FadeIn>
 
-      <Menu open={showMenu} onClose={() => setShowMenu(false)}>
+      <Menu open={showMenu} onClose={closeMenu}>
         <div className="flex size-full flex-col">
           <div className="menu-header relative">
             <FadeIn vars={{ delay: 0.5 }}>
