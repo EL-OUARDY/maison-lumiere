@@ -195,6 +195,14 @@ function Header() {
                   className="image image-terra invisible absolute inset-0 z-1 mx-auto block object-cover opacity-0"
                   style={{ objectPosition: '85% center' }}
                 />
+                <Image
+                  src="/img/making.jpg"
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  className="image image-making invisible absolute inset-0 z-1 mx-auto block object-cover opacity-0"
+                  style={{ objectPosition: '85% center' }}
+                />
               </div>
               <div className="menu-links col-start-9 col-end-11 flex flex-2 flex-col justify-center gap-6 py-8 md:col-start-8 md:col-end-11">
                 <div className="main-links font-title flex w-fit flex-col gap-1 text-2xl md:text-4xl">
@@ -219,7 +227,11 @@ function Header() {
                   >
                     <RevealText delay={0.6} text={'Terra'}></RevealText>
                   </Link>
-                  <Link href="#" className="w-fit">
+                  <Link
+                    href="#"
+                    className="w-fit"
+                    onMouseOver={() => setImage('.image-making')}
+                  >
                     <RevealText delay={0.7} text={'...More'}></RevealText>
                   </Link>
                 </div>
