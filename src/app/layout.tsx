@@ -25,9 +25,11 @@ export default function RootLayout({
         className={`${raleway.variable} ${gambarino.variable} bg-neutral-950 font-sans text-white antialiased selection:bg-neutral-800/50`}
       >
         <LenisScrollProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <div className="page">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
         </LenisScrollProvider>
       </body>
     </html>
