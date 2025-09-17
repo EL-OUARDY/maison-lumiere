@@ -20,18 +20,47 @@ function Menu({ open, onClose, children }: Props) {
   const [showMenuContent, setShowMenuContent] = useState<boolean>(false);
   const menuContainerRef = useRef<HTMLDivElement>(null);
   const menuContentRef = useRef<HTMLDivElement>(null);
+  const pageCloneRef = useRef<HTMLDivElement>(null);
   const isAnimatingRef = useRef(false);
+
+  function captureViewport() {
+    // Get the viewport size
+    const { innerWidth: width, innerHeight: height } = window;
+
+    // Create a wrapper
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('view-clone');
+    wrapper.style.position = 'fixed';
+    wrapper.style.top = '0';
+    wrapper.style.left = '0';
+    wrapper.style.width = width + 'px';
+    wrapper.style.height = height + 'px';
+    wrapper.style.overflow = 'hidden';
+    wrapper.style.zIndex = '10';
+
+    // Clone body into it
+    const clone = document.body.cloneNode(true) as HTMLElement;
+
+    // Shift it up to match current scroll position
+    clone.style.marginTop = -window.scrollY + 'px';
+
+    wrapper.appendChild(clone);
+    document.body.appendChild(wrapper);
+
+    return wrapper;
+  }
 
   const openMenu = useCallback(() => {
     if (isAnimatingRef.current) return;
     if (typeof window === 'undefined') return;
 
-    setShowMenuContent(true);
+    pageCloneRef.current = captureViewport();
 
     const tl = gsap.timeline({
       id: 'open-menu',
       onStart: () => {
         isAnimatingRef.current = true;
+        setShowMenuContent(true);
       },
       onComplete: () => {
         isAnimatingRef.current = false;
@@ -39,39 +68,49 @@ function Menu({ open, onClose, children }: Props) {
     });
     const clipPath = `polygon(0 0, 100% 0, 100% ${1.1 * window.innerHeight}px, 0 ${window.innerHeight}px`;
 
-    tl.fromTo(
-      menuContainerRef.current,
-      {
-        clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
-      },
-      {
-        clipPath,
-        duration: 1,
-        ease: Eases.inOut,
-      },
-    ).fromTo(
-      menuContentRef.current,
-      {
-        scale: 1.3,
-        rotate: -7,
-        y: -window.innerHeight / 2,
-        opacity: 0.3,
-      },
-      {
-        scale: 1,
-        rotate: 0,
-        y: 0,
-        duration: 1,
-        opacity: 1,
-        ease: Eases.inOut,
-      },
-      0,
-    );
+    tl.to(pageCloneRef.current, {
+      scale: 1.3,
+      rotate: 7,
+      y: window.innerHeight / 2,
+      duration: 1,
+      ease: Eases.inOut,
+    })
+      .fromTo(
+        menuContainerRef.current,
+        {
+          clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
+        },
+        {
+          clipPath,
+          duration: 1,
+          ease: Eases.inOut,
+        },
+        0,
+      )
+      .fromTo(
+        menuContentRef.current,
+        {
+          scale: 1.3,
+          rotate: -7,
+          y: -window.innerHeight / 2,
+          opacity: 0.3,
+        },
+        {
+          scale: 1,
+          rotate: 0,
+          y: 0,
+          duration: 1,
+          opacity: 1,
+          ease: Eases.inOut,
+        },
+        0,
+      );
   }, []);
 
   const closeMenu = useCallback(() => {
     if (isAnimatingRef.current) return;
     if (typeof window === 'undefined') return;
+
     const tl = gsap.timeline({
       id: 'close-menu',
       onStart: () => {
@@ -80,22 +119,31 @@ function Menu({ open, onClose, children }: Props) {
       onComplete: () => {
         isAnimatingRef.current = false;
         setShowMenuContent(false);
+        pageCloneRef.current?.remove();
         onClose();
       },
     });
     const clipPath = `polygon(0 0px, 100% 0px, 100% ${1.1 * window.innerHeight}px, 0 ${window.innerHeight}px`;
 
-    tl.fromTo(
-      menuContainerRef.current,
-      {
-        clipPath,
-      },
-      {
-        clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
-        duration: 1,
-        ease: Eases.inOut,
-      },
-    )
+    tl.to(pageCloneRef.current, {
+      scale: 1,
+      rotate: 0,
+      y: 0,
+      duration: 1,
+      ease: Eases.inOut,
+    })
+      .fromTo(
+        menuContainerRef.current,
+        {
+          clipPath,
+        },
+        {
+          clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
+          duration: 1,
+          ease: Eases.inOut,
+        },
+        0,
+      )
 
       .fromTo(
         menuContentRef.current,
