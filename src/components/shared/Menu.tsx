@@ -181,6 +181,8 @@ function Menu({ open, onClose, children }: Props) {
   }, [open, openMenu, lenis]);
 
   useEffect(() => {
+    if (!open) return;
+
     function handleEscapeKey(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         closeMenu();
@@ -192,7 +194,7 @@ function Menu({ open, onClose, children }: Props) {
     return () => {
       document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, [closeMenu]);
+  }, [closeMenu, open]);
 
   return (
     <div

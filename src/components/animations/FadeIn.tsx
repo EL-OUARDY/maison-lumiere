@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '@/lib/utils';
-import { Eases } from '@/lib/customEases';
 
 interface Props {
   className?: string;
