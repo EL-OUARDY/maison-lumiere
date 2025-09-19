@@ -31,7 +31,7 @@ function Footer() {
 
         {/* Bottom footer */}
         <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-neutral-800 pt-8 md:flex-row">
-          <p className="text-center text-sm text-gray-400">
+          <p className="text-center text-sm text-gray-300">
             © {new Date().getFullYear()} Maison Lumière. All rights reserved
           </p>
           <Link
@@ -39,22 +39,14 @@ function Footer() {
             aria-label="Maison Lumière Home"
             className="order-first text-white md:order-none"
           >
-            <Logo />
+            <Logo className="w-58" />
           </Link>
           <ul
             aria-label="Legal"
-            className="flex flex-wrap justify-center gap-6 text-sm text-gray-400"
+            className="flex flex-wrap justify-center gap-6 text-sm"
           >
-            <li>
-              <a href="#" className="hover:text-white">
-                Terms &amp; conditions
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white">
-                Privacy Policy
-              </a>
-            </li>
+            <NavLink href="#">Terms &amp; conditions</NavLink>
+            <NavLink href="#">Privacy Policy</NavLink>
           </ul>
         </div>
       </div>
@@ -90,8 +82,8 @@ interface NavLinkProps {
 
 const NavLink = ({ href, children }: NavLinkProps) => {
   return (
-    <li>
-      <Link href={href} className="hover:text-gray-300">
+    <li className="relative w-fit">
+      <Link href={href} className="hover-line text-gray-400 hover:text-white">
         {children}
       </Link>
     </li>
