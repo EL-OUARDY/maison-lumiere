@@ -83,7 +83,10 @@ interface NavLinkProps {
 const NavLink = ({ href, children }: NavLinkProps) => {
   return (
     <li className="relative w-fit">
-      <Link href={href} className="hover-line text-gray-400 hover:text-white">
+      <Link
+        href={href}
+        className="hover-line text-gray-400 hover:text-gray-300"
+      >
         {children}
       </Link>
     </li>
