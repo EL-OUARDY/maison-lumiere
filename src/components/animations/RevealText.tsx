@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/SplitText';
 import { cn } from '@/lib/utils';
 import { Eases } from '@/lib/customEases';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 interface Props {
   text: string;
@@ -14,9 +15,11 @@ interface Props {
   duration?: number;
   delay?: number;
   hoverLine?: boolean;
+  triggerStart?: string;
+  triggerEnd?: string;
 }
 
-gsap.registerPlugin(useGSAP, SplitText);
+gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
 function RevealText({
   text,
@@ -26,6 +29,8 @@ function RevealText({
   className,
   staggerAmount = 0.1,
   hoverLine = true,
+  triggerStart = 'top 80%',
+  triggerEnd = 'bottom 20%',
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -60,6 +65,11 @@ function RevealText({
       stagger: staggerAmount,
       duration,
       ease: Eases.out,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: triggerStart,
+        end: triggerEnd,
+      },
     });
   });
 

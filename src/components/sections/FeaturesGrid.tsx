@@ -46,7 +46,6 @@ function FeaturesGrid() {
             <div className="image-bottle relative -mt-28 aspect-[3/3.5] -rotate-12">
               <Image
                 className="object-cover"
-                style={{ imageRendering: 'auto' }}
                 src="/img/ignis-bottle.png"
                 alt=""
                 fill
