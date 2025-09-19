@@ -36,7 +36,7 @@ function Hero() {
           as="h1"
           staggerAmount={0.2}
           duration={1.7}
-          className="font-title max-w-xl text-6xl leading-none text-neutral-50 md:text-7xl lg:text-8xl"
+          className="font-title max-w-xl text-6xl leading-none text-neutral-50 md:text-7xl lg:text-[5.5rem]"
           hoverLine={false}
         />
 
