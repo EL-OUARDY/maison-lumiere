@@ -1,9 +1,9 @@
 import { cn } from '@/lib/utils';
-import { ButtonHTMLAttributes, ReactElement, forwardRef } from 'react';
+import { ButtonHTMLAttributes, ReactNode, forwardRef } from 'react';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  children?: ReactElement | ReactElement[] | string;
+  children?: ReactNode | string;
   variant?: 'default' | 'outline';
 }
 

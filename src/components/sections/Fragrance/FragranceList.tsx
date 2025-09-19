@@ -1,0 +1,38 @@
+import React from 'react';
+import { Bounded } from '@/components/shared/Bounded';
+import RevealText from '@/components/animations/RevealText';
+import FragranceAd from '@/components/sections/Fragrance/FragranceAd';
+import { FRAGRANCES } from '@/lib/demo';
+
+function FragranceList() {
+  return (
+    <Bounded className="space-y-8 bg-black py-16 text-center text-white md:py-24">
+      <div className="mx-auto space-y-8">
+        <p className="text-sm font-light tracking-[0.2em] uppercase">
+          Our Fragrances
+        </p>
+        <RevealText
+          text="AN ESSENCE FOR EVERYONE"
+          as="h2"
+          duration={1.5}
+          staggerAmount={0.3}
+          className="font-title mx-auto max-w-3xl text-5xl uppercase sm:text-6xl md:text-7xl lg:text-8xl"
+          hoverLine={false}
+        />
+        <p className="mx-auto max-w-2xl text-lg text-balance text-gray-300">
+          Maison Lumière captures the art of subtle sophistication, leaving a
+          lasting impression before a word is spoken.
+        </p>
+
+        {/* Scents */}
+        <div className="mt-12 flex flex-col gap-12">
+          {FRAGRANCES.map((fragrance, index) => (
+            <FragranceAd key={index} fragrance={fragrance} />
+          ))}
+        </div>
+      </div>
+    </Bounded>
+  );
+}
+
+export default FragranceList;
