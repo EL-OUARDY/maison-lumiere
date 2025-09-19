@@ -52,7 +52,7 @@ function Header() {
         {/* Menu button */}
         <button className="cursor-pointer p-2" onClick={openMenu}>
           <svg
-            className="size-6"
+            className="size-[1.3rem]"
             stroke="currentColor"
             fill="currentColor"
             strokeWidth="0"
@@ -76,7 +76,7 @@ function Header() {
         {/* Search button */}
         <button className="cursor-pointer p-2" onClick={openMenu}>
           <svg
-            className="size-6"
+            className="size-[1.3rem]"
             stroke="currentColor"
             fill="currentColor"
             strokeWidth="0"
@@ -95,7 +95,7 @@ function Header() {
         {/* User button */}
         <button className="cursor-pointer p-2" onClick={openMenu}>
           <svg
-            className="size-6"
+            className="size-[1.3rem]"
             stroke="currentColor"
             fill="currentColor"
             strokeWidth="0"
@@ -114,7 +114,7 @@ function Header() {
         {/* Cart button */}
         <button className="cursor-pointer p-2" onClick={openMenu}>
           <svg
-            className="size-6"
+            className="size-[1.3rem]"
             stroke="currentColor"
             fill="currentColor"
             strokeWidth="0"

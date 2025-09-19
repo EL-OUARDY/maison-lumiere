@@ -9,11 +9,17 @@ interface Props {
   className?: string;
   children?: ReactNode;
   vars?: gsap.TweenVars;
+  start?: string;
 }
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-function FadeIn({ children, vars = {}, className = '' }: Props) {
+function FadeIn({
+  children,
+  vars = {},
+  className = '',
+  start = 'top 80%',
+}: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -24,6 +30,10 @@ function FadeIn({ children, vars = {}, className = '' }: Props) {
         ease: 'power3.out',
         y: 0,
         ...vars,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start,
+        },
       });
     },
     { scope: containerRef },
