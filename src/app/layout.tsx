@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${raleway.variable} ${gambarino.variable} bg-neutral-950 font-sans text-white antialiased selection:bg-neutral-800/50`}
+        className={`${raleway.variable} ${gambarino.variable} bg-neutral-950 font-sans text-white antialiased selection:bg-[#a06e6a60]`}
       >
         <LenisScrollProvider>
           <div className="page">
