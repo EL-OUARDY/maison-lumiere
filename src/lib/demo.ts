@@ -12,7 +12,9 @@ export interface IFragrance {
   name: string;
   description: string;
   features: { label: string; icon: LucideIcon }[];
+  price: number;
   img: string;
+  bottleImg: string;
 }
 
 export const FRAGRANCES: IFragrance[] = [
@@ -25,6 +27,8 @@ export const FRAGRANCES: IFragrance[] = [
       { label: 'Grounded & Sophisticated', icon: GemIcon },
     ],
     img: '/img/terra.png',
+    bottleImg: '/img/terra-bottle.png',
+    price: 110,
   },
   {
     name: 'aqua',
@@ -35,6 +39,8 @@ export const FRAGRANCES: IFragrance[] = [
       { label: 'Refreshing & Invigorating', icon: ZapIcon },
     ],
     img: '/img/aqua.png',
+    bottleImg: '/img/aqua-bottle.png',
+    price: 120,
   },
   {
     name: 'ignis',
@@ -45,5 +51,7 @@ export const FRAGRANCES: IFragrance[] = [
       { label: 'Bold & Seductive', icon: CrownIcon },
     ],
     img: '/img/ignis.png',
+    bottleImg: '/img/ignis-bottle.png',
+    price: 130,
   },
 ];
