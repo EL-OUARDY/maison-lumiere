@@ -3,14 +3,19 @@ import { Bounded } from '@/components/shared/Bounded';
 import RevealText from '@/components/animations/RevealText';
 import FragranceAd from '@/components/sections/Fragrance/FragranceAd';
 import { FRAGRANCES } from '@/lib/demo';
+import FadeIn from '@/components/animations/FadeIn';
 
 function FragranceList() {
   return (
     <Bounded className="space-y-8 bg-black py-16 text-center text-white md:py-24">
       <div className="mx-auto space-y-8">
-        <p className="text-sm font-light tracking-[0.2em] uppercase">
+        <FadeIn
+          vars={{ duration: 0.8 }}
+          className="text-sm font-light tracking-[0.2em] uppercase"
+        >
           Our Fragrances
-        </p>
+        </FadeIn>
+
         <RevealText
           text="AN ESSENCE FOR EVERYONE"
           as="h2"
