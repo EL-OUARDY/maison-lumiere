@@ -46,7 +46,7 @@ function MainMenu() {
         <div className="grid w-full grid-cols-12 items-center">
           <div
             ref={imagesContainerRef}
-            className="image-container relative col-start-3 h-[40vw] w-[30vw] overflow-hidden md:col-start-4 md:h-[30vw] md:w-[20vw]"
+            className="image-container relative col-start-2 h-[50vw] w-[40vw] overflow-hidden sm:col-start-3 sm:h-[40vw] sm:w-[30vw] md:col-start-4 md:h-[30vw] md:w-[20vw]"
           >
             <Image
               src="/img/ignis.png"
