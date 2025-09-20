@@ -1,9 +1,9 @@
-import { Bounded } from '@/components/shared/Bounded';
+import Lazy from '@/components/shared/Lazy';
 import React from 'react';
 
 function Video() {
   return (
-    <Bounded className="relative min-h-screen bg-black">
+    <Lazy rootMargin="1000px" className="relative min-h-screen bg-black">
       <h2 className="sr-only">Maison Lumière Introduction Video</h2>
       <video
         src="background.mp4"
@@ -13,7 +13,7 @@ function Video() {
         loop
         muted
       ></video>
-    </Bounded>
+    </Lazy>
   );
 }
 
