@@ -11,9 +11,9 @@ function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid gap-10 md:grid-cols-3">
           <NavGroup title="Shop">
-            <NavLink href="/fragrance/terra">Terra</NavLink>
             <NavLink href="/fragrance/ignis">Ignis</NavLink>
             <NavLink href="/fragrance/aqua">Aqua</NavLink>
+            <NavLink href="/fragrance/terra">Terra</NavLink>
           </NavGroup>
 
           <NavGroup title="About">

@@ -17,7 +17,7 @@ export interface IFragrance {
 
 export const FRAGRANCES: IFragrance[] = [
   {
-    name: 'Terra',
+    name: 'terra',
     description:
       'An earthy symphony that captures the essence of untamed wilderness. Rich cedarwood mingles with fresh moss and wet stone, creating a scent as enduring as ancient forests. Terra speaks to those who find power in authenticity and strength in simplicity.',
     features: [
@@ -27,7 +27,7 @@ export const FRAGRANCES: IFragrance[] = [
     img: '/img/terra.png',
   },
   {
-    name: 'Aqua',
+    name: 'aqua',
     description:
       'Dive into the depths of crystalline waters with this invigorating blend. Marine minerals dance with driftwood and sea salt, evoking endless horizons and hidden depths. Aqua is crafted for those who navigate life with fluid grace and boundless curiosity.',
     features: [
@@ -37,7 +37,7 @@ export const FRAGRANCES: IFragrance[] = [
     img: '/img/aqua.png',
   },
   {
-    name: 'Ignis',
+    name: 'ignis',
     description:
       "Unleash your inner flame with this captivating fusion of warmth and intensity. Smoky amber collides with black pepper and charred oak, igniting a presence that's impossible to ignore. Ignis belongs to those who embrace their passion and leave a lasting impression.",
     features: [

@@ -13,15 +13,15 @@ function FragranceList() {
           vars={{ duration: 0.8 }}
           className="text-sm font-light tracking-[0.2em] uppercase"
         >
-          Our Fragrances
+          Our Collection
         </FadeIn>
 
         <RevealText
-          text="AN ESSENCE FOR EVERYONE"
+          text="Fragrance Without a Label"
           as="h2"
           duration={1.5}
           staggerAmount={0.3}
-          className="font-title mx-auto max-w-3xl text-5xl uppercase sm:text-6xl md:text-7xl lg:text-8xl"
+          className="font-title mx-auto max-w-3xl text-5xl leading-[1.2] uppercase sm:text-6xl md:text-7xl lg:text-8xl"
           hoverLine={false}
         />
         <p className="mx-auto max-w-2xl text-lg text-balance text-gray-300">

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Bounded } from '@/components/shared/Bounded';
 import Image from 'next/image';
-import Button from '@/components/ui/button';
 import FadeIn from '@/components/animations/FadeIn';
 import RevealText from '@/components/animations/RevealText';
 import Logo from '@/components/shared/Logo';
+import ButtonLink from '@/components/ui/link';
 
 function Hero() {
   return (
@@ -54,7 +54,9 @@ function Hero() {
           vars={{ delay: 1.5, duration: 1.1 }}
           className="mt-8 translate-y-5"
         >
-          <Button variant="outline">Shop Now</Button>
+          <ButtonLink href={'/fragrance/ignis'} variant="outline">
+            Shop Now
+          </ButtonLink>
         </FadeIn>
       </div>
     </Bounded>
