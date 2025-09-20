@@ -2,6 +2,7 @@ import Hero from '@/components/sections/Hero';
 import ScrollText from '@/components/sections/ScrollText';
 import FeaturesGrid from '@/components/sections/FeaturesGrid';
 import FragranceList from '@/components/sections/Fragrance/FragranceList';
+import CallToAction from '@/components/sections/CallToAction';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <ScrollText />
       <FeaturesGrid />
       <FragranceList />
+      <CallToAction />
     </>
   );
 }
