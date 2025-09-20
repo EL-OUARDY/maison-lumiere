@@ -1,8 +1,8 @@
 import React from 'react';
 import { Bounded } from '@/components/shared/Bounded';
 import Image from 'next/image';
-import Button from '@/components/ui/button';
 import FadeIn from '@/components/animations/FadeIn';
+import ButtonLink from '@/components/ui/link';
 
 function FeaturesGrid() {
   return (
@@ -61,7 +61,9 @@ function FeaturesGrid() {
               <div className="price mt-4 text-gray-100">$130</div>
             </div>
 
-            <Button variant="outline">Shop Now</Button>
+            <ButtonLink href={'/fragrance/ignis'} variant="outline">
+              Shop Now
+            </ButtonLink>
           </FadeIn>
         </div>
       </div>

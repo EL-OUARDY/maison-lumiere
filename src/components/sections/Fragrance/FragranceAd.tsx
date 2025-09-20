@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Button from '@/components/ui/button';
 import { PlusIcon } from 'lucide-react';
 import FragranceFeatures from '@/components/sections/Fragrance/FragranceFeatures';
+import ButtonLink from '@/components/ui/link';
 
 interface Props {
   fragrance: IFragrance;
@@ -32,7 +33,7 @@ function FragranceAd({ fragrance }: Props) {
         vars={{ duration: 2, delay: 0.2 }}
         start="top 50%"
       >
-        <h3 className="font-title mb-3 text-5xl md:text-6xl lg:text-7xl">
+        <h3 className="font-title mb-3 text-5xl capitalize md:text-6xl lg:text-7xl">
           {fragrance.name}
         </h3>
 
@@ -47,7 +48,9 @@ function FragranceAd({ fragrance }: Props) {
         <FragranceFeatures features={fragrance.features} className="mb-10" />
 
         <div className="flex flex-wrap gap-4">
-          <Button variant="outline">Discover</Button>
+          <ButtonLink href={'/fragrance/' + fragrance.name} variant="outline">
+            Discover
+          </ButtonLink>
           <Button variant="default">
             <PlusIcon className="mr-2 size-4 opacity-70" />{' '}
             <span>Add to cart</span>
