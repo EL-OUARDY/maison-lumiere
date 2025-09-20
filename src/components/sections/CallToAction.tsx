@@ -6,7 +6,7 @@ import FadeIn from '@/components/animations/FadeIn';
 
 function CallToAction() {
   return (
-    <Bounded className="bg-[url('/img/cta-bg.avif')] bg-cover bg-center py-16 text-center text-white md:py-24">
+    <Bounded className="bg-[url('/img/cta-bg.avif')] bg-cover bg-center py-18 text-center text-white md:py-28">
       <div className="flex flex-col space-y-8">
         <FadeIn
           vars={{ duration: 0.8 }}
