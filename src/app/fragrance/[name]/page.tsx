@@ -20,7 +20,7 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
 
   return (
     <>
-      <Bounded className="flex min-h-screen items-center justify-center bg-neutral-900">
+      <Bounded className="flex min-h-screen items-center justify-center bg-neutral-900 py-20">
         <div className="grid grid-cols-1 items-center lg:grid-cols-2">
           <div className="image relative flex justify-center">
             <Image
@@ -42,7 +42,7 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
               className="absolute top-[94%] -scale-y-100 [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_70%,rgba(0,0,0,.15)_100%)]"
             />
           </div>
-          <div className="relative z-10 grid size-fit">
+          <div className="relative z-10 mt-10 grid size-fit lg:mt-0">
             <h3 className="font-title mb-4 border-b border-neutral-700 pb-4 text-4xl capitalize md:text-5xl">
               {fragrance.name}
             </h3>
@@ -89,7 +89,7 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
 
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {otherFragrances.map((fragrance) => (
-              <li key={fragrance.name} className="border border-white/40 p-4">
+              <li key={fragrance.name} className="border border-white/40 p-8">
                 <Link href={`/fragrance/${fragrance.name}`}>
                   <div className="relative aspect-square w-full transition-transform duration-500 group-hover:scale-105">
                     <Image
