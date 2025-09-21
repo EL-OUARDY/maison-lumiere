@@ -10,6 +10,7 @@ import { Eases } from '@/lib/customEases';
 import gsap from 'gsap';
 import FadeIn from '@/components/animations/FadeIn';
 import { useLenis } from 'lenis/react';
+import { usePathname } from 'next/navigation';
 
 interface Props {
   open: boolean;
@@ -24,6 +25,7 @@ function Menu({ open, onClose, children }: Props) {
   const pageCloneRef = useRef<HTMLDivElement>(null);
   const isAnimatingRef = useRef(false);
   const lenis = useLenis();
+  const pathname = usePathname();
 
   function captureViewport() {
     // Get the viewport size
@@ -167,6 +169,7 @@ function Menu({ open, onClose, children }: Props) {
       );
   }, [onClose]);
 
+  // Prevent scroll while menu is open
   useEffect(() => {
     if (open) {
       openMenu();
@@ -180,6 +183,7 @@ function Menu({ open, onClose, children }: Props) {
     };
   }, [open, openMenu, lenis]);
 
+  // Handle ESC keypress
   useEffect(() => {
     if (!open) return;
 
@@ -195,6 +199,12 @@ function Menu({ open, onClose, children }: Props) {
       document.removeEventListener('keydown', handleEscapeKey);
     };
   }, [closeMenu, open]);
+
+  // URL change (fires when a link within the menu is clicked)
+  useEffect(() => {
+    if (!showMenuContent) return;
+    closeMenu();
+  }, [closeMenu, showMenuContent, pathname]);
 
   return (
     <div

@@ -7,11 +7,15 @@ import FadeIn from '@/components/animations/FadeIn';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Eases } from '@/lib/customEases';
+import { useParams } from 'next/navigation';
+import clsx from 'clsx';
 
 gsap.registerPlugin(useGSAP);
 function MainMenu() {
-  const [image, setImage] = useState<string>('.image-ignis');
   const imagesContainerRef = useRef<HTMLDivElement>(null);
+  const params = useParams();
+  const activeFragrance = params.name || 'ignis';
+  const [image, setImage] = useState<string>(`.image-${activeFragrance}`);
 
   // Animate menu links
   useGSAP(
@@ -24,7 +28,7 @@ function MainMenu() {
         defaults: { ease: Eases.out },
       });
       // prettier-ignore
-      tl.set(image, { zIndex: 3, }, 0)
+      tl.set(image, { zIndex: 100, }, 0)
         .to(imgs, { autoAlpha: 0 }, 0)
         .fromTo(image, 
           { autoAlpha: 0, scale: 1.3, rotate: 7 }, 
@@ -37,7 +41,7 @@ function MainMenu() {
     <div className="flex size-full flex-col">
       <div className="menu-header relative">
         <FadeIn vars={{ delay: 0.5 }}>
-          <Link href="#" className="block w-fit cursor-pointer">
+          <Link href="/" className="block w-fit cursor-pointer">
             <Logo className="w-42 p-2" />
           </Link>
         </FadeIn>
@@ -53,7 +57,12 @@ function MainMenu() {
               alt=""
               fill
               sizes="100vw"
-              className="image image-ignis absolute inset-0 z-3 mx-auto block object-cover"
+              className={clsx(
+                'image image-ignis absolute inset-0 mx-auto block object-cover',
+                activeFragrance === 'ignis'
+                  ? 'z-100'
+                  : 'invisible z-1 opacity-0',
+              )}
               style={{ objectPosition: '85% center' }}
             />
             <Image
@@ -61,7 +70,12 @@ function MainMenu() {
               alt=""
               fill
               sizes="100vw"
-              className="image image-aqua invisible absolute inset-0 z-1 mx-auto block object-cover opacity-0"
+              className={clsx(
+                'image image-aqua absolute inset-0 mx-auto block object-cover',
+                activeFragrance === 'aqua'
+                  ? 'z-100'
+                  : 'invisible z-1 opacity-0',
+              )}
               style={{ objectPosition: '85% center' }}
             />
             <Image
@@ -69,7 +83,12 @@ function MainMenu() {
               alt=""
               fill
               sizes="100vw"
-              className="image image-terra invisible absolute inset-0 z-1 mx-auto block object-cover opacity-0"
+              className={clsx(
+                'image image-terra absolute inset-0 mx-auto block object-cover',
+                activeFragrance === 'terra'
+                  ? 'z-100'
+                  : 'invisible z-1 opacity-0',
+              )}
               style={{ objectPosition: '85% center' }}
             />
             <Image
@@ -77,76 +96,95 @@ function MainMenu() {
               alt=""
               fill
               sizes="100vw"
-              className="image image-making invisible absolute inset-0 z-1 mx-auto block object-cover opacity-0"
+              className="image image-making absolute inset-0 mx-auto block object-cover"
               style={{ objectPosition: '85% center' }}
             />
           </div>
           <div className="menu-links col-start-9 col-end-11 flex flex-2 flex-col justify-center gap-6 py-8 md:col-start-8 md:col-end-11">
             <div className="main-links font-title flex w-fit flex-col gap-1 text-2xl md:text-4xl">
               <Link
-                href="#"
-                className="w-fit"
+                href="/fragrance/ignis"
+                className={clsx(
+                  'w-fit',
+                  activeFragrance === 'ignis' && 'active-link',
+                )}
                 onMouseOver={() => setImage('.image-ignis')}
               >
-                <RevealText delay={0.4} text={'Ignis'}></RevealText>
+                <RevealText delay={0.4} text={'Ignis'} />
               </Link>
               <Link
-                href="#"
-                className="w-fit"
+                href="/fragrance/aqua"
+                className={clsx(
+                  'w-fit',
+                  activeFragrance === 'aqua' && 'active-link',
+                )}
                 onMouseOver={() => setImage('.image-aqua')}
               >
-                <RevealText delay={0.5} text={'Aqua'}></RevealText>
+                <RevealText delay={0.5} text={'Aqua'} />
               </Link>
               <Link
-                href="#"
-                className="w-fit"
+                href="/fragrance/terra"
+                className={clsx(
+                  'w-fit',
+                  activeFragrance === 'terra' && 'active-link',
+                )}
                 onMouseOver={() => setImage('.image-terra')}
               >
-                <RevealText delay={0.6} text={'Terra'}></RevealText>
+                <RevealText delay={0.6} text={'Terra'} />
               </Link>
-              <Link
-                href="#"
-                className="w-fit"
+              <span
+                className="w-fit cursor-pointer"
                 onMouseOver={() => setImage('.image-making')}
               >
-                <RevealText delay={0.7} text={'...More'}></RevealText>
-              </Link>
+                <RevealText delay={0.7} text={'...More'} />
+              </span>
             </div>
             <div className="social-media flex w-fit flex-col">
-              <Link href="#" className="text-gray-300 hover:text-white">
-                <RevealText delay={0.8} text={'Instagram'}></RevealText>
-              </Link>
-              <Link href="#" className="text-gray-300 hover:text-white">
-                <RevealText delay={0.9} text={'Pinterest'}></RevealText>
-              </Link>
-              <Link href="#" className="text-gray-300 hover:text-white">
-                <RevealText delay={1} text={'Twitter'}></RevealText>
-              </Link>
-              <Link href="#" className="text-gray-300 hover:text-white">
-                <RevealText delay={1.1} text={'LinkedIn'}></RevealText>
-              </Link>
+              <RevealText
+                delay={0.8}
+                text={'Instagram'}
+                className="cursor-pointer text-gray-300 hover:text-white"
+              />
+              <RevealText
+                delay={0.9}
+                text={'Pinterest'}
+                className="cursor-pointer text-gray-300 hover:text-white"
+              />
+              <RevealText
+                delay={1}
+                text={'Twitter'}
+                className="cursor-pointer text-gray-300 hover:text-white"
+              />
+              <RevealText
+                delay={1.1}
+                text={'LinkedIn'}
+                className="cursor-pointer text-gray-300 hover:text-white"
+              />
             </div>
           </div>
         </div>
       </div>
       <div className="menu-footer flex w-full items-center justify-between px-4 text-sm">
         <div className="flex gap-4">
-          <Link href="#" className="text-gray-300 hover:text-white">
-            <FadeIn className="hover-line" vars={{ delay: 0.8 }}>
-              Our Story
-            </FadeIn>
-          </Link>
-          <Link href="#" className="text-gray-300 hover:text-white">
-            <FadeIn className="hover-line" vars={{ delay: 0.8 }}>
-              Heritage
-            </FadeIn>
-          </Link>
-        </div>
-        <Link href="#" className="text-gray-300 hover:text-white">
-          <FadeIn className="hover-line" vars={{ delay: 0.8 }}>
-            Contact Us
+          <FadeIn
+            className="hover-line cursor-pointer text-gray-300 hover:text-white"
+            vars={{ delay: 0.8 }}
+          >
+            Our Story
           </FadeIn>
-        </Link>
+          <FadeIn
+            className="hover-line cursor-pointer text-gray-300 hover:text-white"
+            vars={{ delay: 0.8 }}
+          >
+            Heritage
+          </FadeIn>
+        </div>
+        <FadeIn
+          className="hover-line cursor-pointer text-gray-300 hover:text-white"
+          vars={{ delay: 0.8 }}
+        >
+          Contact Us
+        </FadeIn>
       </div>
     </div>
   );
