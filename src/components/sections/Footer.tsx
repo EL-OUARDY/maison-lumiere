@@ -31,7 +31,7 @@ function Footer() {
 
         {/* Bottom footer */}
         <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-neutral-800 pt-8 md:flex-row">
-          <p className="text-center text-sm text-gray-300">
+          <p className="text-center text-sm text-gray-400">
             © {new Date().getFullYear()} Maison Lumière. All rights reserved
           </p>
           <Link
