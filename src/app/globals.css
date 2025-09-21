@@ -26,7 +26,8 @@
   will-change: transform;
 }
 
-.hover-line:hover::after {
+.hover-line:hover::after,
+.active-link .hover-line::after {
   transform: scaleX(1);
   transform-origin: left center;
 }
@@ -53,8 +54,6 @@
 .noise-texture {
   background-image: url(/img/noise-texture.jpg);
 }
-
-
 
 /* Hide scrollbar  */
 ::-webkit-scrollbar {
