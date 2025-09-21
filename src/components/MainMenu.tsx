@@ -55,10 +55,11 @@ function MainMenu() {
             <Image
               src="/img/ignis.png"
               alt=""
-              fill
-              sizes="100vw"
+              width={1000}
+              height={1000}
+              priority={activeFragrance === 'ignis'}
               className={clsx(
-                'image image-ignis absolute inset-0 mx-auto block object-cover',
+                'image image-ignis absolute inset-0 mx-auto block size-full object-cover',
                 activeFragrance === 'ignis'
                   ? 'z-100'
                   : 'invisible z-1 opacity-0',
@@ -68,10 +69,11 @@ function MainMenu() {
             <Image
               src="/img/aqua.png"
               alt=""
-              fill
-              sizes="100vw"
+              width={1000}
+              height={1000}
+              priority={activeFragrance === 'aqua'}
               className={clsx(
-                'image image-aqua absolute inset-0 mx-auto block object-cover',
+                'image image-aqua absolute inset-0 mx-auto block size-full object-cover',
                 activeFragrance === 'aqua'
                   ? 'z-100'
                   : 'invisible z-1 opacity-0',
@@ -81,10 +83,11 @@ function MainMenu() {
             <Image
               src="/img/terra.png"
               alt=""
-              fill
-              sizes="100vw"
+              width={1000}
+              height={1000}
+              priority={activeFragrance === 'terra'}
               className={clsx(
-                'image image-terra absolute inset-0 mx-auto block object-cover',
+                'image image-terra absolute inset-0 mx-auto block size-full object-cover',
                 activeFragrance === 'terra'
                   ? 'z-100'
                   : 'invisible z-1 opacity-0',
@@ -94,9 +97,10 @@ function MainMenu() {
             <Image
               src="/img/making.jpg"
               alt=""
-              fill
-              sizes="100vw"
-              className="image image-making absolute inset-0 mx-auto block object-cover"
+              width={1000}
+              height={1000}
+              priority={activeFragrance === 'making'}
+              className="image image-making absolute inset-0 mx-auto block size-full object-cover"
               style={{ objectPosition: '85% center' }}
             />
           </div>
