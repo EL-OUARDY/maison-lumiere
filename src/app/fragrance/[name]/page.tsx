@@ -89,7 +89,10 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
 
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {otherFragrances.map((fragrance) => (
-              <li key={fragrance.name} className="border border-white/40 p-8">
+              <li
+                key={fragrance.name}
+                className="group border border-white/40 p-8"
+              >
                 <Link href={`/fragrance/${fragrance.name}`}>
                   <div className="relative aspect-square w-full transition-transform duration-500 group-hover:scale-105">
                     <Image
