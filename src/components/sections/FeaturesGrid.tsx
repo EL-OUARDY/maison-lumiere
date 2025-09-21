@@ -18,7 +18,7 @@ function FeaturesGrid() {
             src="/img/grid-picture.jpg"
             alt=""
             fill
-            sizes="100vw"
+            sizes="70vw"
           />
         </FadeIn>
 
@@ -39,31 +39,33 @@ function FeaturesGrid() {
           </FadeIn>
 
           <FadeIn
-            className="product-card translate-y-16 space-y-6 bg-white/10 p-10 text-left"
+            className="product-card translate-y-16 bg-white/10 text-left"
             vars={{ duration: 1 }}
             start="top bottom"
           >
-            <div className="image-bottle relative -mt-28 aspect-[3/3.5] -rotate-12">
+            <div className="bottle-image aspect-square -translate-y-16 -rotate-12">
               <Image
                 className="object-cover"
                 src="/img/ignis-bottle.png"
                 alt=""
-                fill
-                sizes="100vw"
-                priority
+                width={1000}
+                height={1000}
               />
             </div>
-            <div className="flex justify-between">
-              <div className="space-y-2">
-                <h2 className="font-title text-4xl">Ignis</h2>
-                <span className="text-gray-400">Eau de Parfum</span>
-              </div>
-              <div className="price mt-4 text-gray-100">$130</div>
-            </div>
 
-            <ButtonLink href={'/fragrance/ignis'} variant="outline">
-              Shop Now
-            </ButtonLink>
+            <div className="space-y-6 p-10 pt-0">
+              <div className="flex justify-between">
+                <div className="space-y-2">
+                  <h2 className="font-title text-4xl">Ignis</h2>
+                  <span className="text-gray-400">Eau de Parfum</span>
+                </div>
+                <div className="price mt-4 text-gray-100">$130</div>
+              </div>
+
+              <ButtonLink href={'/fragrance/ignis'} variant="outline">
+                Shop Now
+              </ButtonLink>
+            </div>
           </FadeIn>
         </div>
       </div>

@@ -24,7 +24,6 @@ function FragranceAd({ fragrance }: Props) {
           className="object-cover opacity-40 md:opacity-100"
           alt=""
           fill
-          quality={90}
         />
       </div>
 
