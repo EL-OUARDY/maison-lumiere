@@ -1,4 +1,4 @@
-import { LucideIcon } from 'lucide-react';
+import { ICartItem, IFragrance } from '@/lib/models';
 import {
   CrownIcon,
   DropletIcon,
@@ -7,15 +7,6 @@ import {
   TreePineIcon,
   ZapIcon,
 } from 'lucide-react';
-
-export interface IFragrance {
-  name: string;
-  description: string;
-  features: { label: string; icon: LucideIcon }[];
-  price: number;
-  img: string;
-  bottleImg: string;
-}
 
 export const FRAGRANCES: IFragrance[] = [
   {
@@ -53,5 +44,26 @@ export const FRAGRANCES: IFragrance[] = [
     img: '/img/ignis.png',
     bottleImg: '/img/ignis-bottle.png',
     price: 130,
+  },
+];
+
+export const CART_ITEMS: ICartItem[] = [
+  {
+    name: 'ignis',
+    price: 110,
+    img: '/img/ignis-bottle.png',
+    quantity: 3,
+  },
+  {
+    name: 'aqua',
+    price: 120,
+    img: '/img/aqua-bottle.png',
+    quantity: 1,
+  },
+  {
+    name: 'terra',
+    price: 130,
+    img: '/img/terra-bottle.png',
+    quantity: 2,
   },
 ];
