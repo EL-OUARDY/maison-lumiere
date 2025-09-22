@@ -14,8 +14,10 @@ gsap.registerPlugin(useGSAP);
 function MainMenu() {
   const imagesContainerRef = useRef<HTMLDivElement>(null);
   const params = useParams();
-  const activeFragrance = params.name || 'ignis';
-  const [image, setImage] = useState<string>(`.image-${activeFragrance}`);
+  const activeFragrance = params.name || '';
+  const [image, setImage] = useState<string>(
+    `.image-${activeFragrance || 'ignis'}`,
+  );
 
   // Animate menu links
   useGSAP(
