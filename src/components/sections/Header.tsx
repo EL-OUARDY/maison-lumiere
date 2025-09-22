@@ -7,11 +7,14 @@ import FadeIn from '@/components/animations/FadeIn';
 import Menu from '@/components/shared/Menu';
 
 import MainMenu from '@/components/MainMenu';
+import Drawer from '@/components/shared/Drawer';
+import Login from '@/components/Login';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [isUserDrawerShown, setIsUserDrawerShown] = useState<boolean>(false);
 
   // Blur header controls background when user scrolls down
   useGSAP(() => {
@@ -103,7 +106,7 @@ function Header() {
         {/* User button */}
         <button
           className="cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
-          onClick={openMenu}
+          onClick={() => setIsUserDrawerShown(true)}
           aria-label="user"
         >
           <svg
@@ -147,10 +150,19 @@ function Header() {
         </button>
       </FadeIn>
 
-      {/* Main Menu */}
+      {/* Main menu */}
       <Menu open={showMenu} onClose={closeMenu}>
         <MainMenu />
       </Menu>
+
+      {/* Login drawer */}
+      <Drawer
+        open={isUserDrawerShown}
+        onClose={() => setIsUserDrawerShown(false)}
+        direction="right"
+      >
+        <Login />
+      </Drawer>
     </header>
   );
 }
