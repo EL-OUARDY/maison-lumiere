@@ -13,6 +13,7 @@ import Input from '@/components/ui/input';
 import { SearchIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Cart from '@/components/Cart';
+import useStore from '@/hooks/useStore';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -23,6 +24,7 @@ function Header() {
   const [userDrawerOpen, setUserDrawerOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
+  const { cart } = useStore();
 
   // Blur header controls background when user scrolls down
   useGSAP(() => {
@@ -233,10 +235,15 @@ function Header() {
 
         {/* Cart button */}
         <button
-          className="cart-btn cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          className="cart-btn relative cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
           onClick={openCart}
           aria-label="cart"
         >
+          {cart.length > 0 && (
+            <span className="font-title absolute right-1 bottom-1 flex size-4 items-center justify-center rounded-full bg-[#9f6b66] text-xs font-bold">
+              {cart.length}
+            </span>
+          )}
           <svg
             className="size-[1.3rem]"
             stroke="currentColor"
