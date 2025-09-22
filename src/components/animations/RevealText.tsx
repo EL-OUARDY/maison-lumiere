@@ -3,9 +3,9 @@ import React, { ElementType, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/SplitText';
-import { cn } from '@/lib/utils';
 import { Eases } from '@/lib/customEases';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import clsx from 'clsx';
 
 interface Props {
   text: string;
@@ -76,7 +76,7 @@ function RevealText({
   return (
     <Component
       ref={containerRef}
-      className={cn('invisible text-balance', className)}
+      className={clsx('invisible text-balance', className)}
       aria-label={text}
     >
       {text}

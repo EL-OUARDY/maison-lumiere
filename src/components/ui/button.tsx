@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ReactNode, forwardRef } from 'react';
-import { cn } from '@/lib/utils';
+import clsx from 'clsx';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -13,7 +13,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       <button
         {...props}
         ref={ref}
-        className={cn(
+        className={clsx(
           'inline-flex cursor-pointer items-center justify-center px-12 py-4 text-center font-extrabold tracking-wider uppercase transition-colors duration-300',
           variant === 'default' && 'bg-white text-black hover:bg-white/80',
           variant === 'outline' &&

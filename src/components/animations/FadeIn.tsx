@@ -3,7 +3,7 @@ import React, { ReactNode, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { cn } from '@/lib/utils';
+import clsx from 'clsx';
 
 interface Props {
   className?: string;
@@ -40,7 +40,7 @@ function FadeIn({
   );
 
   return (
-    <div ref={containerRef} className={cn('opacity-0', className)}>
+    <div ref={containerRef} className={clsx('opacity-0', className)}>
       {children}
     </div>
   );
