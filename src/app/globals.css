@@ -32,12 +32,14 @@
   transform-origin: left center;
 }
 
-.blured-bg {
+.blured-bg,
+header.search-active .controls {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   background: linear-gradient(#0006, #0000004d);
   box-shadow: 0 4px 30px #0000001a;
 }
+
 
 .glow-bg {
   background-color: hsla(0, 0%, 0%, 0);
