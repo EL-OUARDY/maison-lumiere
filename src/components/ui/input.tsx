@@ -51,7 +51,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
         {isPasswordInput && (
           <div
             onClick={() => setIsPasswordVisible((v) => !v)}
-            className="absolute top-0 right-1 flex h-full w-8 cursor-pointer items-center justify-center text-gray-300"
+            className="absolute top-0 right-1 flex h-full w-8 cursor-pointer items-center justify-center bg-neutral-800 text-gray-300"
           >
             {isPasswordVisible ? (
               <EyeOffIcon className="size-4" />
