@@ -6,6 +6,8 @@ import { FRAGRANCES } from '@/lib/demo';
 import { PlusIcon, StarIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next';
+import { capitalize } from '@/lib/utils';
 
 interface Params {
   name: string;
@@ -119,6 +121,23 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
       </Bounded>
     </>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { name } = await params;
+  const fragrance = FRAGRANCES.find((f) => f.name === name);
+
+  return {
+    title: capitalize(name) + ' | ' + 'Maison Lumière',
+    description: fragrance?.description,
+    openGraph: {
+      images: [fragrance?.img || '/img/hero-bg.jpg'],
+    },
+  };
 }
 
 export default Fragrance;
