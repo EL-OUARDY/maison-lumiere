@@ -213,6 +213,8 @@ function Menu({ open, onClose, children }: Props) {
       style={{
         clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
       }}
+      role="dialog"
+      aria-modal={open}
     >
       <FadeIn
         vars={{ delay: 0.5 }}
