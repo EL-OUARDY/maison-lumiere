@@ -33,7 +33,7 @@ function Drawer({ open, onClose, children, direction = 'left' }: Props) {
 
       <div
         className={clsx(
-          'nav-drawer fixed top-0 z-50 h-full w-[90%] bg-neutral-900 p-6 transition-transform duration-500 sm:w-92',
+          'nav-drawer pointer-events-auto fixed top-0 z-50 h-full w-[90%] bg-neutral-900 p-6 transition-transform duration-500 sm:w-92',
           direction === 'left' ? 'left-0' : 'right-0',
           isDrawerOpen
             ? 'translate-x-0'

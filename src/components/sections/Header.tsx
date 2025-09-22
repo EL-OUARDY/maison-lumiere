@@ -12,13 +12,15 @@ import Login from '@/components/Login';
 import Input from '@/components/ui/input';
 import { SearchIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import Cart from '@/components/Cart';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
-  const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [isUserDrawerShown, setIsUserDrawerShown] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [cartOpen, setCartOpen] = useState<boolean>(false);
+  const [userDrawerOpen, setUserDrawerOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
 
@@ -42,14 +44,26 @@ function Header() {
   });
 
   function openMenu() {
-    setShowMenu(true);
+    setMenuOpen(true);
     gsap.set('.header .controls', {
       autoAlpha: 0,
     });
   }
 
   function closeMenu() {
-    setShowMenu(false);
+    setMenuOpen(false);
+    gsap.to('header .controls', { autoAlpha: 1 });
+  }
+
+  function openCart() {
+    setCartOpen(true);
+    gsap.set('.header .controls', {
+      autoAlpha: 0,
+    });
+  }
+
+  function closeCart() {
+    setCartOpen(false);
     gsap.to('header .controls', { autoAlpha: 1 });
   }
 
@@ -140,11 +154,11 @@ function Header() {
   return (
     <header
       ref={headerRef}
-      className="header fixed top-0 left-0 z-50 flex w-full justify-between p-2 text-white md:p-4"
+      className="header pointer-events-none fixed top-0 left-0 z-50 flex w-full justify-between p-2 text-white md:p-4"
     >
       <FadeIn
         vars={isHome ? { duration: 2, delay: 2 } : { duration: 1 }}
-        className="controls left flex items-center rounded-full p-1 transition-all duration-50"
+        className="controls left pointer-events-auto flex items-center rounded-full p-1 transition-all duration-50"
       >
         {/* Menu button */}
         <button
@@ -172,7 +186,7 @@ function Header() {
 
       <FadeIn
         vars={isHome ? { duration: 2, delay: 2 } : { duration: 1 }}
-        className="controls right relative flex items-center justify-end gap-2 overflow-hidden rounded-xl px-2 py-1 transition-all duration-50"
+        className="controls right pointer-events-auto relative flex items-center justify-end gap-2 overflow-hidden rounded-xl px-2 py-1 transition-all duration-50"
       >
         {/* Search Input */}
         <div className="search-input-container invisible absolute inset-0 z-100 flex w-full origin-right items-center overflow-hidden">
@@ -197,7 +211,7 @@ function Header() {
         {/* User button */}
         <button
           className="user-btn cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
-          onClick={() => setIsUserDrawerShown(true)}
+          onClick={() => setUserDrawerOpen(true)}
           aria-label="user"
         >
           <svg
@@ -220,7 +234,7 @@ function Header() {
         {/* Cart button */}
         <button
           className="cart-btn cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
-          onClick={openMenu}
+          onClick={openCart}
           aria-label="cart"
         >
           <svg
@@ -242,14 +256,19 @@ function Header() {
       </FadeIn>
 
       {/* Main menu */}
-      <Menu open={showMenu} onClose={closeMenu}>
+      <Menu open={menuOpen} onClose={closeMenu}>
         <MainMenu />
+      </Menu>
+
+      {/* Cart */}
+      <Menu open={cartOpen} onClose={closeCart}>
+        <Cart />
       </Menu>
 
       {/* Login drawer */}
       <Drawer
-        open={isUserDrawerShown}
-        onClose={() => setIsUserDrawerShown(false)}
+        open={userDrawerOpen}
+        onClose={() => setUserDrawerOpen(false)}
         direction="right"
       >
         <Login />

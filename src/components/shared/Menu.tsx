@@ -209,7 +209,7 @@ function Menu({ open, onClose, children }: Props) {
   return (
     <div
       ref={menuContainerRef}
-      className="menu fixed inset-0 z-200 h-screen w-screen bg-neutral-950 p-4"
+      className="menu pointer-events-auto fixed inset-0 z-200 h-screen w-screen bg-neutral-950 p-4"
       style={{
         clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
       }}
@@ -218,7 +218,7 @@ function Menu({ open, onClose, children }: Props) {
     >
       <FadeIn
         vars={{ delay: 0.5 }}
-        className="close-btn fixed top-4 right-4 z-200 text-neutral-400 hover:text-white"
+        className="close-btn fixed top-4 right-4 z-200 text-neutral-400 hover:bg-white/10 hover:text-white"
       >
         <button className="cursor-pointer p-2" onClick={() => closeMenu()}>
           <svg
