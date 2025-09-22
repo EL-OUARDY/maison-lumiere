@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import Link, { LinkProps } from 'next/link';
-import { cn } from '@/lib/utils';
+import clsx from 'clsx';
 
 interface Props extends LinkProps {
   className?: string;
@@ -17,7 +17,7 @@ const ButtonLink = ({
   return (
     <Link
       {...props}
-      className={cn(
+      className={clsx(
         'inline-flex cursor-pointer items-center justify-center px-12 py-4 text-center font-extrabold tracking-wider uppercase transition-colors duration-300',
         variant === 'default' && 'bg-white text-black hover:bg-white/80',
         variant === 'outline' &&

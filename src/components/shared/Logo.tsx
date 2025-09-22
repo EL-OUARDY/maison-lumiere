@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import clsx from 'clsx';
 
 interface Props {
   className?: string;
@@ -6,7 +6,7 @@ interface Props {
 function Logo({ className }: Props) {
   return (
     <svg
-      className={cn('logo w-48', className)}
+      className={clsx('logo w-48', className)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 671.25 174.749997"
       fill="currentColor"

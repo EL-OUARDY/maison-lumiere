@@ -50,7 +50,11 @@ function Header() {
         className="controls flex items-center rounded-full p-1 transition-all duration-50"
       >
         {/* Menu button */}
-        <button className="cursor-pointer p-2" onClick={openMenu}>
+        <button
+          className="cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          onClick={openMenu}
+          aria-label="menu"
+        >
           <svg
             className="size-[1.3rem]"
             stroke="currentColor"
@@ -74,7 +78,11 @@ function Header() {
         className="controls flex items-center gap-2 rounded-xl px-2 py-1 transition-all duration-50"
       >
         {/* Search button */}
-        <button className="cursor-pointer p-2" onClick={openMenu}>
+        <button
+          className="cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          onClick={openMenu}
+          aria-label="search"
+        >
           <svg
             className="size-[1.3rem]"
             stroke="currentColor"
@@ -93,7 +101,11 @@ function Header() {
         </button>
 
         {/* User button */}
-        <button className="cursor-pointer p-2" onClick={openMenu}>
+        <button
+          className="cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          onClick={openMenu}
+          aria-label="user"
+        >
           <svg
             className="size-[1.3rem]"
             stroke="currentColor"
@@ -112,7 +124,11 @@ function Header() {
         </button>
 
         {/* Cart button */}
-        <button className="cursor-pointer p-2" onClick={openMenu}>
+        <button
+          className="cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          onClick={openMenu}
+          aria-label="cart"
+        >
           <svg
             className="size-[1.3rem]"
             stroke="currentColor"
