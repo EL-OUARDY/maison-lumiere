@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,12 +9,18 @@ import Menu from '@/components/shared/Menu';
 import MainMenu from '@/components/MainMenu';
 import Drawer from '@/components/shared/Drawer';
 import Login from '@/components/Login';
+import Input from '@/components/ui/input';
+import { SearchIcon } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
+  const headerRef = useRef<HTMLDivElement>(null);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [isUserDrawerShown, setIsUserDrawerShown] = useState<boolean>(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   // Blur header controls background when user scrolls down
   useGSAP(() => {
@@ -41,16 +47,104 @@ function Header() {
       autoAlpha: 0,
     });
   }
+
   function closeMenu() {
     setShowMenu(false);
     gsap.to('header .controls', { autoAlpha: 1 });
   }
 
+  function openSearch() {
+    const header = headerRef.current;
+    const searchContainer = header?.querySelector<HTMLDivElement>(
+      '.search-input-container',
+    );
+    const searchInput =
+      header?.querySelector<HTMLInputElement>('.search-input');
+
+    if (!header || !searchInput || !searchContainer) return;
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        searchInput.focus();
+      },
+      defaults: {
+        duration: 0.4,
+        ease: 'power2.out',
+      },
+    });
+
+    header.classList.add('search-active');
+
+    tl.set(header.querySelectorAll('.controls.right button'), {
+      autoAlpha: 0,
+    })
+      .to(header.querySelector('.controls.right'), {
+        width: '16rem',
+      })
+      .fromTo(
+        searchContainer,
+        {
+          xPercent: 100,
+          autoAlpha: 0,
+        },
+        {
+          xPercent: 0,
+          autoAlpha: 1,
+        },
+        '<',
+      );
+  }
+
+  function closeSearch() {
+    const header = headerRef.current;
+    const searchContainer = header?.querySelector<HTMLDivElement>(
+      '.search-input-container',
+    );
+
+    if (!header || !searchContainer) return;
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        header.classList.remove('search-active');
+      },
+      defaults: {
+        duration: 0.4,
+        ease: 'power2.out',
+      },
+    });
+
+    tl.to(header.querySelector('.controls.right'), {
+      width: 'auto',
+    })
+      .fromTo(
+        searchContainer,
+        {
+          xPercent: 0,
+          autoAlpha: 1,
+        },
+        {
+          xPercent: 100,
+          autoAlpha: 0,
+        },
+        '<',
+      )
+      .to(
+        header.querySelectorAll('.controls.right button'),
+        {
+          autoAlpha: 1,
+        },
+        '-=0.2',
+      );
+  }
+
   return (
-    <header className="header fixed top-0 left-0 z-50 flex w-full justify-between p-2 text-white md:p-4">
+    <header
+      ref={headerRef}
+      className="header fixed top-0 left-0 z-50 flex w-full justify-between p-2 text-white md:p-4"
+    >
       <FadeIn
-        vars={{ duration: 2, delay: 2 }}
-        className="controls flex items-center rounded-full p-1 transition-all duration-50"
+        vars={isHome ? { duration: 2, delay: 2 } : { duration: 1 }}
+        className="controls left flex items-center rounded-full p-1 transition-all duration-50"
       >
         {/* Menu button */}
         <button
@@ -77,35 +171,32 @@ function Header() {
       </FadeIn>
 
       <FadeIn
-        vars={{ duration: 2, delay: 2 }}
-        className="controls flex items-center gap-2 rounded-xl px-2 py-1 transition-all duration-50"
+        vars={isHome ? { duration: 2, delay: 2 } : { duration: 1 }}
+        className="controls right relative flex items-center justify-end gap-2 overflow-hidden rounded-xl px-2 py-1 transition-all duration-50"
       >
+        {/* Search Input */}
+        <div className="search-input-container invisible absolute inset-0 z-100 flex w-full origin-right items-center overflow-hidden">
+          <Input
+            type="text"
+            onBlur={closeSearch}
+            placeholder="Search"
+            icon={<SearchIcon className="size-4" />}
+            className="search-input !h-auto !w-full from-transparent to-transparent text-sm focus-visible:outline-0"
+          />
+        </div>
+
         {/* Search button */}
         <button
-          className="cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
-          onClick={openMenu}
+          className="search-btn cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          onClick={openSearch}
           aria-label="search"
         >
-          <svg
-            className="size-[1.3rem]"
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
+          <SearchIcon className="size-[1.3rem]" aria-hidden="true" />
         </button>
 
         {/* User button */}
         <button
-          className="cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          className="user-btn cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
           onClick={() => setIsUserDrawerShown(true)}
           aria-label="user"
         >
@@ -128,7 +219,7 @@ function Header() {
 
         {/* Cart button */}
         <button
-          className="cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          className="cart-btn cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
           onClick={openMenu}
           aria-label="cart"
         >
