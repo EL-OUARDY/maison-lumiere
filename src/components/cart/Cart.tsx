@@ -1,6 +1,5 @@
 import React from 'react';
 import FadeIn from '@/components/animations/FadeIn';
-import Logo from '@/components/shared/Logo';
 import Link from 'next/link';
 import Image from 'next/image';
 import useStore from '@/hooks/useStore';
@@ -14,6 +13,7 @@ import {
 } from 'lucide-react';
 import RevealText from '@/components/animations/RevealText';
 import Button from '@/components/ui/button';
+import LogoIcon from '@/components/shared/LogoIcon';
 
 interface Props {
   onClose: () => void;
@@ -27,7 +27,7 @@ function Cart({ onClose }: Props) {
       <div className="cart-header relative">
         <FadeIn vars={{ delay: 0.5 }}>
           <Link href="/" className="block w-fit cursor-pointer">
-            <Logo className="w-42 p-2" />
+            <LogoIcon className="text-neutral-400 transition duration-300 hover:text-white" />
           </Link>
         </FadeIn>
       </div>
@@ -46,7 +46,7 @@ function Cart({ onClose }: Props) {
             <div className="cart-items flex w-full flex-col gap-4">
               {cart.map((item, index) => (
                 <FadeIn
-                  vars={{ delay: index * 0.1 + 0.3, duration: 1.3 }}
+                  vars={{ delay: index * 0.1 + 0.3, duration: 1.5 }}
                   className="cart-item group flex h-24 w-full translate-y-16 items-center justify-center gap-6 border-l border-white bg-gradient-to-r from-neutral-900 to-neutral-800 px-2 py-4"
                   key={index}
                 >
