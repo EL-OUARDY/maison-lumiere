@@ -276,7 +276,7 @@ function Header() {
       <Drawer
         open={userDrawerOpen}
         onClose={() => setUserDrawerOpen(false)}
-        direction="right"
+        position="right"
       >
         <Login />
       </Drawer>
