@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import RevealText from '@/components/animations/RevealText';
-import Logo from '@/components/shared/Logo';
 import Image from 'next/image';
 import FadeIn from '@/components/animations/FadeIn';
 import gsap from 'gsap';
@@ -9,6 +8,7 @@ import { useGSAP } from '@gsap/react';
 import { Eases } from '@/lib/customEases';
 import { useParams } from 'next/navigation';
 import clsx from 'clsx';
+import LogoIcon from '@/components/shared/LogoIcon';
 
 gsap.registerPlugin(useGSAP);
 function MainMenu() {
@@ -44,7 +44,7 @@ function MainMenu() {
       <div className="menu-header relative">
         <FadeIn vars={{ delay: 0.5 }}>
           <Link href="/" className="block w-fit cursor-pointer">
-            <Logo className="w-42 p-2" />
+            <LogoIcon className="text-neutral-400 transition duration-300 hover:text-white" />
           </Link>
         </FadeIn>
       </div>
