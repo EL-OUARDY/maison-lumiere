@@ -1,11 +1,5 @@
 'use client';
-import React, {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { Eases } from '@/lib/customEases';
 import gsap from 'gsap';
 import FadeIn from '@/components/animations/FadeIn';
