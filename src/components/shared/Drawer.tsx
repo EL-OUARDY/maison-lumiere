@@ -5,10 +5,10 @@ interface Props {
   open: boolean;
   onClose: () => void;
   children: ReactNode;
-  direction?: 'right' | 'left';
+  position?: 'right' | 'left';
 }
 
-function Drawer({ open, onClose, children, direction = 'left' }: Props) {
+function Drawer({ open, onClose, children, position = 'left' }: Props) {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(open);
 
   useEffect(() => {
@@ -34,10 +34,10 @@ function Drawer({ open, onClose, children, direction = 'left' }: Props) {
       <div
         className={clsx(
           'nav-drawer pointer-events-auto fixed top-0 z-50 h-full w-[90%] bg-neutral-900 p-6 transition-transform duration-500 sm:w-92',
-          direction === 'left' ? 'left-0' : 'right-0',
+          position === 'left' ? 'left-0' : 'right-0',
           isDrawerOpen
             ? 'translate-x-0'
-            : direction === 'left'
+            : position === 'left'
               ? '-translate-x-full'
               : 'translate-x-full',
         )}
