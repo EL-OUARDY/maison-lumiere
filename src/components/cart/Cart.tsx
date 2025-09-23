@@ -5,10 +5,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import useStore from '@/hooks/useStore';
 import EmptyCart from '@/components/cart/EmptyCart';
-import { Span } from 'next/dist/trace';
-import { ArrowRightIcon, Trash2Icon } from 'lucide-react';
+import {
+  ArrowLeftIcon,
+  MinusIcon,
+  PlusIcon,
+  ShoppingBagIcon,
+  XIcon,
+} from 'lucide-react';
 import RevealText from '@/components/animations/RevealText';
-import FragranceFeatures from '@/components/sections/Fragrance/FragranceFeatures';
+import Button from '@/components/ui/button';
 
 interface Props {
   onClose: () => void;
@@ -33,7 +38,7 @@ function Cart({ onClose }: Props) {
             <RevealText
               as={'h3'}
               delay={0.4}
-              className="font-title w-full border-b border-neutral-700 pb-2 text-4xl capitalize md:text-5xl"
+              className="font-title w-full border-b border-neutral-700 pb-2 text-4xl capitalize"
               text={`Cart (${cart.length})`}
               hoverLine={false}
             />
@@ -41,47 +46,80 @@ function Cart({ onClose }: Props) {
             <div className="cart-items flex w-full flex-col gap-4">
               {cart.map((item, index) => (
                 <div
-                  className="cart-item flex h-32 w-full items-center justify-center gap-4 border border-l-2 border-white/40 p-4"
+                  className="cart-item flex h-24 w-full items-center justify-center gap-6 border-l-2 border-white bg-gradient-to-r from-neutral-900 to-neutral-800 px-2 py-4"
                   key={index}
                 >
-                  <div className="cart-item-image size-24 border">
+                  <div className="cart-item-image size-16 translate-x-2 rotate-7">
                     <Image
-                      src={item.img}
+                      src={item.bottleImg}
                       alt={item.name}
                       width={600}
                       height={600}
-                      className="size-full border"
+                      className="size-full"
                     />
                   </div>
-                  <div className="flex h-full flex-1 flex-col justify-between gap-1 border">
+                  <div className="flex h-full flex-1 flex-col justify-between gap-1">
                     <div className="flex items-center justify-between">
-                      <div className="cart-item-name font-title text-2xl capitalize md:text-3xl">
+                      <div className="cart-item-name font-title text-xl capitalize">
                         {item.name}
                       </div>
-                      <div className="cart-item-category text-base font-semibold text-gray-300">
+                      <div className="cart-item-category text-sm text-gray-300">
                         Eau de Parfum
                       </div>
                     </div>
 
-                    {/* <FragranceFeatures features={fragrance.features} className="mb-8" /> */}
+                    <div className="flex">
+                      <div className="cart-item-features flex flex-col gap-1 text-sm text-gray-300">
+                        {item.features.map((feature, index) => (
+                          <p
+                            key={index}
+                            className="flex items-center gap-2 text-[0.7rem] hover:text-white"
+                          >
+                            <feature.icon className="size-3" />
+                            {feature.label}
+                          </p>
+                        ))}
+                      </div>
+                      <div className="cart-item-quantity flex flex-1 items-end justify-end gap-2">
+                        <button className="flex size-8 cursor-pointer items-center justify-center rounded-md border border-white/10 text-neutral-400 transition duration-300 hover:bg-white/10 hover:text-white">
+                          <MinusIcon className="size-3" />
+                        </button>
+                        <div className="flex size-8 items-center justify-center rounded-md border border-white/10 text-sm">
+                          {item.quantity}
+                        </div>
+                        <button className="flex size-8 cursor-pointer items-center justify-center rounded-md border border-white/10 text-neutral-400 transition duration-300 hover:bg-white/10 hover:text-white">
+                          <PlusIcon className="size-3" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="cart-item-price font-title text-2xl text-[#9f6b66] md:text-3xl">
+                  <div className="cart-item-price font-title px-2 text-2xl">
                     ${item.price}
                   </div>
                   <button className="cart-item-controls cursor-pointer p-2 text-neutral-400 transition duration-300 hover:bg-white/10 hover:text-white">
-                    <Trash2Icon className="size-5" />
+                    <XIcon className="size-5" />
                   </button>
                 </div>
               ))}
             </div>
 
-            <div className="flex w-full items-center justify-end">
+            <div className="flex w-full items-center justify-between">
               <FadeIn
-                className="hover-line flex translate-y-8 cursor-pointer items-center justify-end text-sm text-gray-300 hover:text-white"
+                className="hover-line flex w-fit translate-y-8 cursor-pointer items-center gap-1 pb-1 text-sm text-gray-300 hover:text-white"
                 vars={{ delay: 0.7, duration: 1.3 }}
               >
+                <ArrowLeftIcon className="size-5" />
                 <span onClick={onClose}>Continue shopping</span>
-                <ArrowRightIcon className="size-5" />
+              </FadeIn>
+
+              <FadeIn
+                className="translate-y-8"
+                vars={{ delay: 0.7, duration: 1.3 }}
+              >
+                <Button variant="default" className="!py-2 text-sm">
+                  <ShoppingBagIcon className="mr-2 size-4 opacity-70" />{' '}
+                  <span>Checkout</span>
+                </Button>
               </FadeIn>
             </div>
           </div>

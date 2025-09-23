@@ -19,7 +19,7 @@ export const FRAGRANCES: IFragrance[] = [
     ],
     img: '/img/terra.png',
     bottleImg: '/img/terra-bottle.png',
-    price: 110,
+    price: 135,
   },
   {
     name: 'aqua',
@@ -31,7 +31,7 @@ export const FRAGRANCES: IFragrance[] = [
     ],
     img: '/img/aqua.png',
     bottleImg: '/img/aqua-bottle.png',
-    price: 120,
+    price: 110,
   },
   {
     name: 'ignis',
@@ -43,27 +43,21 @@ export const FRAGRANCES: IFragrance[] = [
     ],
     img: '/img/ignis.png',
     bottleImg: '/img/ignis-bottle.png',
-    price: 130,
+    price: 120,
   },
 ];
 
 export const CART_ITEMS: ICartItem[] = [
   {
-    name: 'ignis',
-    price: 110,
-    img: '/img/ignis-bottle.png',
-    quantity: 3,
-  },
-  {
-    name: 'aqua',
-    price: 120,
-    img: '/img/aqua-bottle.png',
+    ...FRAGRANCES[0],
     quantity: 1,
   },
   {
-    name: 'terra',
-    price: 130,
-    img: '/img/terra-bottle.png',
+    ...FRAGRANCES[1],
+    quantity: 3,
+  },
+  {
+    ...FRAGRANCES[2],
     quantity: 2,
   },
 ];
