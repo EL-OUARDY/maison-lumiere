@@ -37,9 +37,9 @@ function Cart({ onClose }: Props) {
           <div className="flex w-full flex-col items-center justify-center gap-4">
             <RevealText
               as={'h3'}
-              delay={0.4}
-              className="font-title w-full flex-1 border-b border-neutral-700 text-4xl capitalize"
-              text={`Cart`}
+              delay={0.5}
+              className="font-title w-full flex-1 border-b border-neutral-700 text-3xl capitalize sm:text-4xl"
+              text={`Your Cart`}
               hoverLine={false}
             />
 
@@ -47,16 +47,16 @@ function Cart({ onClose }: Props) {
               {cart.map((item, index) => (
                 <FadeIn
                   vars={{ delay: index * 0.1 + 0.3, duration: 1.3 }}
-                  className="cart-item flex h-24 w-full translate-y-16 items-center justify-center gap-6 border-l-2 border-white bg-gradient-to-r from-neutral-900 to-neutral-800 px-2 py-4"
+                  className="cart-item group flex h-24 w-full translate-y-16 items-center justify-center gap-6 border-l border-white bg-gradient-to-r from-neutral-900 to-neutral-800 px-2 py-4"
                   key={index}
                 >
-                  <div className="cart-item-image size-16 translate-x-2 rotate-7">
+                  <div className="cart-item-image size-12 translate-x-2 rotate-7 sm:size-16">
                     <Image
                       src={item.bottleImg}
                       alt={item.name}
                       width={600}
                       height={600}
-                      className="size-full"
+                      className="size-full transition duration-300 will-change-transform group-hover:scale-105"
                     />
                   </div>
                   <div className="flex h-full flex-1 flex-col justify-between gap-1">
@@ -64,13 +64,13 @@ function Cart({ onClose }: Props) {
                       <div className="cart-item-name font-title text-xl capitalize">
                         {item.name}
                       </div>
-                      <div className="cart-item-category text-sm text-gray-300">
+                      <div className="cart-item-category text-xs text-gray-300 sm:text-sm">
                         Eau de Parfum
                       </div>
                     </div>
 
                     <div className="flex">
-                      <div className="cart-item-features flex items-center justify-center gap-2 text-gray-300">
+                      <div className="cart-item-features hidden items-center justify-center gap-2 text-gray-300 sm:flex">
                         {item.features.map((feature, index) => (
                           <p
                             key={index}
@@ -81,7 +81,7 @@ function Cart({ onClose }: Props) {
                           </p>
                         ))}
                       </div>
-                      <div className="cart-item-quantity flex flex-1 items-end justify-end gap-2">
+                      <div className="cart-item-quantity flex flex-1 items-end justify-start gap-2 sm:justify-end">
                         <button
                           onClick={() => removeFromCart(item, false)}
                           className="flex size-7 cursor-pointer items-center justify-center rounded-md border border-white/10 text-neutral-400 transition duration-300 hover:bg-white/10 hover:text-white"
@@ -100,7 +100,7 @@ function Cart({ onClose }: Props) {
                       </div>
                     </div>
                   </div>
-                  <div className="cart-item-price font-title text-2xl">
+                  <div className="cart-item-price font-title text-lg sm:text-2xl">
                     ${item.price}
                   </div>
                   <button
@@ -126,7 +126,7 @@ function Cart({ onClose }: Props) {
                 className="translate-y-8"
                 vars={{ delay: 0.7, duration: 1.3 }}
               >
-                <Button variant="default" className="!px-8 !py-2 text-sm">
+                <Button variant="default" className="!px-6 !py-2 text-sm">
                   <ShoppingBagIcon className="mr-2 size-4 opacity-70" />{' '}
                   <span>
                     Checkout (
