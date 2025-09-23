@@ -12,7 +12,7 @@ import Login from '@/components/Login';
 import Input from '@/components/ui/input';
 import { SearchIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import Cart from '@/components/Cart';
+import Cart from '@/components/cart/Cart';
 import useStore from '@/hooks/useStore';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -269,7 +269,7 @@ function Header() {
 
       {/* Cart */}
       <Menu open={cartOpen} onClose={closeCart}>
-        <Cart />
+        <Cart onClose={() => setCartOpen(false)} />
       </Menu>
 
       {/* Login drawer */}
