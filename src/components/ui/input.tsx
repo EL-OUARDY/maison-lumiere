@@ -20,7 +20,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     const isPasswordInput = props['type'] === 'password';
 
     return (
-      <div className="relative w-full">
+      <div className="relative">
         {icon && (
           <label
             htmlFor={id}
