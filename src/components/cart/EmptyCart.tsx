@@ -19,7 +19,7 @@ function EmptyCart({ onClose }: Props) {
       />
       <FadeIn vars={{ delay: 0.5, duration: 1 }} className="translate-y-20">
         <svg
-          className="size-64 sm:size-84"
+          className="size-64 sm:size-72"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 708.58 627.78"
         >
