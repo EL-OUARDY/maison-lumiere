@@ -9,9 +9,6 @@ export interface IFragrance {
   bottleImg: string;
 }
 
-export interface ICartItem {
-  name: string;
-  price: number;
-  img: string;
+export interface ICartItem extends IFragrance {
   quantity: number;
 }

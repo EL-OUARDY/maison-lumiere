@@ -169,7 +169,7 @@ function Menu({ open, onClose, children }: Props) {
       );
   }, [onClose]);
 
-  // Prevent scroll while menu is open
+  // Open menu and prevent scroll while menu is open
   useEffect(() => {
     if (open) {
       openMenu();
