@@ -39,7 +39,7 @@ function Footer() {
             aria-label="Maison Lumière Home"
             className="order-first text-white md:order-none"
           >
-            <Logo className="w-58" />
+            <Logo className="w-42" />
           </Link>
           <ul
             aria-label="Legal"
