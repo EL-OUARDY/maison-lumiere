@@ -1,6 +1,6 @@
 import React from 'react';
-import { IFragrance } from '@/lib/demo';
 import clsx from 'clsx';
+import { IFragrance } from '@/lib/models';
 
 interface Props {
   features: IFragrance['features'];
