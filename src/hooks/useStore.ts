@@ -1,18 +1,18 @@
 import { create } from 'zustand';
-import { ICartItem } from '@/lib/models';
+import { ICartItem, IFragrance } from '@/lib/models';
 import { CART_ITEMS } from '@/lib/demo';
 
 interface IState {
   cart: ICartItem[];
-  addToCart: (product: ICartItem) => void;
-  removeFromCart: (product: ICartItem, all: boolean) => void;
+  addToCart: (product: IFragrance) => void;
+  removeFromCart: (product: IFragrance, all: boolean) => void;
   clearCart: () => void;
 }
 
 const useStore = create<IState>((set) => ({
   cart: CART_ITEMS,
 
-  addToCart: (product: ICartItem) =>
+  addToCart: (product: IFragrance) =>
     set((state) => {
       const existing = state.cart.find((item) => item.name === product.name);
 
@@ -21,17 +21,17 @@ const useStore = create<IState>((set) => ({
         return {
           cart: state.cart.map((item) =>
             item.name === product.name
-              ? { ...item, quantity: item.quantity + 1 }
+              ? { ...item, quantity: existing.quantity + 1 }
               : item,
           ),
         };
       }
 
       // new product
-      return { cart: [...state.cart, product] };
+      return { cart: [...state.cart, { ...product, quantity: 1 }] };
     }),
 
-  removeFromCart: (product: ICartItem, all: boolean = false) =>
+  removeFromCart: (product: IFragrance, all: boolean = false) =>
     set((state) => {
       const existing = state.cart.find((item) => item.name === product.name);
       if (all || existing?.quantity === 1)
