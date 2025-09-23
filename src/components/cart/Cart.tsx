@@ -101,7 +101,7 @@ function Cart({ onClose }: Props) {
                     </div>
                   </div>
                   <div className="cart-item-price font-title text-lg sm:text-2xl">
-                    ${item.price}
+                    ${item.price * item.quantity}
                   </div>
                   <button
                     onClick={() => removeFromCart(item, true)}
@@ -115,11 +115,20 @@ function Cart({ onClose }: Props) {
 
             <div className="flex w-full items-center justify-between">
               <FadeIn
-                className="hover-line flex w-fit translate-y-8 cursor-pointer items-center gap-1 pb-1 text-sm text-gray-300 hover:text-white"
+                className="flex w-fit translate-y-8 items-center gap-2 border-b border-neutral-700"
                 vars={{ delay: 0.7, duration: 1.3 }}
               >
-                <ArrowLeftIcon className="size-5" />
-                <span onClick={onClose}>Continue shopping</span>
+                <span className="font-title w-full flex-1 text-2xl capitalize sm:text-3xl">
+                  Total:
+                </span>
+                <span className="font-title w-full flex-1 text-2xl text-gray-400 capitalize sm:text-3xl">
+                  $
+                  {cart.reduce(
+                    (accumulator, current) =>
+                      accumulator + current.quantity * current.price,
+                    0,
+                  )}
+                </span>
               </FadeIn>
 
               <FadeIn
