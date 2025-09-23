@@ -32,7 +32,7 @@ function Cart({ onClose }: Props) {
         </FadeIn>
       </div>
 
-      <div className="cart-body mx-auto flex w-full max-w-2xl flex-1 items-center justify-center">
+      <div className="cart-body mx-auto flex w-full max-w-2xl flex-1 items-start justify-center py-8">
         {cart.length > 0 ? (
           <div className="flex w-full flex-col items-center justify-center gap-4">
             <RevealText
