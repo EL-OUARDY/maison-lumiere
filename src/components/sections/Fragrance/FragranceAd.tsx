@@ -1,11 +1,11 @@
 import React from 'react';
-import { IFragrance } from '@/lib/demo';
 import FadeIn from '@/components/animations/FadeIn';
 import Image from 'next/image';
 import Button from '@/components/ui/button';
 import { PlusIcon } from 'lucide-react';
 import FragranceFeatures from '@/components/sections/Fragrance/FragranceFeatures';
 import ButtonLink from '@/components/ui/link';
+import { IFragrance } from '@/lib/models';
 
 interface Props {
   fragrance: IFragrance;
