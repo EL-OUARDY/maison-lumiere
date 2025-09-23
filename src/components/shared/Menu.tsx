@@ -19,6 +19,7 @@ interface Props {
 }
 
 function Menu({ open, onClose, children }: Props) {
+  const [isOpen, setIsOpen] = useState<boolean>(open);
   const [showMenuContent, setShowMenuContent] = useState<boolean>(false);
   const menuContainerRef = useRef<HTMLDivElement>(null);
   const menuContentRef = useRef<HTMLDivElement>(null);
@@ -26,6 +27,9 @@ function Menu({ open, onClose, children }: Props) {
   const isAnimatingRef = useRef(false);
   const lenis = useLenis();
   const pathname = usePathname();
+
+  const openMenuRef = useRef<() => void>(() => {});
+  const closeMenuRef = useRef<() => void>(() => {});
 
   function captureViewport() {
     // Get the viewport size
@@ -54,7 +58,7 @@ function Menu({ open, onClose, children }: Props) {
     return wrapper;
   }
 
-  const openMenu = useCallback(() => {
+  openMenuRef.current = () => {
     if (isAnimatingRef.current) return;
     if (typeof window === 'undefined') return;
 
@@ -68,6 +72,7 @@ function Menu({ open, onClose, children }: Props) {
       },
       onComplete: () => {
         isAnimatingRef.current = false;
+        setIsOpen(true);
       },
     });
     const clipPath = `polygon(0 0, 100% 0, 100% ${1.1 * window.innerHeight}px, 0 ${window.innerHeight}px`;
@@ -109,9 +114,10 @@ function Menu({ open, onClose, children }: Props) {
         },
         0,
       );
-  }, []);
+  };
 
-  const closeMenu = useCallback(() => {
+  closeMenuRef.current = () => {
+    if (!isOpen) return;
     if (isAnimatingRef.current) return;
     if (typeof window === 'undefined') return;
 
@@ -124,6 +130,7 @@ function Menu({ open, onClose, children }: Props) {
         isAnimatingRef.current = false;
         setShowMenuContent(false);
         pageCloneRef.current?.remove();
+        setIsOpen(false);
         onClose();
       },
     });
@@ -167,21 +174,22 @@ function Menu({ open, onClose, children }: Props) {
         },
         0,
       );
-  }, [onClose]);
+  };
 
-  // Open menu and prevent scroll while menu is open
+  // Open/Close menu and prevent scroll while menu is open
   useEffect(() => {
     if (open) {
-      openMenu();
+      openMenuRef.current();
       lenis?.stop();
     } else {
+      closeMenuRef.current();
       lenis?.start();
     }
     // cleanup when unmount
     return () => {
       lenis?.start();
     };
-  }, [open, openMenu, lenis]);
+  }, [open, lenis]);
 
   // Handle ESC keypress
   useEffect(() => {
@@ -189,7 +197,7 @@ function Menu({ open, onClose, children }: Props) {
 
     function handleEscapeKey(event: KeyboardEvent) {
       if (event.key === 'Escape') {
-        closeMenu();
+        closeMenuRef.current();
       }
     }
 
@@ -198,13 +206,13 @@ function Menu({ open, onClose, children }: Props) {
     return () => {
       document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, [closeMenu, open]);
+  }, [open]);
 
   // URL change (fires when a link within the menu is clicked)
   useEffect(() => {
     if (!showMenuContent) return;
-    closeMenu();
-  }, [closeMenu, showMenuContent, pathname]);
+    closeMenuRef.current();
+  }, [showMenuContent, pathname]);
 
   return (
     <div
@@ -220,7 +228,10 @@ function Menu({ open, onClose, children }: Props) {
         vars={{ delay: 0.5 }}
         className="close-btn fixed top-4 right-4 z-200 text-neutral-400 hover:bg-white/10 hover:text-white"
       >
-        <button className="cursor-pointer p-2" onClick={() => closeMenu()}>
+        <button
+          className="cursor-pointer p-2"
+          onClick={() => closeMenuRef.current()}
+        >
           <svg
             className="size-6"
             stroke="currentColor"
