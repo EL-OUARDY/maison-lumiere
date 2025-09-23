@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { capitalize } from '@/lib/utils';
+import AddToCartButton from '@/components/sections/Fragrance/AddToCartButton';
 
 interface Params {
   name: string;
@@ -61,10 +62,7 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
 
             <p className="mb-6 text-3xl font-light">${fragrance.price}</p>
 
-            <Button variant="default">
-              <PlusIcon className="mr-2 size-4 opacity-70" />{' '}
-              <span>Add to cart</span>
-            </Button>
+            <AddToCartButton id={fragrance.name} />
 
             <div className="flex items-center gap-4 border-t border-neutral-700 pt-6">
               <a href="#" className="hover:text-neutral-300">
