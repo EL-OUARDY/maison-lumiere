@@ -62,7 +62,9 @@ function Cart({ onClose }: Props) {
                   <div className="flex h-full flex-1 flex-col justify-between gap-1">
                     <div className="flex items-center justify-between">
                       <div className="cart-item-name font-title text-xl capitalize">
-                        {item.name}
+                        <Link href={`/fragrance/${item.name}`}>
+                          {item.name}
+                        </Link>
                       </div>
                       <div className="cart-item-category text-xs text-gray-300 sm:text-sm">
                         Eau de Parfum
