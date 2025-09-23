@@ -3,8 +3,16 @@ import FadeIn from '@/components/animations/FadeIn';
 import Logo from '@/components/shared/Logo';
 import Link from 'next/link';
 import Image from 'next/image';
+import useStore from '@/hooks/useStore';
+import EmptyCart from '@/components/cart/EmptyCart';
 
-function Cart() {
+interface Props {
+  onClose: () => void;
+}
+
+function Cart({ onClose }: Props) {
+  const { cart } = useStore();
+
   return (
     <div className="cart flex size-full flex-col" aria-label="cart">
       <div className="cart-header relative">
@@ -16,7 +24,7 @@ function Cart() {
       </div>
 
       <div className="cart-body flex w-full flex-1 items-center justify-center">
-        Hello Cart
+        {cart && <EmptyCart onClose={onClose} />}
       </div>
 
       <div className="cart-footer flex w-full items-center justify-between px-4 text-sm">
