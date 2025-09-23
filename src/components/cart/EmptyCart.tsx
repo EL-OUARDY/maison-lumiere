@@ -1,6 +1,6 @@
 import FadeIn from '@/components/animations/FadeIn';
 import RevealText from '@/components/animations/RevealText';
-import { ArrowRightIcon } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import React from 'react';
 
 interface Props {
@@ -96,13 +96,13 @@ function EmptyCart({ onClose }: Props) {
           </g>
         </svg>
       </FadeIn>
-      <div className="flex w-full items-center justify-end">
+      <div className="flex w-full items-center">
         <FadeIn
-          className="hover-line flex translate-y-8 cursor-pointer items-center justify-end text-sm text-gray-300 hover:text-white"
+          className="hover-line flex w-fit translate-y-8 cursor-pointer items-center text-sm text-gray-300 hover:text-white"
           vars={{ delay: 0.7, duration: 1.3 }}
         >
+          <ArrowLeftIcon className="size-5" />
           <span onClick={onClose}>Continue shopping</span>
-          <ArrowRightIcon className="size-5" />
         </FadeIn>
       </div>
     </div>
