@@ -31,9 +31,11 @@ function FragranceList() {
 
         {/* Scents */}
         <div className="mt-12 flex flex-col gap-12">
-          {FRAGRANCES.map((fragrance, index) => (
-            <FragranceAd key={index} fragrance={fragrance} />
-          ))}
+          {FRAGRANCES.filter((fragrance) => fragrance.name !== 'luna').map(
+            (fragrance, index) => (
+              <FragranceAd key={index} fragrance={fragrance} />
+            ),
+          )}
         </div>
       </div>
     </Bounded>
