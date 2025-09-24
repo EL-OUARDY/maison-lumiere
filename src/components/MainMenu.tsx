@@ -97,6 +97,20 @@ function MainMenu() {
               style={{ objectPosition: '85% center' }}
             />
             <Image
+              src="/img/luna.png"
+              alt=""
+              width={1000}
+              height={1000}
+              priority={activeFragrance === 'luna'}
+              className={clsx(
+                'image image-luna absolute inset-0 mx-auto block size-full object-cover',
+                activeFragrance === 'luna'
+                  ? 'z-100'
+                  : 'invisible z-1 opacity-0',
+              )}
+              style={{ objectPosition: '52% center' }}
+            />
+            <Image
               src="/img/making.jpg"
               alt=""
               width={1000}
@@ -138,11 +152,21 @@ function MainMenu() {
               >
                 <RevealText delay={0.6} text={'Terra'} />
               </Link>
+              <Link
+                href="/fragrance/luna"
+                className={clsx(
+                  'w-fit',
+                  activeFragrance === 'luna' && 'active-link',
+                )}
+                onMouseOver={() => setImage('.image-luna')}
+              >
+                <RevealText delay={0.7} text={'Luna'} />
+              </Link>
               <span
                 className="w-fit cursor-pointer"
                 onMouseOver={() => setImage('.image-making')}
               >
-                <RevealText delay={0.7} text={'...More'} />
+                <RevealText delay={0.8} text={'...More'} />
               </span>
             </div>
             <div className="social-media flex w-fit flex-col">

@@ -59,7 +59,9 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
 
             <FragranceFeatures features={fragrance.features} className="mb-6" />
 
-            <p className="mb-6 text-3xl font-light">${fragrance.price}</p>
+            <p className="font-title mb-6 text-3xl font-light">
+              ${fragrance.price}
+            </p>
 
             <AddToCartButton id={fragrance.name} className="mb-6" />
 

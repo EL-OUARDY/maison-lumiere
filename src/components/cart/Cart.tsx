@@ -109,13 +109,11 @@ function Cart({ onClose }: Props) {
 
             <div className="flex w-full items-center justify-between">
               <FadeIn
-                className="border-border flex w-fit translate-y-8 items-center gap-2 border-b"
+                className="border-border flex w-fit translate-y-8 items-center gap-2 border-b text-xl capitalize sm:text-2xl"
                 vars={{ delay: 0.7, duration: 1.3 }}
               >
-                <span className="font-title w-full flex-1 text-2xl capitalize sm:text-3xl">
-                  Total:
-                </span>
-                <span className="font-title text-muted w-full flex-1 text-2xl capitalize sm:text-3xl">
+                <span className="font-title w-full flex-1">Total:</span>
+                <span className="font-title text-muted w-full flex-1">
                   $
                   {cart.reduce(
                     (accumulator, current) =>
