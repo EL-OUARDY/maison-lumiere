@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Footer from '@/components/sections/Footer';
-import { gambarino, raleway } from '@/lib/fonts';
+import { gambarino, futuraltBook } from '@/lib/fonts';
 import Header from '@/components/sections/Header';
 import LenisScrollProvider from '@/components/shared/LenisScrollProvider';
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${raleway.variable} ${gambarino.variable} bg-neutral-950 font-sans text-white antialiased selection:bg-[#a06e6a40]`}
+        className={`${futuraltBook.variable} ${gambarino.variable} bg-neutral-950 font-sans text-white antialiased selection:bg-[#a06e6a40]`}
       >
         <LenisScrollProvider>
           <div className="page">
