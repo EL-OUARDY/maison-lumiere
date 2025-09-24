@@ -19,9 +19,10 @@ const ButtonLink = ({
       {...props}
       className={clsx(
         'inline-flex cursor-pointer items-center justify-center px-12 py-4 text-center font-extrabold tracking-wider uppercase transition-colors duration-300',
-        variant === 'default' && 'bg-white text-black hover:bg-white/80',
+        variant === 'default' &&
+          'bg-foreground hover:bg-foreground/80 text-background-bold',
         variant === 'outline' &&
-          'border border-white text-white hover:bg-white/20',
+          'hover:bg-foreground/20 text-foreground border-foreground border',
         className,
       )}
     >

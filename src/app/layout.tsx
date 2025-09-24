@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${futuraltBook.variable} ${gambarino.variable} bg-neutral-950 font-sans text-white antialiased selection:bg-[#a06e6a40]`}
+        className={`${futuraltBook.variable} ${gambarino.variable} selection:bg-border bg-background text-foreground font-sans antialiased`}
       >
         <LenisScrollProvider>
           <div className="page">

@@ -9,11 +9,11 @@ function Login() {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <h3 className="font-title mb-4 border-b border-neutral-700 pb-4 text-3xl capitalize md:text-4xl">
+        <h3 className="font-title border-border mb-4 border-b pb-4 text-3xl capitalize md:text-4xl">
           Login
         </h3>
 
-        <div className="text-base text-gray-300">
+        <div className="text-muted text-base">
           Enter your email below to login to your account
         </div>
       </div>
@@ -33,7 +33,7 @@ function Login() {
             className="text-sm"
           />
         </div>
-        <div className="flex items-center justify-between text-sm font-[350] text-gray-300">
+        <div className="text-muted flex items-center justify-between text-sm font-[350]">
           <div className="flex items-center gap-1 hover:underline">
             <Checkbox
               id="remember-me"
@@ -41,12 +41,12 @@ function Login() {
             />
             <label
               htmlFor="remember-me"
-              className="cursor-pointer hover:text-white"
+              className="hover:text-foreground cursor-pointer"
             >
               Remember Me
             </label>
           </div>
-          <div className="cursor-pointer hover:text-white hover:underline">
+          <div className="hover:text-foreground cursor-pointer hover:underline">
             Forgot your password?
           </div>
         </div>
@@ -61,15 +61,15 @@ function Login() {
         <div className="flex flex-col gap-4">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-neutral-700"></span>
+              <span className="border-border w-full border-t"></span>
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-neutral-900 px-2 text-gray-300">
+              <span className="bg-background text-muted px-2">
                 Or continue with
               </span>
             </div>
           </div>
-          <div className="flex flex-col gap-4 text-gray-300">
+          <div className="text-muted flex flex-col gap-4">
             <Button
               className="inline-flex h-10 items-center justify-center text-sm font-semibold !capitalize"
               type="button"
@@ -103,10 +103,10 @@ function Login() {
               </svg>
               Google
             </Button>
-            <div className="text-center text-sm text-gray-300">
+            <div className="text-muted text-center text-sm">
               Don&apos;t have an account?{' '}
               <Link
-                className="text-gray-300 underline hover:text-white"
+                className="hover:text-foreground text-muted underline"
                 href="#"
               >
                 Sign up

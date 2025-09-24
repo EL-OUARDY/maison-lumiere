@@ -4,7 +4,10 @@ import Logo from '@/components/shared/Logo';
 
 function Footer() {
   return (
-    <footer aria-labelledby="footer-heading" className="bg-black py-12">
+    <footer
+      aria-labelledby="footer-heading"
+      className="bg-background-bold py-12"
+    >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -30,14 +33,14 @@ function Footer() {
         </div>
 
         {/* Bottom footer */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-neutral-800 pt-8 md:flex-row">
-          <p className="text-center text-sm text-gray-400">
+        <div className="border-border mt-16 flex flex-col items-center justify-between gap-6 border-t pt-8 md:flex-row">
+          <p className="text-muted text-center text-sm">
             © {new Date().getFullYear()} Maison Lumière. All rights reserved
           </p>
           <Link
             href="/"
             aria-label="Maison Lumière Home"
-            className="order-first text-white md:order-none"
+            className="text-foreground order-first md:order-none"
           >
             <Logo className="w-42" />
           </Link>
@@ -83,10 +86,7 @@ interface NavLinkProps {
 const NavLink = ({ href, children }: NavLinkProps) => {
   return (
     <li className="relative w-fit">
-      <Link
-        href={href}
-        className="hover-line text-gray-400 hover:text-gray-300"
-      >
+      <Link href={href} className="hover-line hover:text-muted text-muted">
         {children}
       </Link>
     </li>

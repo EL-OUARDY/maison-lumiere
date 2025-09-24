@@ -156,7 +156,7 @@ function Header() {
   return (
     <header
       ref={headerRef}
-      className="header pointer-events-none fixed top-0 left-0 z-50 flex w-full justify-between p-2 text-white md:p-4"
+      className="header text-foreground pointer-events-none fixed top-0 left-0 z-50 flex w-full justify-between p-2 md:p-4"
     >
       <FadeIn
         vars={isHome ? { duration: 2, delay: 2 } : { duration: 1 }}
@@ -164,7 +164,7 @@ function Header() {
       >
         {/* Menu button */}
         <button
-          className="cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          className="text-foreground hover:text-foreground/70 cursor-pointer p-2 transition-colors duration-300"
           onClick={openMenu}
           aria-label="menu"
         >
@@ -203,7 +203,7 @@ function Header() {
 
         {/* Search button */}
         <button
-          className="search-btn cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          className="search-btn text-foreground hover:text-foreground/70 cursor-pointer p-2 transition-colors duration-300"
           onClick={openSearch}
           aria-label="search"
         >
@@ -212,7 +212,7 @@ function Header() {
 
         {/* User button */}
         <button
-          className="user-btn cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          className="user-btn text-foreground hover:text-foreground/70 cursor-pointer p-2 transition-colors duration-300"
           onClick={() => setUserDrawerOpen(true)}
           aria-label="user"
         >
@@ -235,12 +235,12 @@ function Header() {
 
         {/* Cart button */}
         <button
-          className="cart-btn relative cursor-pointer p-2 text-white transition-colors duration-300 hover:text-white/70"
+          className="cart-btn text-foreground hover:text-foreground/70 relative cursor-pointer p-2 transition-colors duration-300"
           onClick={openCart}
           aria-label="cart"
         >
           {cart.length > 0 && (
-            <span className="font-title absolute right-1 bottom-1 flex size-4 items-center justify-center rounded-full bg-[#9f6b66] text-xs font-bold">
+            <span className="font-title bg-primary absolute right-1 bottom-1 flex size-4 items-center justify-center rounded-full text-xs font-bold">
               {cart.length}
             </span>
           )}

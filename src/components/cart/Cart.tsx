@@ -27,7 +27,7 @@ function Cart({ onClose }: Props) {
       <div className="cart-header relative">
         <FadeIn vars={{ delay: 0.5 }}>
           <Link href="/" className="block w-fit cursor-pointer">
-            <LogoIcon className="text-neutral-400 transition duration-300 hover:text-white" />
+            <LogoIcon className="hover:text-foreground text-muted transition duration-300" />
           </Link>
         </FadeIn>
       </div>
@@ -38,7 +38,7 @@ function Cart({ onClose }: Props) {
             <RevealText
               as={'h3'}
               delay={0.5}
-              className="font-title w-full flex-1 border-b border-neutral-700 text-3xl capitalize sm:text-4xl"
+              className="font-title border-border w-full flex-1 border-b text-3xl capitalize sm:text-4xl"
               text={`Your Cart`}
               hoverLine={false}
             />
@@ -47,7 +47,7 @@ function Cart({ onClose }: Props) {
               {cart.map((item, index) => (
                 <FadeIn
                   vars={{ delay: index * 0.1 + 0.3, duration: 1.5 }}
-                  className="cart-item group flex h-24 w-full translate-y-16 items-center justify-center gap-6 border-l border-white bg-gradient-to-r from-neutral-900 to-neutral-800 px-2 py-4"
+                  className="cart-item group border-foreground from-secondary to-border flex h-24 w-full translate-y-16 items-center justify-center gap-6 border-l bg-gradient-to-r px-2 py-4"
                   key={index}
                 >
                   <div className="cart-item-image size-12 translate-x-2 rotate-7 sm:size-16">
@@ -66,17 +66,17 @@ function Cart({ onClose }: Props) {
                           {item.name}
                         </Link>
                       </div>
-                      <div className="cart-item-category text-xs text-gray-300 sm:text-sm">
+                      <div className="cart-item-category text-muted text-xs sm:text-sm">
                         Eau de Parfum
                       </div>
                     </div>
 
                     <div className="flex">
-                      <div className="cart-item-features hidden items-center justify-center gap-2 text-gray-300 sm:flex">
+                      <div className="cart-item-features text-muted hidden items-center justify-center gap-2 sm:flex">
                         {item.features.map((feature, index) => (
                           <p
                             key={index}
-                            className="flex cursor-pointer items-center gap-1 text-[0.8rem] hover:text-white"
+                            className="hover:text-foreground flex cursor-pointer items-center gap-1 text-[0.8rem]"
                           >
                             <feature.icon className="size-3.5" />
                             {feature.label}
@@ -86,16 +86,16 @@ function Cart({ onClose }: Props) {
                       <div className="cart-item-quantity flex flex-1 items-end justify-start gap-2 sm:justify-end">
                         <button
                           onClick={() => removeFromCart(item, false)}
-                          className="flex size-7 cursor-pointer items-center justify-center rounded-md border border-white/10 text-neutral-400 transition duration-300 hover:bg-white/10 hover:text-white"
+                          className="hover:bg-foreground/10 hover:text-foreground border-foreground/10 text-muted flex size-7 cursor-pointer items-center justify-center rounded-md border transition duration-300"
                         >
                           <MinusIcon className="size-3" />
                         </button>
-                        <div className="flex size-7 items-center justify-center rounded-md border border-white/10 text-sm">
+                        <div className="border-foreground/10 flex size-7 items-center justify-center rounded-md border text-sm">
                           {item.quantity}
                         </div>
                         <button
                           onClick={() => addToCart(item)}
-                          className="flex size-7 cursor-pointer items-center justify-center rounded-md border border-white/10 text-neutral-400 transition duration-300 hover:bg-white/10 hover:text-white"
+                          className="hover:bg-foreground/10 hover:text-foreground border-foreground/10 text-muted flex size-7 cursor-pointer items-center justify-center rounded-md border transition duration-300"
                         >
                           <PlusIcon className="size-3" />
                         </button>
@@ -107,7 +107,7 @@ function Cart({ onClose }: Props) {
                   </div>
                   <button
                     onClick={() => removeFromCart(item, true)}
-                    className="cart-item-controls cursor-pointer p-2 text-neutral-400 transition duration-300 hover:bg-white/10 hover:text-white"
+                    className="cart-item-controls hover:bg-foreground/10 hover:text-foreground text-muted cursor-pointer p-2 transition duration-300"
                   >
                     <XIcon className="size-5" />
                   </button>
@@ -117,13 +117,13 @@ function Cart({ onClose }: Props) {
 
             <div className="flex w-full items-center justify-between">
               <FadeIn
-                className="flex w-fit translate-y-8 items-center gap-2 border-b border-neutral-700"
+                className="border-border flex w-fit translate-y-8 items-center gap-2 border-b"
                 vars={{ delay: 0.7, duration: 1.3 }}
               >
                 <span className="font-title w-full flex-1 text-2xl capitalize sm:text-3xl">
                   Total:
                 </span>
-                <span className="font-title w-full flex-1 text-2xl text-gray-400 capitalize sm:text-3xl">
+                <span className="font-title text-muted w-full flex-1 text-2xl capitalize sm:text-3xl">
                   $
                   {cart.reduce(
                     (accumulator, current) =>
@@ -159,20 +159,20 @@ function Cart({ onClose }: Props) {
       <div className="cart-footer flex w-full items-center justify-between px-4 text-sm">
         <div className="flex gap-4">
           <FadeIn
-            className="hover-line cursor-pointer text-gray-300 hover:text-white"
+            className="hover-line hover:text-foreground text-muted cursor-pointer"
             vars={{ delay: 0.8 }}
           >
             FAQ Support
           </FadeIn>
           <FadeIn
-            className="hover-line cursor-pointer text-gray-300 hover:text-white"
+            className="hover-line hover:text-foreground text-muted cursor-pointer"
             vars={{ delay: 0.8 }}
           >
             How To Pay
           </FadeIn>
         </div>
         <FadeIn
-          className="hover-line cursor-pointer text-gray-300 hover:text-white"
+          className="hover-line hover:text-foreground text-muted cursor-pointer"
           vars={{ delay: 0.8 }}
         >
           Returns & Warranty
