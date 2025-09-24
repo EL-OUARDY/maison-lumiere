@@ -19,7 +19,7 @@ function Drawer({ open, onClose, children, position = 'left' }: Props) {
     <>
       <div
         className={clsx(
-          'nav-drawer-blur fixed inset-0 z-40 bg-black/40 opacity-0 transition-all duration-500',
+          'nav-drawer-blur bg-background-bold/40 fixed inset-0 z-40 opacity-0 transition-all duration-500',
           isDrawerOpen
             ? 'pointer-events-auto opacity-100 backdrop-blur-xs'
             : 'pointer-events-none backdrop-blur-none',
@@ -33,7 +33,7 @@ function Drawer({ open, onClose, children, position = 'left' }: Props) {
 
       <div
         className={clsx(
-          'nav-drawer pointer-events-auto fixed top-0 z-50 h-full w-[90%] bg-neutral-900 p-6 transition-transform duration-500 sm:w-92',
+          'nav-drawer bg-background pointer-events-auto fixed top-0 z-50 h-full w-[90%] p-6 transition-transform duration-500 sm:w-92',
           position === 'left' ? 'left-0' : 'right-0',
           isDrawerOpen
             ? 'translate-x-0'
@@ -46,7 +46,7 @@ function Drawer({ open, onClose, children, position = 'left' }: Props) {
       >
         <div className="mb-6 flex justify-end">
           <button
-            className="cursor-pointer p-2 text-white transition-colors duration-300 hover:bg-white/10"
+            className="hover:bg-foreground/10 text-foreground cursor-pointer p-2 transition-colors duration-300"
             onClick={() => {
               setIsDrawerOpen(false);
               onClose();

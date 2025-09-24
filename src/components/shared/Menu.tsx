@@ -211,7 +211,7 @@ function Menu({ open, onClose, children }: Props) {
   return (
     <div
       ref={menuContainerRef}
-      className="menu pointer-events-auto fixed inset-0 z-200 h-screen w-screen bg-neutral-950 p-4"
+      className="menu bg-background pointer-events-auto fixed inset-0 z-200 h-screen w-screen p-4"
       style={{
         clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
       }}
@@ -220,7 +220,7 @@ function Menu({ open, onClose, children }: Props) {
     >
       <FadeIn
         vars={{ delay: 0.5 }}
-        className="close-btn fixed top-4 right-4 z-200 text-neutral-400 hover:bg-white/10 hover:text-white"
+        className="close-btn hover:bg-foreground/10 hover:text-foreground text-muted fixed top-4 right-4 z-200"
       >
         <button
           className="cursor-pointer p-2"

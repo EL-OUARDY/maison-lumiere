@@ -13,7 +13,7 @@ interface Props {
 function FragranceAd({ fragrance }: Props) {
   return (
     <FadeIn
-      className="relative z-10 grid min-h-[85vh] w-full translate-y-20 items-center justify-items-start border border-white/10 p-4 text-left md:p-14 lg:p-20"
+      className="border-foreground/10 relative z-10 grid min-h-[85vh] w-full translate-y-20 items-center justify-items-start border p-4 text-left md:p-14 lg:p-20"
       vars={{ duration: 1.5 }}
       start="top 60%"
     >
@@ -35,11 +35,9 @@ function FragranceAd({ fragrance }: Props) {
           {fragrance.name}
         </h3>
 
-        <p className="mb-8 text-base font-semibold text-gray-300">
-          Eau de Parfum
-        </p>
+        <p className="text-muted mb-8 text-base font-semibold">Eau de Parfum</p>
 
-        <div className="mb-10 max-w-md text-lg text-gray-300">
+        <div className="text-muted mb-10 max-w-md text-lg">
           {fragrance.description}
         </div>
 

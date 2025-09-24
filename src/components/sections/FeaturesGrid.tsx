@@ -6,7 +6,7 @@ import ButtonLink from '@/components/ui/link';
 
 function FeaturesGrid() {
   return (
-    <Bounded className="flex items-center justify-center overflow-hidden bg-neutral-950 py-16 text-center md:py-24">
+    <Bounded className="bg-background flex items-center justify-center overflow-hidden py-16 text-center md:py-24">
       <div className="flex flex-col gap-8 lg:flex-row">
         <FadeIn
           vars={{ duration: 1 }}
@@ -26,12 +26,12 @@ function FeaturesGrid() {
           <FadeIn
             vars={{ duration: 1.2 }}
             start="top 70%"
-            className="translate-y-16 space-y-6 bg-white/10 p-10 text-left"
+            className="bg-foreground/10 translate-y-16 space-y-6 p-10 text-left"
           >
             <h2 className="text-3xl leading-tight font-semibold md:text-4xl">
               Effortless Distinction.
             </h2>
-            <p className="max-w-lg text-base text-gray-300">
+            <p className="text-muted max-w-lg text-base">
               True elegance requires no announcement. Maison Lumière embodies
               this philosophy—a fragrance for those who command respect through
               presence alone. Contemporary luxury rooted in enduring principles.
@@ -39,7 +39,7 @@ function FeaturesGrid() {
           </FadeIn>
 
           <FadeIn
-            className="product-card translate-y-16 bg-white/10 text-left"
+            className="product-card bg-foreground/10 translate-y-16 text-left"
             vars={{ duration: 1 }}
             start="top bottom"
           >
@@ -57,9 +57,9 @@ function FeaturesGrid() {
               <div className="flex justify-between">
                 <div className="space-y-2">
                   <h2 className="font-title text-4xl">Ignis</h2>
-                  <span className="text-gray-400">Eau de Parfum</span>
+                  <span className="text-muted">Eau de Parfum</span>
                 </div>
-                <div className="price mt-4 text-gray-100">$130</div>
+                <div className="price font-title mt-4 text-2xl">$130</div>
               </div>
 
               <ButtonLink href={'/fragrance/ignis'} variant="outline">

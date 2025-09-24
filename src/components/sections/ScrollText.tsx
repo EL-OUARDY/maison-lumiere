@@ -82,13 +82,13 @@ function ScrollText() {
   return (
     <Bounded
       ref={containerRef}
-      className="invisible relative flex h-screen items-center justify-center bg-neutral-950 text-center"
+      className="bg-background invisible relative flex h-screen items-center justify-center text-center"
     >
       <div className="glow-bg absolute inset-0 z-0 size-full opacity-0"></div>
       <div className="noise-texture absolute inset-0 z-100 size-full opacity-30 mix-blend-multiply"></div>
 
       <div ref={contentRef}>
-        <div className="mb-4 text-sm tracking-wider text-neutral-200 uppercase md:mb-8 md:text-base">
+        <div className="text-foreground/90 mb-4 text-sm tracking-wider uppercase md:mb-8 md:text-base">
           REDEFINING ELEGANCE
         </div>
 

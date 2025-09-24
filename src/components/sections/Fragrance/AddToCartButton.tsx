@@ -4,13 +4,8 @@ import useStore from '@/hooks/useStore';
 import { FRAGRANCES } from '@/lib/demo';
 import { IFragrance } from '@/lib/models';
 import clsx from 'clsx';
-import {
-  CheckCheckIcon,
-  MinusIcon,
-  PlusIcon,
-  ShoppingBagIcon,
-} from 'lucide-react';
-import React, { useState } from 'react';
+import { MinusIcon, PlusIcon, ShoppingBagIcon } from 'lucide-react';
+import React from 'react';
 
 interface Props {
   id: string;
@@ -23,7 +18,6 @@ function AddToCartButton({
   id,
   showQuantityControls = true,
 }: Props) {
-  const [addedToCart, setAddedToCart] = useState<boolean>(false);
   const { addToCart, removeFromCart, cart } = useStore();
 
   const fragrance = FRAGRANCES.find((f) => f.name === id);

@@ -24,7 +24,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
         {icon && (
           <label
             htmlFor={id}
-            className="absolute top-0 left-0 flex h-full w-8 cursor-text items-center justify-center text-gray-300"
+            className="text-muted absolute top-0 left-0 flex h-full w-8 cursor-text items-center justify-center"
           >
             {icon}
           </label>
@@ -35,7 +35,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           {...props}
           ref={ref}
           className={clsx(
-            'flex h-10 w-full rounded-md bg-gradient-to-r from-neutral-900 to-neutral-800 p-2 px-3 py-2 text-base ring-0',
+            'from-secondary to-border flex h-10 w-full rounded-md bg-gradient-to-r p-2 px-3 py-2 text-base ring-0',
             icon && 'pl-8',
             className,
           )}
@@ -51,7 +51,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
         {isPasswordInput && (
           <div
             onClick={() => setIsPasswordVisible((v) => !v)}
-            className="absolute top-0 right-1 flex h-full w-8 cursor-pointer items-center justify-center bg-neutral-800 text-gray-300"
+            className="bg-border text-muted absolute top-0 right-1 flex h-full w-8 cursor-pointer items-center justify-center"
           >
             {isPasswordVisible ? (
               <EyeOffIcon className="size-4" />

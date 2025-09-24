@@ -44,7 +44,7 @@ function MainMenu() {
       <div className="menu-header relative">
         <FadeIn vars={{ delay: 0.5 }}>
           <Link href="/" className="block w-fit cursor-pointer">
-            <LogoIcon className="text-neutral-400 transition duration-300 hover:text-white" />
+            <LogoIcon className="hover:text-foreground text-muted transition duration-300" />
           </Link>
         </FadeIn>
       </div>
@@ -149,22 +149,22 @@ function MainMenu() {
               <RevealText
                 delay={0.8}
                 text={'Instagram'}
-                className="cursor-pointer text-gray-300 hover:text-white"
+                className="hover:text-foreground text-muted cursor-pointer"
               />
               <RevealText
                 delay={0.9}
                 text={'Pinterest'}
-                className="cursor-pointer text-gray-300 hover:text-white"
+                className="hover:text-foreground text-muted cursor-pointer"
               />
               <RevealText
                 delay={1}
                 text={'Twitter'}
-                className="cursor-pointer text-gray-300 hover:text-white"
+                className="hover:text-foreground text-muted cursor-pointer"
               />
               <RevealText
                 delay={1.1}
                 text={'LinkedIn'}
-                className="cursor-pointer text-gray-300 hover:text-white"
+                className="hover:text-foreground text-muted cursor-pointer"
               />
             </div>
           </div>
@@ -173,20 +173,20 @@ function MainMenu() {
       <div className="menu-footer flex w-full items-center justify-between px-4 text-sm">
         <div className="flex gap-4">
           <FadeIn
-            className="hover-line cursor-pointer text-gray-300 hover:text-white"
+            className="hover-line hover:text-foreground text-muted cursor-pointer"
             vars={{ delay: 0.8 }}
           >
             Our Story
           </FadeIn>
           <FadeIn
-            className="hover-line cursor-pointer text-gray-300 hover:text-white"
+            className="hover-line hover:text-foreground text-muted cursor-pointer"
             vars={{ delay: 0.8 }}
           >
             Heritage
           </FadeIn>
         </div>
         <FadeIn
-          className="hover-line cursor-pointer text-gray-300 hover:text-white"
+          className="hover-line hover:text-foreground text-muted cursor-pointer"
           vars={{ delay: 0.8 }}
         >
           Contact Us

@@ -8,10 +8,10 @@ import ButtonLink from '@/components/ui/link';
 
 function Hero() {
   return (
-    <Bounded className="hero relative min-h-screen bg-neutral-950">
+    <Bounded className="hero bg-background relative min-h-screen">
       <FadeIn
         vars={{ delay: 0.4, duration: 3 }}
-        className="absolute left-1/2 z-1 -translate-x-1/2 translate-y-8 transform p-2 text-white md:p-4"
+        className="text-foreground absolute left-1/2 z-1 -translate-x-1/2 translate-y-8 transform p-2 md:p-4"
       >
         <Logo className="hidden sm:block sm:w-48 md:w-58" />
       </FadeIn>
@@ -30,19 +30,19 @@ function Hero() {
         />
       </FadeIn>
 
-      <div className="relative flex h-screen flex-col justify-center text-white">
+      <div className="text-foreground relative flex h-screen flex-col justify-center">
         <RevealText
           text="Natural Presence"
           as="h1"
           staggerAmount={0.2}
           duration={1.7}
-          className="font-title max-w-xl text-6xl leading-none text-neutral-50 md:text-7xl lg:text-[5.5rem]"
+          className="font-title max-w-xl text-6xl leading-none md:text-7xl lg:text-[5.5rem]"
           hoverLine={false}
         />
 
         <FadeIn
           vars={{ delay: 1, duration: 1.3 }}
-          className="mt-4 max-w-md translate-y-8 text-lg text-neutral-100"
+          className="mt-4 max-w-md translate-y-8 text-lg"
         >
           <p>
             Maison Lumière embodies the art of fragrance — created for the

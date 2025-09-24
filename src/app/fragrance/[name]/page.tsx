@@ -1,9 +1,8 @@
 import React from 'react';
 import { Bounded } from '@/components/shared/Bounded';
-import Button from '@/components/ui/button';
 import FragranceFeatures from '@/components/sections/Fragrance/FragranceFeatures';
 import { FRAGRANCES } from '@/lib/demo';
-import { PlusIcon, StarIcon } from 'lucide-react';
+import { StarIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -23,7 +22,7 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
 
   return (
     <>
-      <Bounded className="flex min-h-screen items-center justify-center bg-neutral-900 py-20">
+      <Bounded className="bg-background flex min-h-screen items-center justify-center py-20">
         <div className="grid grid-cols-1 items-center lg:grid-cols-2">
           <div className="image relative flex justify-center">
             <Image
@@ -46,15 +45,15 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
             />
           </div>
           <div className="relative z-10 mt-10 grid size-fit lg:mt-0">
-            <h3 className="font-title mb-4 border-b border-neutral-700 pb-4 text-4xl capitalize md:text-5xl">
+            <h3 className="font-title border-border mb-4 border-b pb-4 text-4xl capitalize md:text-5xl">
               {fragrance.name}
             </h3>
 
-            <p className="mb-6 text-base font-semibold text-gray-300">
+            <p className="text-muted mb-6 text-base font-semibold">
               Eau de Parfum
             </p>
 
-            <div className="mb-6 text-lg text-gray-300">
+            <div className="text-muted mb-6 text-lg">
               {fragrance.description}
             </div>
 
@@ -64,15 +63,18 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
 
             <AddToCartButton id={fragrance.name} className="mb-6" />
 
-            <div className="flex items-center gap-4 border-t border-neutral-700 pt-6">
-              <a href="#" className="hover:text-neutral-300">
+            <div className="border-border flex items-center gap-4 border-t pt-6">
+              <a href="#" className="hover:text-muted">
                 817 total reviews
               </a>
               <div className="flex">
                 {[...Array(4)].map((_, i) => (
-                  <StarIcon key={i} className="size-5 fill-white stroke-0" />
+                  <StarIcon
+                    key={i}
+                    className="fill-foreground size-5 stroke-0"
+                  />
                 ))}
-                <StarIcon className="size-5 fill-white/50 stroke-0" />
+                <StarIcon className="fill-foreground/50 size-5 stroke-0" />
               </div>
               <span>4/5</span>
             </div>
@@ -83,7 +85,7 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
       {/* You may also like */}
       <Bounded>
         <div className="container mx-auto px-4 py-20">
-          <h2 className="font-title mb-8 text-3xl text-white md:text-4xl">
+          <h2 className="font-title text-foreground mb-8 text-3xl md:text-4xl">
             You may also like
           </h2>
 
@@ -91,7 +93,7 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
             {otherFragrances.map((fragrance) => (
               <li
                 key={fragrance.name}
-                className="group border border-white/40 p-8"
+                className="group border-border border p-8"
               >
                 <Link href={`/fragrance/${fragrance.name}`}>
                   <div className="relative aspect-square w-full transition-transform duration-500 group-hover:scale-105">
@@ -104,11 +106,11 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
                     />
                   </div>
 
-                  <div className="mt-8 space-y-1 text-white">
+                  <div className="text-foreground mt-8 space-y-1">
                     <h3 className="font-title text-2xl capitalize">
                       {fragrance.name}
                     </h3>
-                    <p className="text-sm text-neutral-400">Eau de Parfum</p>
+                    <p className="text-muted text-sm">Eau de Parfum</p>
                     <p className="text-base font-light">${fragrance.price}</p>
                   </div>
                 </Link>

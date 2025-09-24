@@ -9,7 +9,7 @@ interface Props {
 
 function EmptyCart({ onClose }: Props) {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center self-center">
       <RevealText
         as={'h3'}
         delay={0.4}
@@ -33,14 +33,29 @@ function EmptyCart({ onClose }: Props) {
                 />
                 <path
                   d="m63.8,575.06c28.53,17.17,39.52,51.26,39.52,51.26,0,0-35.27,6.26-63.8-10.9S0,564.16,0,564.16c0,0,35.27-6.26,63.8,10.9Z"
-                  fill="#9f6b66"
+                  className="fill-primary"
                 />
               </g>
               <g id="cart" fill="currentColor">
                 <polygon points="460.38 571.29 159.29 571.29 159.29 569.12 458.22 569.12 458.22 464.06 184.61 464.06 171.31 436.37 173.27 435.43 185.97 461.9 460.38 461.9 460.38 571.29" />
-                <circle cx="199.37" cy="601.61" r="22.74" fill="#9f6b66" />
-                <circle cx="423.56" cy="601.61" r="22.74" fill="#9f6b66" />
-                <circle cx="687.83" cy="118.57" r="14.08" fill="#9f6b66" />
+                <circle
+                  cx="199.37"
+                  cy="601.61"
+                  r="22.74"
+                  className="fill-primary"
+                />
+                <circle
+                  cx="423.56"
+                  cy="601.61"
+                  r="22.74"
+                  className="fill-primary"
+                />
+                <circle
+                  cx="687.83"
+                  cy="118.57"
+                  r="14.08"
+                  className="fill-primary"
+                />
                 <path d="m492.59,428.32H154.16l-73.23-239.36h487.07l-.44,1.41-74.97,237.95Zm-336.82-2.17h335.23l74.05-235.02H83.86l71.9,235.02Z" />
                 <polygon
                   id="background"
@@ -99,7 +114,7 @@ function EmptyCart({ onClose }: Props) {
         </FadeIn>
         <div className="flex w-full items-center">
           <FadeIn
-            className="hover-line flex w-fit translate-y-8 cursor-pointer items-center gap-1 pb-1 text-sm text-gray-300 hover:text-white"
+            className="hover-line hover:text-foreground text-muted flex w-fit translate-y-8 cursor-pointer items-center gap-1 pb-1 text-sm"
             vars={{ delay: 0.7, duration: 1.3 }}
           >
             <ArrowLeftIcon className="size-5" />

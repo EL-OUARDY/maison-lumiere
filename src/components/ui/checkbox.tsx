@@ -11,7 +11,7 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={clsx(
-        'peer size-4 shrink-0 rounded-[4px] border border-gray-300 shadow-xs ring-0 transition-shadow outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        'peer size-4 shrink-0 rounded-[4px] border border-current shadow-xs ring-0 transition-shadow outline-none disabled:cursor-not-allowed disabled:opacity-50',
         className,
       )}
       {...props}

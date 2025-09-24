@@ -6,7 +6,7 @@ import FadeIn from '@/components/animations/FadeIn';
 
 function CallToAction() {
   return (
-    <Bounded className="bg-[url('/img/cta-bg.avif')] bg-cover bg-center py-18 text-center text-white md:py-28">
+    <Bounded className="text-foreground bg-[url('/img/cta-bg.avif')] bg-cover bg-center py-18 text-center md:py-28">
       <div className="flex flex-col space-y-8">
         <FadeIn
           vars={{ duration: 0.8 }}
@@ -25,7 +25,7 @@ function CallToAction() {
         />
         <FadeIn
           vars={{ duration: 0.8, delay: 0.4 }}
-          className="mx-auto max-w-2xl text-lg text-balance text-gray-300"
+          className="text-muted mx-auto max-w-2xl text-lg text-balance"
         >
           Uncover a fragrance that defines you—try our quick <br />
           scent-matching tool.
