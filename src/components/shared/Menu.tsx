@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import FadeIn from '@/components/animations/FadeIn';
 import { useLenis } from 'lenis/react';
 import { usePathname } from 'next/navigation';
+import { XIcon } from 'lucide-react';
 
 interface Props {
   open: boolean;
@@ -226,21 +227,7 @@ function Menu({ open, onClose, children }: Props) {
           className="cursor-pointer p-2"
           onClick={() => closeMenuRef.current()}
         >
-          <svg
-            className="size-6"
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
+          <XIcon className="size-6" />
         </button>
       </FadeIn>
 
