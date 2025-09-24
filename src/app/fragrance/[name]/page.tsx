@@ -50,19 +50,19 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
               {fragrance.name}
             </h3>
 
-            <p className="mb-8 text-base font-semibold text-gray-300">
+            <p className="mb-6 text-base font-semibold text-gray-300">
               Eau de Parfum
             </p>
 
-            <div className="mb-8 text-lg text-gray-300">
+            <div className="mb-6 text-lg text-gray-300">
               {fragrance.description}
             </div>
 
-            <FragranceFeatures features={fragrance.features} className="mb-8" />
+            <FragranceFeatures features={fragrance.features} className="mb-6" />
 
             <p className="mb-6 text-3xl font-light">${fragrance.price}</p>
 
-            <AddToCartButton id={fragrance.name} />
+            <AddToCartButton id={fragrance.name} className="mb-6" />
 
             <div className="flex items-center gap-4 border-t border-neutral-700 pt-6">
               <a href="#" className="hover:text-neutral-300">

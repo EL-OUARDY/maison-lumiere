@@ -4,7 +4,7 @@ import clsx from 'clsx';
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children?: ReactNode | string;
-  variant?: 'default' | 'outline' | 'icon';
+  variant?: 'default' | 'outline' | 'icon' | 'icon-outline';
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>(
@@ -19,6 +19,8 @@ const Button = forwardRef<HTMLButtonElement, Props>(
           variant === 'outline' &&
             'border border-white text-white hover:bg-white/20',
           variant === 'icon' && 'bg-white !px-6 text-black hover:bg-white/80',
+          variant === 'icon-outline' &&
+            'border border-white !px-6 text-white hover:bg-white/20',
           className,
         )}
       >
