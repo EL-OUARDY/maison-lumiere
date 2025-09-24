@@ -49,7 +49,7 @@ function FragranceAd({ fragrance }: Props) {
           <ButtonLink href={'/fragrance/' + fragrance.name} variant="outline">
             Discover
           </ButtonLink>
-          <AddToCartButton id={fragrance.name} />
+          <AddToCartButton id={fragrance.name} showQuantityControls={false} />
         </div>
       </FadeIn>
     </FadeIn>
