@@ -3,7 +3,10 @@ import { LucideIcon } from 'lucide-react';
 export interface IFragrance {
   name: string;
   description: string;
-  features: { label: string; icon: LucideIcon }[];
+  features: {
+    profile: { label: string; icon: LucideIcon };
+    mood: { label: string; icon: LucideIcon };
+  };
   price: number;
   img: string;
   bottleImg: string;

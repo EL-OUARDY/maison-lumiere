@@ -66,22 +66,20 @@ function Cart({ onClose }: Props) {
                           {item.name}
                         </Link>
                       </div>
-                      <div className="cart-item-category text-muted text-xs sm:text-sm">
+                      <div className="cart-item-category text-muted hidden text-xs sm:block sm:text-sm">
                         Eau de Parfum
                       </div>
                     </div>
 
                     <div className="flex">
                       <div className="cart-item-features text-muted hidden items-center justify-center gap-2 sm:flex">
-                        {item.features.map((feature, index) => (
-                          <p
-                            key={index}
-                            className="hover:text-foreground flex cursor-pointer items-center gap-1 text-[0.8rem]"
-                          >
-                            <feature.icon className="size-3.5" />
-                            {feature.label}
-                          </p>
-                        ))}
+                        <p
+                          key={index}
+                          className="hover:text-foreground flex cursor-pointer items-center gap-1 text-[0.8rem]"
+                        >
+                          <item.features.mood.icon className="size-3.5" />
+                          {item.features.mood.label}
+                        </p>
                       </div>
                       <div className="cart-item-quantity flex flex-1 items-end justify-start gap-2 sm:justify-end">
                         <button
