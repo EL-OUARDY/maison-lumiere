@@ -4,13 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import useStore from '@/hooks/useStore';
 import EmptyCart from '@/components/cart/EmptyCart';
-import {
-  ArrowLeftIcon,
-  MinusIcon,
-  PlusIcon,
-  ShoppingBagIcon,
-  XIcon,
-} from 'lucide-react';
+import { MinusIcon, PlusIcon, ShoppingBagIcon, XIcon } from 'lucide-react';
 import RevealText from '@/components/animations/RevealText';
 import Button from '@/components/ui/button';
 import LogoIcon from '@/components/shared/LogoIcon';

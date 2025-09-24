@@ -3,7 +3,9 @@ import {
   CrownIcon,
   DropletIcon,
   FlameIcon,
+  FlowerIcon,
   GemIcon,
+  MoonIcon,
   TreePineIcon,
   ZapIcon,
 } from 'lucide-react';
@@ -32,6 +34,18 @@ export const FRAGRANCES: IFragrance[] = [
     img: '/img/aqua.png',
     bottleImg: '/img/aqua-bottle.png',
     price: 110,
+  },
+  {
+    name: 'luna',
+    description:
+      'A celestial fragrance that captures the mystery of twilight skies. Soft jasmine and violet intertwine with hints of midnight plum, creating a scent that feels both dreamy and enchanting. Luna is for those who embrace elegance wrapped in a veil of wonder.',
+    features: {
+      profile: { label: 'Floral & Mystical', icon: FlowerIcon },
+      mood: { label: 'Elegant & Enigmatic', icon: MoonIcon },
+    },
+    img: '/img/luna.png',
+    bottleImg: '/img/luna-bottle.png',
+    price: 145,
   },
   {
     name: 'ignis',
