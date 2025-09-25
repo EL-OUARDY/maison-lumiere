@@ -3,19 +3,11 @@ import { Bounded } from '@/components/shared/Bounded';
 import Image from 'next/image';
 import FadeIn from '@/components/animations/FadeIn';
 import RevealText from '@/components/animations/RevealText';
-import Logo from '@/components/shared/Logo';
 import ButtonLink from '@/components/ui/link';
 
 function Hero() {
   return (
     <Bounded className="hero bg-background relative min-h-screen">
-      <FadeIn
-        vars={{ delay: 0.4, duration: 3 }}
-        className="text-foreground absolute left-1/2 z-1 -translate-x-1/2 translate-y-8 transform p-2 md:p-4"
-      >
-        <Logo className="hidden sm:block sm:w-48 md:w-58" />
-      </FadeIn>
-
       <FadeIn
         vars={{ duration: 5, scale: 1, opacity: 0.5 }}
         className="absolute inset-0 scale-125"
@@ -31,22 +23,33 @@ function Hero() {
       </FadeIn>
 
       <div className="text-foreground relative flex h-screen flex-col justify-center">
-        <RevealText
-          text="Natural Presence"
-          as="h1"
-          staggerAmount={0.2}
-          duration={1.7}
-          className="font-title max-w-xl text-6xl leading-none md:text-7xl lg:text-[5.5rem]"
-          hoverLine={false}
-        />
+        <div className="w-fit">
+          <RevealText
+            text="Maison Lumière"
+            as="h1"
+            staggerAmount={0.2}
+            duration={1.7}
+            className="font-title max-w-lg text-7xl leading-none lg:text-[5rem]"
+            hoverLine={false}
+          />
+
+          <FadeIn
+            vars={{ delay: 1, duration: 1.7 }}
+            className="flex translate-y-8 items-center gap-2 text-lg"
+          >
+            <span className="bg-foreground h-px w-4"></span>
+            <span>Paris</span>
+            <span className="bg-foreground h-px flex-1"></span>
+          </FadeIn>
+        </div>
 
         <FadeIn
           vars={{ delay: 1, duration: 1.3 }}
           className="mt-4 max-w-md translate-y-8 text-lg"
         >
           <p>
-            Maison Lumière embodies the art of fragrance — created for the
-            luminous spirit. A symphony of elegance, light, and allure.
+            Since its founding, Maison Lumière has mastered the alchemy of scent
+            and sensation — creating fragrances that illuminate the soul.
           </p>
         </FadeIn>
 

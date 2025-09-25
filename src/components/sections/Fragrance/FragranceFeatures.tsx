@@ -10,7 +10,7 @@ interface Props {
 function FragranceFeatures({ features, className }: Props) {
   return (
     <div className={clsx('', className)}>
-      <p className="mb-2 text-base font-semibold uppercase">Features:</p>
+      <p className="text-muted mb-2 text-base uppercase">Features:</p>
 
       <div className="grid gap-2">
         <p className="flex items-center gap-2">

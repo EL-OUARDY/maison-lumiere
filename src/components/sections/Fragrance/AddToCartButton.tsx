@@ -18,7 +18,7 @@ function AddToCartButton({
   id,
   showQuantityControls = true,
 }: Props) {
-  const { addToCart, removeFromCart, cart } = useStore();
+  const { addToCart, removeFromCart, cart, setActiveMenu } = useStore();
 
   const fragrance = FRAGRANCES.find((f) => f.name === id);
   const cartItem = cart.find((x) => x.name === id);
@@ -51,7 +51,7 @@ function AddToCartButton({
             </div>
             <div className="">
               <Button
-                onClick={() => addToCart(fragrance as IFragrance)}
+                onClick={() => setActiveMenu('cart')}
                 variant="icon-outline"
                 className="w-full"
               >
@@ -60,7 +60,11 @@ function AddToCartButton({
             </div>
           </div>
         ) : (
-          <Button variant="default" className="w-full">
+          <Button
+            onClick={() => setActiveMenu('cart')}
+            variant="default"
+            className="w-full"
+          >
             <ShoppingBagIcon className="mr-2 size-4 opacity-70" />{' '}
             <span>View Cart</span>
           </Button>

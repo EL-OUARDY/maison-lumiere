@@ -10,7 +10,7 @@ import MainMenu from '@/components/MainMenu';
 import Drawer from '@/components/shared/Drawer';
 import Login from '@/components/Login';
 import Input from '@/components/ui/input';
-import { SearchIcon } from 'lucide-react';
+import { AlignJustifyIcon, SearchIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Cart from '@/components/cart/Cart';
 import useStore from '@/hooks/useStore';
@@ -47,10 +47,6 @@ function Header() {
     if (activeMenu)
       gsap.set('.header .controls', {
         autoAlpha: 0,
-      });
-    else
-      gsap.set('.header .controls', {
-        autoAlpha: 1,
       });
   }, [activeMenu]);
 
@@ -153,21 +149,7 @@ function Header() {
           onClick={() => setActiveMenu('main')}
           aria-label="menu"
         >
-          <svg
-            className="size-[1.3rem]"
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
+          <AlignJustifyIcon className="size-[1.3rem]" />
         </button>
       </FadeIn>
 
@@ -248,7 +230,15 @@ function Header() {
       </FadeIn>
 
       {/* Main menu and Cart */}
-      <Menu isOpen={!!activeMenu} onClose={() => setActiveMenu(null)}>
+      <Menu
+        isOpen={!!activeMenu}
+        onClose={() => {
+          setActiveMenu(null);
+          gsap.to('.header .controls', {
+            autoAlpha: 1,
+          });
+        }}
+      >
         {activeMenu === 'main' && <MainMenu />}
         {activeMenu === 'cart' && <Cart />}
       </Menu>
