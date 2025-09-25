@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { Eases } from '@/lib/customEases';
 import gsap from 'gsap';
 import FadeIn from '@/components/animations/FadeIn';
@@ -8,14 +8,12 @@ import { usePathname } from 'next/navigation';
 import { XIcon } from 'lucide-react';
 
 interface Props {
-  open: boolean;
-  onClose: () => void;
+  isOpen: boolean;
+  onClose?: () => void;
   children?: ReactNode;
 }
 
-function Menu({ open, onClose, children }: Props) {
-  const [isOpen, setIsOpen] = useState<boolean>(open);
-  const [showMenuContent, setShowMenuContent] = useState<boolean>(false);
+function Menu({ isOpen = false, onClose = () => {}, children }: Props) {
   const menuContainerRef = useRef<HTMLDivElement>(null);
   const menuContentRef = useRef<HTMLDivElement>(null);
   const pageCloneRef = useRef<HTMLDivElement>(null);
@@ -63,11 +61,9 @@ function Menu({ open, onClose, children }: Props) {
       id: 'open-menu',
       onStart: () => {
         isAnimatingRef.current = true;
-        setShowMenuContent(true);
       },
       onComplete: () => {
         isAnimatingRef.current = false;
-        setIsOpen(true);
       },
     });
     const clipPath = `polygon(0 0, 100% 0, 100% ${1.1 * window.innerHeight}px, 0 ${window.innerHeight}px`;
@@ -123,9 +119,7 @@ function Menu({ open, onClose, children }: Props) {
       },
       onComplete: () => {
         isAnimatingRef.current = false;
-        setShowMenuContent(false);
         pageCloneRef.current?.remove();
-        setIsOpen(false);
         onClose();
       },
     });
@@ -173,7 +167,7 @@ function Menu({ open, onClose, children }: Props) {
 
   // Open/Close menu and prevent scroll while menu is open
   useEffect(() => {
-    if (open) {
+    if (isOpen) {
       openMenuRef.current();
       lenis?.stop();
     } else {
@@ -184,11 +178,11 @@ function Menu({ open, onClose, children }: Props) {
     return () => {
       lenis?.start();
     };
-  }, [open, lenis]);
+  }, [isOpen, lenis]);
 
   // Handle ESC keypress
   useEffect(() => {
-    if (!open) return;
+    if (!isOpen) return;
 
     function handleEscapeKey(event: KeyboardEvent) {
       if (event.key === 'Escape') {
@@ -201,13 +195,12 @@ function Menu({ open, onClose, children }: Props) {
     return () => {
       document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, [open]);
+  }, [isOpen]);
 
   // URL change (fires when a link within the menu is clicked)
   useEffect(() => {
-    if (!showMenuContent) return;
     closeMenuRef.current();
-  }, [showMenuContent, pathname]);
+  }, [pathname]);
 
   return (
     <div
@@ -217,7 +210,7 @@ function Menu({ open, onClose, children }: Props) {
         clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
       }}
       role="dialog"
-      aria-modal={open}
+      aria-modal={isOpen ? true : false}
     >
       <FadeIn
         vars={{ delay: 0.5 }}
@@ -235,7 +228,7 @@ function Menu({ open, onClose, children }: Props) {
         ref={menuContentRef}
         className="menu-content relative size-full [will-change:transform_opacity]"
       >
-        {showMenuContent && children}
+        {children}
       </div>
     </div>
   );

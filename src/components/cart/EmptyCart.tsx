@@ -1,13 +1,8 @@
 import FadeIn from '@/components/animations/FadeIn';
 import RevealText from '@/components/animations/RevealText';
-import { ArrowLeftIcon } from 'lucide-react';
 import React from 'react';
 
-interface Props {
-  onClose: () => void;
-}
-
-function EmptyCart({ onClose }: Props) {
+function EmptyCart() {
   return (
     <div className="flex flex-col items-center justify-center self-center">
       <RevealText
@@ -112,15 +107,6 @@ function EmptyCart({ onClose }: Props) {
             </g>
           </svg>
         </FadeIn>
-        <div className="flex w-full items-center">
-          <FadeIn
-            className="hover-line hover:text-foreground text-muted flex w-fit translate-y-8 cursor-pointer items-center gap-1 pb-1 text-sm"
-            vars={{ delay: 0.7, duration: 1.3 }}
-          >
-            <ArrowLeftIcon className="size-5" />
-            <span onClick={onClose}>Continue shopping</span>
-          </FadeIn>
-        </div>
       </div>
     </div>
   );
