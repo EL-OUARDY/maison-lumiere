@@ -2,7 +2,6 @@
 import React, { ReactNode, useEffect, useRef } from 'react';
 import { Eases } from '@/lib/customEases';
 import gsap from 'gsap';
-import FadeIn from '@/components/animations/FadeIn';
 import { useLenis } from 'lenis/react';
 import { usePathname } from 'next/navigation';
 import { XIcon } from 'lucide-react';
@@ -212,17 +211,14 @@ function Menu({ isOpen = false, onClose = () => {}, children }: Props) {
       role="dialog"
       aria-modal={isOpen ? true : false}
     >
-      <FadeIn
-        vars={{ delay: 0.5 }}
-        className="close-btn hover:bg-foreground/10 hover:text-foreground text-muted fixed top-4 right-4 z-200"
-      >
+      <div className="close-btn hover:bg-foreground/10 hover:text-foreground text-muted fixed top-4 right-4 z-200">
         <button
           className="cursor-pointer p-2"
           onClick={() => closeMenuRef.current()}
         >
           <XIcon className="size-6" />
         </button>
-      </FadeIn>
+      </div>
 
       <div
         ref={menuContentRef}
