@@ -9,11 +9,7 @@ import RevealText from '@/components/animations/RevealText';
 import Button from '@/components/ui/button';
 import LogoIcon from '@/components/shared/LogoIcon';
 
-interface Props {
-  onClose: () => void;
-}
-
-function Cart({ onClose }: Props) {
+function Cart() {
   const { cart, addToCart, removeFromCart } = useStore();
 
   return (
@@ -94,7 +90,7 @@ function Cart({ onClose }: Props) {
                       </div>
                     </div>
                   </div>
-                  <div className="cart-item-price font-title text-lg sm:text-2xl">
+                  <div className="cart-item-price font-title w-12 text-center text-lg sm:text-xl">
                     ${item.price * item.quantity}
                   </div>
                   <button
@@ -142,7 +138,7 @@ function Cart({ onClose }: Props) {
             </div>
           </div>
         ) : (
-          <EmptyCart onClose={onClose} />
+          <EmptyCart />
         )}
       </div>
 

@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,12 +19,10 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [cartOpen, setCartOpen] = useState<boolean>(false);
   const [userDrawerOpen, setUserDrawerOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
-  const { cart } = useStore();
+  const { cart, activeMenu, setActiveMenu } = useStore();
 
   // Blur header controls background when user scrolls down
   useGSAP(() => {
@@ -45,29 +43,16 @@ function Header() {
     });
   });
 
-  function openMenu() {
-    setMenuOpen(true);
-    gsap.set('.header .controls', {
-      autoAlpha: 0,
-    });
-  }
-
-  function closeMenu() {
-    setMenuOpen(false);
-    gsap.to('header .controls', { autoAlpha: 1 });
-  }
-
-  function openCart() {
-    setCartOpen(true);
-    gsap.set('.header .controls', {
-      autoAlpha: 0,
-    });
-  }
-
-  function closeCart() {
-    setCartOpen(false);
-    gsap.to('header .controls', { autoAlpha: 1 });
-  }
+  useEffect(() => {
+    if (activeMenu)
+      gsap.set('.header .controls', {
+        autoAlpha: 0,
+      });
+    else
+      gsap.set('.header .controls', {
+        autoAlpha: 1,
+      });
+  }, [activeMenu]);
 
   function openSearch() {
     const header = headerRef.current;
@@ -165,7 +150,7 @@ function Header() {
         {/* Menu button */}
         <button
           className="text-foreground hover:text-foreground/70 cursor-pointer p-2 transition-colors duration-300"
-          onClick={openMenu}
+          onClick={() => setActiveMenu('main')}
           aria-label="menu"
         >
           <svg
@@ -236,7 +221,7 @@ function Header() {
         {/* Cart button */}
         <button
           className="cart-btn text-foreground hover:text-foreground/70 relative cursor-pointer p-2 transition-colors duration-300"
-          onClick={openCart}
+          onClick={() => setActiveMenu('cart')}
           aria-label="cart"
         >
           {cart.length > 0 && (
@@ -262,14 +247,10 @@ function Header() {
         </button>
       </FadeIn>
 
-      {/* Main menu */}
-      <Menu open={menuOpen} onClose={closeMenu}>
-        <MainMenu />
-      </Menu>
-
-      {/* Cart */}
-      <Menu open={cartOpen} onClose={closeCart}>
-        <Cart onClose={() => setCartOpen(false)} />
+      {/* Main menu and Cart */}
+      <Menu isOpen={!!activeMenu} onClose={() => setActiveMenu(null)}>
+        {activeMenu === 'main' && <MainMenu />}
+        {activeMenu === 'cart' && <Cart />}
       </Menu>
 
       {/* Login drawer */}
