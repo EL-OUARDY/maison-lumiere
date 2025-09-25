@@ -49,13 +49,9 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
               {fragrance.name}
             </h3>
 
-            <p className="text-muted mb-6 text-base font-semibold">
-              Eau de Parfum
-            </p>
+            <p className="text-muted mb-4 text-base">Eau de Parfum</p>
 
-            <div className="text-muted mb-6 text-lg">
-              {fragrance.description}
-            </div>
+            <div className="mb-6 text-lg">{fragrance.description}</div>
 
             <FragranceFeatures features={fragrance.features} className="mb-6" />
 
@@ -86,7 +82,7 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
 
       {/* You may also like */}
       <Bounded>
-        <div className="container mx-auto px-4 py-20">
+        <div className="container px-4 pt-0 pb-20 md:py-20">
           <h2 className="font-title text-foreground mb-8 text-3xl md:text-4xl">
             You may also like
           </h2>

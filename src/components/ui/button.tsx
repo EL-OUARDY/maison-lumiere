@@ -14,7 +14,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
         {...props}
         ref={ref}
         className={clsx(
-          'inline-flex cursor-pointer items-center justify-center px-12 py-4 text-center font-extrabold tracking-wider uppercase transition-colors duration-300',
+          'inline-flex cursor-pointer items-center justify-center px-12 py-4 text-center font-extrabold tracking-wider uppercase transition-colors duration-300 select-none',
           variant === 'default' &&
             'bg-foreground hover:bg-foreground/80 text-background-bold',
           variant === 'outline' &&

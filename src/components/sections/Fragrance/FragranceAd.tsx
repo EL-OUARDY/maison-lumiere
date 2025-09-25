@@ -29,7 +29,7 @@ function FragranceAd({ fragrance }: Props) {
       <FadeIn
         className="relative z-10 grid translate-y-8"
         vars={{ duration: 2, delay: 0.2 }}
-        start="top 50%"
+        start="top 55%"
       >
         <h3 className="font-title mb-3 text-5xl capitalize md:text-6xl lg:text-7xl">
           {fragrance.name}
