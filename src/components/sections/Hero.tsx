@@ -38,7 +38,9 @@ function Hero() {
             className="flex translate-y-8 items-center gap-2 text-lg"
           >
             <span className="bg-foreground h-px w-4"></span>
-            <span>Paris</span>
+            <span className="font-light">Paris</span>
+            <span className="bg-foreground h-px w-4"></span>
+            <span className="font-light">Est. 1952</span>
             <span className="bg-foreground h-px flex-1"></span>
           </FadeIn>
         </div>
