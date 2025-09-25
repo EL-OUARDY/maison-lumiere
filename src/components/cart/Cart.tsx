@@ -22,13 +22,13 @@ function Cart() {
         </FadeIn>
       </div>
 
-      <div className="cart-body mx-auto flex w-full max-w-2xl flex-1 items-start justify-center py-8">
+      <div className="cart-body mx-auto flex w-full max-w-3xl flex-1 items-start justify-center py-8">
         {cart.length > 0 ? (
           <div className="flex w-full flex-col items-center justify-center gap-4">
             <RevealText
               as={'h3'}
               delay={0.5}
-              className="font-title border-border w-full flex-1 border-b text-3xl capitalize sm:text-4xl"
+              className="font-title border-border w-full flex-1 border-b text-left text-3xl capitalize sm:text-4xl"
               text={`Your Cart`}
               hoverLine={false}
             />
@@ -36,7 +36,7 @@ function Cart() {
             <div className="cart-items flex w-full flex-col gap-4">
               {cart.map((item, index) => (
                 <FadeIn
-                  vars={{ delay: index * 0.1 + 0.3, duration: 1.5 }}
+                  vars={{ delay: index * 0.2 + 0.3, duration: 1.3 }}
                   className="cart-item group border-foreground from-secondary to-border flex h-24 w-full translate-y-16 items-center justify-center gap-6 border-l bg-gradient-to-r px-2 py-4"
                   key={index}
                 >
@@ -106,7 +106,7 @@ function Cart() {
             <div className="flex w-full items-center justify-between">
               <FadeIn
                 className="border-border flex w-fit translate-y-8 items-center gap-2 border-b text-xl capitalize sm:text-2xl"
-                vars={{ delay: 0.7, duration: 1.3 }}
+                vars={{ delay: 1, duration: 1.3 }}
               >
                 <span className="font-title w-full flex-1">Total:</span>
                 <span className="font-title text-muted w-full flex-1">
@@ -121,7 +121,7 @@ function Cart() {
 
               <FadeIn
                 className="translate-y-8"
-                vars={{ delay: 0.7, duration: 1.3 }}
+                vars={{ delay: 1, duration: 1.3 }}
               >
                 <Button variant="default" className="!px-6 !py-2 text-sm">
                   <ShoppingBagIcon className="mr-2 size-4 opacity-70" />{' '}
