@@ -198,6 +198,7 @@ function Menu({ isOpen = false, onClose = () => {}, children }: Props) {
 
   // URL change (fires when a link within the menu is clicked)
   useEffect(() => {
+    pageCloneRef.current?.remove();
     closeMenuRef.current();
   }, [pathname]);
 
