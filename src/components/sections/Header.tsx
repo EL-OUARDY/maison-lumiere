@@ -14,11 +14,13 @@ import { AlignJustifyIcon, SearchIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Cart from '@/components/cart/Cart';
 import useStore from '@/hooks/useStore';
+import clsx from 'clsx';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
+  const [isReady, setIsReady] = useState<boolean>(false);
   const [userDrawerOpen, setUserDrawerOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
@@ -140,8 +142,12 @@ function Header() {
       className="header text-foreground pointer-events-none fixed top-0 left-0 z-50 flex w-full justify-between p-2 md:p-4"
     >
       <FadeIn
+        onComplete={() => setIsReady(true)}
         vars={isHome ? { duration: 2, delay: 2 } : { duration: 1 }}
-        className="controls left pointer-events-auto flex items-center rounded-full p-1 transition-all duration-50"
+        className={clsx(
+          'controls left flex items-center rounded-full p-1 transition-all duration-50',
+          isReady && 'pointer-events-auto',
+        )}
       >
         {/* Menu button */}
         <button
@@ -155,7 +161,10 @@ function Header() {
 
       <FadeIn
         vars={isHome ? { duration: 2, delay: 2 } : { duration: 1 }}
-        className="controls right pointer-events-auto relative flex items-center justify-end gap-2 overflow-hidden rounded-xl px-2 py-1 transition-all duration-50"
+        className={clsx(
+          'controls right relative flex items-center justify-end gap-2 overflow-hidden rounded-xl px-2 py-1 transition-all duration-50',
+          isReady && 'pointer-events-auto',
+        )}
       >
         {/* Search Input */}
         <div className="search-input-container invisible absolute inset-0 z-100 flex w-full origin-right items-center overflow-hidden">
