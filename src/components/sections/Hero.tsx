@@ -14,7 +14,7 @@ function Hero() {
       >
         <Image
           className="object-cover"
-          src="/img/hero-bg.jpg"
+          src="/img/hero-bg.jpeg"
           alt=""
           fill
           sizes="100vw"
