@@ -133,7 +133,7 @@ export async function generateMetadata({
     title: capitalize(name) + ' | ' + 'Maison Lumière',
     description: fragrance?.description,
     openGraph: {
-      images: [fragrance?.img || '/img/hero-bg.jpg'],
+      images: [fragrance?.img || '/img/hero-bg.jpeg'],
     },
   };
 }
