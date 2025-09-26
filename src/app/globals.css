@@ -120,6 +120,6 @@ header {
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
-    animation-duration: 0.001s;
+    animation: none;
   }
 }
