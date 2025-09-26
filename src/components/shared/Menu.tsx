@@ -211,11 +211,13 @@ function Menu({ isOpen = false, onClose = () => {}, children }: Props) {
       }}
       role="dialog"
       aria-modal={isOpen ? true : false}
+      aria-label="Menu"
     >
       <div className="close-btn hover:bg-foreground/10 hover:text-foreground text-muted fixed top-4 right-4 z-200">
         <button
           className="cursor-pointer p-2"
           onClick={() => closeMenuRef.current()}
+          aria-label="close menu"
         >
           <XIcon className="size-6" />
         </button>
