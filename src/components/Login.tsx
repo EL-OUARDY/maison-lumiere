@@ -105,12 +105,12 @@ function Login() {
             </Button>
             <div className="text-muted text-center text-sm">
               Don&apos;t have an account?{' '}
-              <Link
+              <a
                 className="hover:text-foreground text-muted underline"
                 href="#"
               >
                 Sign up
-              </Link>
+              </a>
             </div>
           </div>
         </div>
