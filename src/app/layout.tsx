@@ -24,7 +24,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body
-          className={`${futuraltBook.variable} ${gambarino.variable} selection:bg-border bg-background text-foreground font-sans antialiased`}
+          className={`${futuraltBook.variable} ${gambarino.variable} selection:bg-primary/40 bg-background text-foreground font-sans antialiased`}
         >
           <LenisScrollProvider>
             <div className="page">
