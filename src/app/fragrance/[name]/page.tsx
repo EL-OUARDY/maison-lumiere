@@ -4,10 +4,10 @@ import FragranceFeatures from '@/components/sections/Fragrance/FragranceFeatures
 import { FRAGRANCES } from '@/lib/demo';
 import { StarIcon } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import { capitalize } from '@/lib/utils';
 import AddToCartButton from '@/components/sections/Fragrance/AddToCartButton';
+import { Link } from 'next-view-transitions';
 
 interface Params {
   name: string;

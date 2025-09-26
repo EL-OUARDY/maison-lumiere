@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import Logo from '@/components/shared/Logo';
 
 function Footer() {

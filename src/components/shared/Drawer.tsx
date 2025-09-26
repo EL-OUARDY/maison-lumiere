@@ -19,7 +19,7 @@ function Drawer({ open, onClose, children, position = 'left' }: Props) {
     <>
       <div
         className={clsx(
-          'nav-drawer-blur bg-background-bold/40 fixed inset-0 z-40 opacity-0 transition-all duration-500',
+          'menu-drawer bg-background-bold/40 fixed inset-0 z-40 opacity-0 transition-all duration-500',
           isDrawerOpen
             ? 'pointer-events-auto opacity-100 backdrop-blur-xs'
             : 'pointer-events-none backdrop-blur-none',

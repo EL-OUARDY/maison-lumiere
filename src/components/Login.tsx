@@ -3,7 +3,7 @@ import Input from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { LockIcon, MailIcon } from 'lucide-react';
 import Button from '@/components/ui/button';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 function Login() {
   return (

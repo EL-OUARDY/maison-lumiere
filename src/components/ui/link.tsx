@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import Link, { LinkProps } from 'next/link';
 import clsx from 'clsx';
+import { LinkProps } from 'next/link';
+import { Link } from 'next-view-transitions';
 
 interface Props extends LinkProps {
   className?: string;
