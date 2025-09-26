@@ -4,6 +4,7 @@ import Footer from '@/components/sections/Footer';
 import { gambarino, futuraltBook } from '@/lib/fonts';
 import Header from '@/components/sections/Header';
 import LenisScrollProvider from '@/components/shared/LenisScrollProvider';
+import { ViewTransitions } from 'next-view-transitions';
 
 export const metadata: Metadata = {
   title: 'Maison Lumière Paris :: Artisanal Fragrance House',
@@ -20,18 +21,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${futuraltBook.variable} ${gambarino.variable} selection:bg-border bg-background text-foreground font-sans antialiased`}
-      >
-        <LenisScrollProvider>
-          <div className="page">
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </div>
-        </LenisScrollProvider>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body
+          className={`${futuraltBook.variable} ${gambarino.variable} selection:bg-border bg-background text-foreground font-sans antialiased`}
+        >
+          <LenisScrollProvider>
+            <div className="page">
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </div>
+          </LenisScrollProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

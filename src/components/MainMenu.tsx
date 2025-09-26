@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import RevealText from '@/components/animations/RevealText';
 import Image from 'next/image';
 import FadeIn from '@/components/animations/FadeIn';

@@ -1,6 +1,6 @@
 import React from 'react';
 import FadeIn from '@/components/animations/FadeIn';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import Image from 'next/image';
 import useStore from '@/hooks/useStore';
 import EmptyCart from '@/components/cart/EmptyCart';
