@@ -14,7 +14,7 @@ function FeaturesGrid() {
           className="grid-image relative hidden w-full translate-y-16 lg:block lg:flex-2"
         >
           <Image
-            className="object-cover"
+            className="object-cover grayscale-[0.9]"
             src="/img/grid-picture.jpg"
             alt=""
             fill
