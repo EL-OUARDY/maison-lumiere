@@ -105,12 +105,9 @@ function Login() {
             </Button>
             <div className="text-muted text-center text-sm">
               Don&apos;t have an account?{' '}
-              <a
-                className="hover:text-foreground text-muted underline"
-                href="#"
-              >
+              <span className="hover:text-foreground text-muted cursor-pointer underline">
                 Sign up
-              </a>
+              </span>
             </div>
           </div>
         </div>
