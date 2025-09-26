@@ -14,7 +14,6 @@ import { AlignJustifyIcon, SearchIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Cart from '@/components/cart/Cart';
 import useStore from '@/hooks/useStore';
-import clsx from 'clsx';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
