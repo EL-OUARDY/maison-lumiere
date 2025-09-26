@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { XIcon } from 'lucide-react';
 import React, { ReactNode, useEffect, useState } from 'react';
 
 interface Props {
@@ -43,10 +44,11 @@ function Drawer({ open, onClose, children, position = 'left' }: Props) {
         )}
         role="dialog"
         aria-modal={isDrawerOpen}
+        aria-label="Login Menu"
       >
         <div className="mb-6 flex justify-end">
           <button
-            className="hover:bg-foreground/10 text-foreground cursor-pointer p-2 transition-colors duration-300"
+            className="hover:bg-foreground/10 hover:text-foreground text-muted cursor-pointer p-2 transition-colors duration-300"
             onClick={() => {
               setIsDrawerOpen(false);
               onClose();
@@ -54,21 +56,7 @@ function Drawer({ open, onClose, children, position = 'left' }: Props) {
             aria-label="Close Menu"
             tabIndex={isDrawerOpen ? 0 : -1}
           >
-            <svg
-              className="size-6"
-              stroke="currentColor"
-              fill="currentColor"
-              strokeWidth="0"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
+            <XIcon className="size-6" />
           </button>
         </div>
 
