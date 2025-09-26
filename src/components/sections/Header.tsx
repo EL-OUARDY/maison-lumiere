@@ -64,6 +64,10 @@ function Header() {
     const tl = gsap.timeline({
       onComplete: () => {
         searchInput.focus();
+        gsap.to(searchContainer, {
+          backgroundColor: 'var(--color-background)',
+          ease: 'none',
+        });
       },
       defaults: {
         duration: 0.4,
@@ -100,6 +104,10 @@ function Header() {
     );
 
     if (!header || !searchContainer) return;
+
+    gsap.set(searchContainer, {
+      backgroundColor: 'initial',
+    });
 
     const tl = gsap.timeline({
       onComplete: () => {
