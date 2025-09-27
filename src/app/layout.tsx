@@ -5,6 +5,7 @@ import { gambarino, futuraltBook } from '@/lib/fonts';
 import Header from '@/components/sections/Header';
 import LenisScrollProvider from '@/components/shared/LenisScrollProvider';
 import { ViewTransitions } from 'next-view-transitions';
+import ImagePreloader from '@/components/ImagePreloader';
 
 export const metadata: Metadata = {
   title: 'Maison Lumière Paris :: Artisanal Fragrance House',
@@ -13,13 +14,10 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.svg',
   },
-  themeColor: [],
 };
 
 export const viewport: Viewport = {
-  themeColor: getComputedStyle(document.documentElement).getPropertyValue(
-    '--background',
-  ),
+  themeColor: '#0a0a0a',
 };
 
 export default function RootLayout({
@@ -38,6 +36,7 @@ export default function RootLayout({
               <Header />
               <main>{children}</main>
               <Footer />
+              <ImagePreloader />
             </div>
           </LenisScrollProvider>
         </body>

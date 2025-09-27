@@ -98,8 +98,8 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
                     <Image
                       src={fragrance.bottleImg}
                       alt={fragrance.name}
-                      width={600}
-                      height={600}
+                      width={1000}
+                      height={1000}
                       className="size-full"
                     />
                   </div>

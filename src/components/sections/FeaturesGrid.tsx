@@ -3,6 +3,7 @@ import { Bounded } from '@/components/shared/Bounded';
 import Image from 'next/image';
 import FadeIn from '@/components/animations/FadeIn';
 import ButtonLink from '@/components/ui/link';
+import Lazy from '@/components/shared/Lazy';
 
 function FeaturesGrid() {
   return (
@@ -11,15 +12,17 @@ function FeaturesGrid() {
         <FadeIn
           vars={{ duration: 1 }}
           start="top 70%"
-          className="grid-image relative hidden w-full translate-y-16 lg:block lg:flex-2"
+          className="grid-image bg-foreground/10 relative hidden w-full translate-y-16 lg:block lg:flex-2"
         >
-          <Image
-            className="object-cover grayscale-[0.9]"
-            src="/img/grid-picture.jpg"
-            alt=""
-            fill
-            sizes="70vw"
-          />
+          <Lazy rootMargin="1000px">
+            <Image
+              className="object-cover grayscale-[0.9]"
+              src="/img/grid-picture.jpg"
+              alt=""
+              fill
+              sizes="70vw"
+            />
+          </Lazy>
         </FadeIn>
 
         <div className="description w-full space-y-12 lg:flex-1">
@@ -44,13 +47,15 @@ function FeaturesGrid() {
             start="top bottom"
           >
             <div className="bottle-image aspect-square -translate-y-16 -rotate-12">
-              <Image
-                className="object-cover"
-                src="/img/ignis-bottle.png"
-                alt=""
-                width={1000}
-                height={1000}
-              />
+              <Lazy rootMargin="1000px">
+                <Image
+                  className="object-cover"
+                  src="/img/ignis-bottle.png"
+                  alt=""
+                  width={1000}
+                  height={1000}
+                />
+              </Lazy>
             </div>
 
             <div className="space-y-6 p-10 pt-0">

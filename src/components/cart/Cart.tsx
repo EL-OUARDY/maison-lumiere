@@ -44,8 +44,8 @@ function Cart() {
                     <Image
                       src={item.bottleImg}
                       alt={item.name}
-                      width={600}
-                      height={600}
+                      width={1000}
+                      height={1000}
                       className="size-full transition duration-300 will-change-transform group-hover:scale-105"
                     />
                   </div>
