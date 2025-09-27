@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Footer from '@/components/sections/Footer';
 import { gambarino, futuraltBook } from '@/lib/fonts';
@@ -13,6 +13,13 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.svg',
   },
+  themeColor: [],
+};
+
+export const viewport: Viewport = {
+  themeColor: getComputedStyle(document.documentElement).getPropertyValue(
+    '--background',
+  ),
 };
 
 export default function RootLayout({
