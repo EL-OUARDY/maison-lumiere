@@ -5,6 +5,9 @@ import gsap from 'gsap';
 import { useLenis } from 'lenis/react';
 import { usePathname } from 'next/navigation';
 import { XIcon } from 'lucide-react';
+import FadeIn from '@/components/animations/FadeIn';
+import LogoIcon from '@/components/shared/LogoIcon';
+import Link from 'next/link';
 
 interface Props {
   isOpen: boolean;
@@ -205,7 +208,7 @@ function Menu({ isOpen = false, onClose = () => {}, children }: Props) {
   return (
     <div
       ref={menuContainerRef}
-      className="menu bg-background pointer-events-auto fixed inset-0 z-200 h-screen w-screen p-4"
+      className="menu bg-background pointer-events-auto fixed inset-0 z-200 flex h-screen w-screen flex-col p-4"
       style={{
         clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
       }}
@@ -213,19 +216,33 @@ function Menu({ isOpen = false, onClose = () => {}, children }: Props) {
       aria-modal={isOpen ? true : false}
       aria-label="Menu"
     >
-      <div className="close-btn hover:bg-foreground/10 hover:text-foreground text-muted fixed top-4 right-4 z-200">
-        <button
-          className="cursor-pointer p-2"
-          onClick={() => closeMenuRef.current()}
-          aria-label="close menu"
-        >
-          <XIcon className="size-6" />
-        </button>
+      <div className="menu-header relative flex items-center justify-between">
+        <FadeIn vars={{ delay: 0.5 }}>
+          <Link
+            href="/"
+            onClick={() => {
+              if (pathname === '/') closeMenuRef.current();
+            }}
+            className="block w-fit cursor-pointer"
+          >
+            <LogoIcon className="hover:text-foreground text-muted transition duration-300" />
+          </Link>
+        </FadeIn>
+
+        <div className="close-btn hover:bg-foreground/10 hover:text-foreground text-muted">
+          <button
+            className="cursor-pointer p-2"
+            onClick={() => closeMenuRef.current()}
+            aria-label="close menu"
+          >
+            <XIcon className="size-6" />
+          </button>
+        </div>
       </div>
 
       <div
         ref={menuContentRef}
-        className="menu-content relative size-full [will-change:transform_opacity]"
+        className="menu-content relative flex-1 [will-change:transform_opacity]"
       >
         {children}
       </div>

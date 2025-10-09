@@ -7,21 +7,12 @@ import EmptyCart from '@/components/cart/EmptyCart';
 import { MinusIcon, PlusIcon, ShoppingBagIcon, XIcon } from 'lucide-react';
 import RevealText from '@/components/animations/RevealText';
 import Button from '@/components/ui/button';
-import LogoIcon from '@/components/shared/LogoIcon';
 
 function Cart() {
   const { cart, addToCart, removeFromCart } = useStore();
 
   return (
     <div className="cart flex size-full flex-col" aria-label="cart">
-      <div className="cart-header relative">
-        <FadeIn vars={{ delay: 0.5 }}>
-          <Link href="/" className="block w-fit cursor-pointer">
-            <LogoIcon className="hover:text-foreground text-muted transition duration-300" />
-          </Link>
-        </FadeIn>
-      </div>
-
       <div className="cart-body mx-auto flex w-full max-w-3xl flex-1 items-start justify-center py-8">
         {cart.length > 0 ? (
           <div className="flex w-full flex-col items-center justify-center gap-4">

@@ -8,7 +8,6 @@ import { useGSAP } from '@gsap/react';
 import { Eases } from '@/lib/customEases';
 import { useParams } from 'next/navigation';
 import clsx from 'clsx';
-import LogoIcon from '@/components/shared/LogoIcon';
 
 gsap.registerPlugin(useGSAP);
 function MainMenu() {
@@ -18,6 +17,7 @@ function MainMenu() {
   const [image, setImage] = useState<string>(
     `.image-${activeFragrance || 'ignis'}`,
   );
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   // Animate menu links
   useGSAP(
@@ -41,13 +41,6 @@ function MainMenu() {
 
   return (
     <div className="flex size-full flex-col">
-      <div className="menu-header relative">
-        <FadeIn vars={{ delay: 0.5 }}>
-          <Link href="/" className="block w-fit cursor-pointer">
-            <LogoIcon className="hover:text-foreground text-muted transition duration-300" />
-          </Link>
-        </FadeIn>
-      </div>
       <div className="menu-body flex w-full flex-1 items-center justify-center">
         <div className="grid w-full grid-cols-12 items-center">
           <div
@@ -128,7 +121,10 @@ function MainMenu() {
                   'w-fit',
                   activeFragrance === 'ignis' && 'active-link',
                 )}
-                onMouseOver={() => setImage('.image-ignis')}
+                onMouseOver={() => {
+                  if (!isAnimating) setImage('.image-ignis');
+                }}
+                onClick={() => setIsAnimating(true)}
               >
                 <RevealText delay={0.4} text={'Ignis'} />
               </Link>
@@ -138,7 +134,10 @@ function MainMenu() {
                   'w-fit',
                   activeFragrance === 'aqua' && 'active-link',
                 )}
-                onMouseOver={() => setImage('.image-aqua')}
+                onMouseOver={() => {
+                  if (!isAnimating) setImage('.image-aqua');
+                }}
+                onClick={() => setIsAnimating(true)}
               >
                 <RevealText delay={0.5} text={'Aqua'} />
               </Link>
@@ -148,7 +147,10 @@ function MainMenu() {
                   'w-fit',
                   activeFragrance === 'terra' && 'active-link',
                 )}
-                onMouseOver={() => setImage('.image-terra')}
+                onMouseOver={() => {
+                  if (!isAnimating) setImage('.image-terra');
+                }}
+                onClick={() => setIsAnimating(true)}
               >
                 <RevealText delay={0.6} text={'Terra'} />
               </Link>
@@ -158,13 +160,18 @@ function MainMenu() {
                   'w-fit',
                   activeFragrance === 'luna' && 'active-link',
                 )}
-                onMouseOver={() => setImage('.image-luna')}
+                onMouseOver={() => {
+                  if (!isAnimating) setImage('.image-luna');
+                }}
+                onClick={() => setIsAnimating(true)}
               >
                 <RevealText delay={0.7} text={'Luna'} />
               </Link>
               <span
                 className="w-fit cursor-pointer"
-                onMouseOver={() => setImage('.image-making')}
+                onMouseOver={() => {
+                  if (!isAnimating) setImage('.image-making');
+                }}
               >
                 <RevealText delay={0.8} text={'...More'} />
               </span>
