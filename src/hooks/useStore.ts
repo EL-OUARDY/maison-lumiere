@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { ICartItem, IFragrance } from '@/lib/models';
-import { CART_ITEMS } from '@/lib/demo';
 
 type Menu = 'main' | 'cart' | null;
 
@@ -18,7 +17,7 @@ const useStore = create<IState>((set) => ({
   activeMenu: null,
   setActiveMenu: (value: Menu) => set({ activeMenu: value }),
 
-  cart: CART_ITEMS,
+  cart: [],
 
   addToCart: (product: IFragrance) =>
     set((state) => {

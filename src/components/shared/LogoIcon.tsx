@@ -8,7 +8,7 @@ interface Props {
 function LogoIcon({ className }: Props) {
   return (
     <svg
-      className={clsx('square-logo w-10', className)}
+      className={clsx('square-logo size-10', className)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 233.89 233.89"
     >

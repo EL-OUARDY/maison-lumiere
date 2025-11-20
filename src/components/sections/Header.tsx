@@ -14,6 +14,8 @@ import { AlignJustifyIcon, SearchIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Cart from '@/components/cart/Cart';
 import useStore from '@/hooks/useStore';
+import Link from 'next/link';
+import LogoIcon from '@/components/shared/LogoIcon';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -149,16 +151,12 @@ function Header() {
     >
       <FadeIn
         vars={isHome ? { duration: 2, delay: 2 } : { duration: 1 }}
-        className="controls left pointer-events-auto flex items-center rounded-full p-1 transition-all duration-50"
+        className="left pointer-events-auto flex items-center rounded-full p-1 transition-all duration-50"
       >
-        {/* Menu button */}
-        <button
-          className="text-foreground hover:text-foreground/70 cursor-pointer p-2 transition-colors duration-300"
-          onClick={() => setActiveMenu('main')}
-          aria-label="menu"
-        >
-          <AlignJustifyIcon className="size-[1.3rem]" />
-        </button>
+        {/* Logo */}
+        <Link href="/">
+          <LogoIcon className="text-foreground hover:text-foreground/70 !size-8 cursor-pointer transition-colors duration-300" />
+        </Link>
       </FadeIn>
 
       <FadeIn
@@ -234,6 +232,15 @@ function Header() {
               clipRule="evenodd"
             ></path>
           </svg>
+        </button>
+
+        {/* Menu button */}
+        <button
+          className="text-foreground hover:text-foreground/70 cursor-pointer p-2 transition-colors duration-300"
+          onClick={() => setActiveMenu('main')}
+          aria-label="menu"
+        >
+          <AlignJustifyIcon className="size-[1.3rem]" />
         </button>
       </FadeIn>
 

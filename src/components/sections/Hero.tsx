@@ -7,7 +7,7 @@ import ButtonLink from '@/components/ui/link';
 
 function Hero() {
   return (
-    <Bounded className="hero bg-background relative min-h-screen">
+    <Bounded className="hero bg-background relative h-dvh">
       <FadeIn
         vars={{ duration: 5, scale: 1, opacity: 0.5 }}
         className="absolute inset-0 scale-125"
@@ -25,7 +25,7 @@ function Hero() {
       <div className="text-foreground relative flex h-screen flex-col justify-center">
         <div className="w-fit">
           <RevealText
-            text="Maison Lumière"
+            text="Natural Charm"
             as="h1"
             staggerAmount={0.2}
             duration={1.7}

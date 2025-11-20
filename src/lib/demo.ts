@@ -1,4 +1,4 @@
-import { ICartItem, IFragrance } from '@/lib/models';
+import { IFragrance } from '@/lib/models';
 import {
   CrownIcon,
   DropletIcon,
@@ -58,20 +58,5 @@ export const FRAGRANCES: IFragrance[] = [
     img: '/img/ignis.png',
     bottleImg: '/img/ignis-bottle.png',
     price: 120,
-  },
-];
-
-export const CART_ITEMS: ICartItem[] = [
-  {
-    ...FRAGRANCES[0],
-    quantity: 1,
-  },
-  {
-    ...FRAGRANCES[1],
-    quantity: 3,
-  },
-  {
-    ...FRAGRANCES[2],
-    quantity: 2,
   },
 ];
