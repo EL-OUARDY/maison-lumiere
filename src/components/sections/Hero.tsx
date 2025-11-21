@@ -22,7 +22,7 @@ function Hero() {
         />
       </FadeIn>
 
-      <div className="text-foreground relative flex h-screen flex-col justify-center">
+      <div className="text-foreground relative flex h-dvh flex-col justify-center">
         <div className="w-fit">
           <RevealText
             text="Natural Charm"
