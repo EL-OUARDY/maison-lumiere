@@ -154,7 +154,7 @@ function Header() {
         className="left pointer-events-auto flex items-center rounded-full p-1 transition-all duration-50"
       >
         {/* Logo */}
-        <Link href="/">
+        <Link href="/" title="Maison Lumière">
           <LogoIcon className="text-foreground hover:text-foreground/70 !size-8 cursor-pointer transition-colors duration-300" />
         </Link>
       </FadeIn>

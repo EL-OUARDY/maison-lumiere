@@ -1,6 +1,6 @@
 # Maison Lumière
 
-Maison Lumière is a modern fragrance brand that combines elegance and innovation to deliver an immersive online shopping experience. [View Demo](https://maison-lumiere-pi.vercel.app/) 🌐
+Maison Lumière is a modern fragrance brand that combines elegance and innovation to deliver an immersive online shopping experience. [View Demo](https://maison-lumieree.vercel.app/) 🌐
 
 ![PopStream Demo](screenshot.png)
 

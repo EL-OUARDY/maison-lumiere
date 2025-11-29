@@ -224,6 +224,7 @@ function Menu({ isOpen = false, onClose = () => {}, children }: Props) {
               if (pathname === '/') closeMenuRef.current();
             }}
             className="block w-fit cursor-pointer"
+            title="Maison Lumière"
           >
             <LogoIcon className="hover:text-foreground text-muted transition duration-300" />
           </Link>
