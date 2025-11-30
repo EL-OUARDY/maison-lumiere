@@ -22,7 +22,7 @@ async function Fragrance({ params }: { params: Promise<Params> }) {
 
   return (
     <>
-      <Bounded className="bg-background flex min-h-screen items-center justify-center py-20">
+      <Bounded className="bg-background flex min-h-dvh items-center justify-center py-20">
         <div className="grid grid-cols-1 items-center lg:grid-cols-2">
           <div className="image relative flex justify-center">
             <Image

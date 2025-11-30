@@ -82,7 +82,7 @@ function ScrollText() {
   return (
     <Bounded
       ref={containerRef}
-      className="bg-background invisible relative flex h-screen items-center justify-center text-center"
+      className="bg-background invisible relative flex h-dvh items-center justify-center text-center"
     >
       <div className="glow-bg absolute inset-0 z-0 size-full opacity-0"></div>
       <div className="noise-texture absolute inset-0 z-100 size-full opacity-30 mix-blend-multiply"></div>
@@ -94,7 +94,7 @@ function ScrollText() {
 
         <p
           aria-hidden="true"
-          className="font-title split flex flex-wrap justify-center text-5xl leading-tight text-balance uppercase md:text-7xl"
+          className="font-title split flex flex-wrap justify-center px-8 text-4xl leading-tight text-balance uppercase sm:px-0 sm:text-5xl md:text-7xl"
           ref={textRef}
         >
           MAISON LUMIÈRE IS MADE FOR THOSE WHO KNOW THAT LUXURY IS NOT WORN, BUT

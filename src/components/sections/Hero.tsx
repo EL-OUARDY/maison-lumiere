@@ -7,7 +7,7 @@ import ButtonLink from '@/components/ui/link';
 
 function Hero() {
   return (
-    <Bounded className="hero bg-background relative h-dvh">
+    <Bounded className="hero bg-background relative h-dvh min-h-[667px]">
       <FadeIn
         vars={{ duration: 5, scale: 1, opacity: 0.5 }}
         className="absolute inset-0 scale-125"
@@ -22,20 +22,20 @@ function Hero() {
         />
       </FadeIn>
 
-      <div className="text-foreground relative flex h-dvh flex-col justify-center">
+      <div className="text-foreground relative flex h-dvh min-h-[667px] flex-col justify-center">
         <div className="w-fit">
           <RevealText
             text="Natural Charm"
             as="h1"
             staggerAmount={0.2}
             duration={1.7}
-            className="font-title max-w-lg text-7xl leading-none lg:text-[5rem]"
+            className="font-title max-w-lg text-6xl leading-none sm:text-7xl lg:text-[5rem]"
             hoverLine={false}
           />
 
           <FadeIn
             vars={{ delay: 1, duration: 1.7 }}
-            className="flex translate-y-8 items-center gap-2 text-lg"
+            className="my-2 flex translate-y-8 items-center gap-2 text-lg"
           >
             <span className="bg-foreground h-px w-4"></span>
             <span className="font-light">Paris</span>

@@ -208,7 +208,7 @@ function Menu({ isOpen = false, onClose = () => {}, children }: Props) {
   return (
     <div
       ref={menuContainerRef}
-      className="menu bg-background pointer-events-auto fixed inset-0 z-200 flex h-screen w-screen flex-col p-4"
+      className="menu bg-background pointer-events-auto fixed inset-0 z-200 flex h-dvh w-dvw flex-col p-4"
       style={{
         clipPath: 'polygon(0 0, 100% 0, 100% 0px, 0 0px)',
       }}

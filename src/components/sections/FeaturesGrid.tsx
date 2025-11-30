@@ -12,9 +12,9 @@ function FeaturesGrid() {
         <FadeIn
           vars={{ duration: 1 }}
           start="top 70%"
-          className="grid-image bg-foreground/10 relative hidden w-full translate-y-16 lg:block lg:flex-2"
+          className="grid-image bg-foreground/10 hidden w-full translate-y-16 lg:block lg:flex-2"
         >
-          <Lazy rootMargin="1000px">
+          <Lazy rootMargin="1000px" className="relative size-full">
             <Image
               className="object-cover grayscale-[0.9]"
               src="/img/grid-picture.jpg"
